@@ -2,6 +2,7 @@
 export PATH=$PATH:$HOME/bin
 
 setopt prompt_subst
+
 git_prompt_info() {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     print "|%{\e[38;5;197m%}${ref#refs/heads/}%{\e[0m%}"
@@ -25,6 +26,7 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 
 export EDITOR="vim"
 export GREP_OPTIONS='--color=auto'
+export LSCOLORS=ExFxCxdxBxegedabagacad
 
 export HISTSIZE=1000
 export SAVEHIST=1000
@@ -49,6 +51,7 @@ bindkey "\e[6~" history-search-forward   # PageDown
 
 alias ls="ls --color"
 alias ll="ls -al"
+alias l="ls -a"
 alias cls="clear"
 alias g='grep'
 alias :q='exit'
