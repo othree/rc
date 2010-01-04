@@ -55,11 +55,11 @@ alias cls="clear"
 alias g 'grep'
 alias :q 'exit'
 alias :Q 'exit'
-alias ~ "cd ~"
-alias cd.. "cd .."
-alias cd... "cd ../.."
-alias cd.... "cd ../../.."
-alias cd..... "cd ../../../.."
-alias cd...... "cd ../.././../.."
-alias cd....... "cd ../../../../../.."
+alias ~="cd ~"
+alias ..="cd .."
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../../..'
+alias -g ......='../../../../../..'
+alias -g .......='../../../../../../..'
 
