@@ -1,0 +1,4 @@
+#!/bin/bash
+if ! screen -r BBS >& /dev/null ;then
+        LANG="zh_TW.UTF-8" screen -S BBS -c /home/othree/bbs/screenrc-ej84
+fi

@@ -1,0 +1,5 @@
+#!/usr/bin/expect
+
+spawn telnet -8 [lrange $argv 0 0]
+interact timeout 100 { send "\x00" } #10秒送出一次掛站訊號"\x00"
+exit

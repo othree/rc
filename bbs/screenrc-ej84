@@ -1,0 +1,45 @@
+# /* vim: set filetype=screen : */ 
+vbell on
+startup_message off
+
+term screen-256color-bce
+termcapinfo screen-256color-bce "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+
+#hardstatus alwayslastline "%`%-w%{=b bw}%n %t%{-}%+w"
+#hardstatus alwayslastline "%{= kG}[%= %{=kw}%?%-Lw%?%{r}[%{W}%n*%f%t%?(%u)%?%{r}]%{w}%?%+Lw%?%?%= %{g}]"
+#caption always "%{=u .G}| %-w%<%{=ub .y}%n %t%{=u .G}%+w %=|"
+
+# Look and feel
+caption always "%{= KW}Screen %n: %t  %=%{-}%{= Kw}[%l] %{-}"
+hardstatus alwayslastline "@%H%{= .K}>%{-}%{= .r}>%{-}%{= .R}>%{-} %-w%{= KR}%50>%n %t%{-}%+w%<"
+ 
+# Our warning of activity
+#activity "Activity in %t(%n)"    
+
+## quick switch
+bindkey "[1;5C" next
+bindkey "[1;5D" prev
+bindkey "[C" next
+bindkey "[D" prev
+
+bind ^p screen -t 'IRC' 1 irssi
+bind ^e screen -t "BAHA" 3 /home/othree/bbs/BAHA
+bind ^q eval 'defencoding big5' 'screen -t "CCC"   1 /home/othree/bbs/bbs.sh ----' 'defencoding utf8'
+bind ^w eval 'defencoding big5' 'screen -t "CR"    2 /home/othree/bbs/bbs.sh acg.twbbs.org' 'defencoding utf8'
+bind ^r eval 'defencoding big5' 'screen -t "PTT"   4 /home/othree/bbs/bbs.sh ptt.cc' 'defencoding utf8'
+bind ^t eval 'defencoding big5' 'screen -t "P2"    5 /home/othree/bbs/bbs.sh ptt2.cc' 'defencoding utf8'
+bind ^y eval 'defencoding big5' 'screen -t "KK"    6 /home/othree/bbs/bbs.sh bbs.kkcity.com.tw' 'defencoding utf8'
+bind ^u eval 'defencoding big5' 'screen -t "DEPOT" 7 /bin/zsh' 'defencoding utf8'
+
+defencoding big5
+screen -t 'CCC'   1 /home/othree/bbs/bbs.sh ----
+screen -t 'CR'    2 /home/othree/bbs/bbs.sh acg.twbbs.org
+screen -t 'PTT'   4 /home/othree/bbs/bbs.sh ptt.cc
+screen -t 'P2'    5 /home/othree/bbs/bbs.sh ptt2.cc
+screen -t 'KK'    6 /home/othree/bbs/bbs.sh bbs.kkcity.com.tw
+screen -t 'DEPOT' 7 /bin/zsh
+defencoding utf8
+screen -t 'BAHA'  3 /home/othree/bbs/BAHA
+screen -t 'IRC'   0 irssi
+screen -t 'Zsh'   8 /bin/zsh
+

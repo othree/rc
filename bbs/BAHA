@@ -1,0 +1,4 @@
+#!/bin/bash
+if ! screen -r BAHAB >& /dev/null ;then
+    LANG="zh_TW.UTF-8" screen -S BAHAB -c /home/othree/bbs/screenrc-baha
+fi

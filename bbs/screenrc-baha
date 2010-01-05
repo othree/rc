@@ -1,0 +1,7 @@
+# /* vim: set filetype=screen : */ 
+
+term screen
+width -d 80 24 
+defencoding big5
+screen -t BAHA /home/othree/bbs/bbs.sh bbs.gamer.com.tw
+
