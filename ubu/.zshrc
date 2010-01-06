@@ -131,6 +131,8 @@ bindkey "^Q" push-line
 bindkey "^G" get-line
 bindkey "^Z" undo
 #bindkey "^Y" vi-undo-change
+bindkey "^Xc" copy-region-as-kill
+bindkey "^Xx" kill-region
 
 alias vi="vim"
 alias vim="vim -p"
