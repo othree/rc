@@ -21,8 +21,8 @@ export RPROMPT="$(print '[%(?.%{\e[1;37m%}%T%{\e[0m%}. %{\e[38;5;185m%}%?%{\e[0m
 #export RPROMPT="$(print '[ %{\e[1;37m%}%(?.%T.%?)%{\e[0m%} ]')"
 #export RPROMPT=$'%(?..[ %B%?%b ])'
 
-#export LC_ALL=zh_TW.UTF8
-#export LANG=$LC_ALL
+export LC_ALL=zh_TW.UTF-8
+export LANG=$LC_ALL
 export EDITOR="vim"
 export GREP_OPTIONS='--color=auto'
 export HISTSIZE=1000
@@ -33,7 +33,7 @@ export HISTFILE=~/.history
 LS_COLORS=''
 LS_COLORS=$LS_COLORS:'no=0'           # Normal text       = Default foreground  
 LS_COLORS=$LS_COLORS:'fi=0'           # Regular file      = Default foreground
-LS_COLORS=$LS_COLORS:'di=32'          # Directory         = Bold, Yellow
+LS_COLORS=$LS_COLORS:'di=01;34'       # Directory         = Bold, Blue
 LS_COLORS=$LS_COLORS:'ln=01;36'       # Symbolic link     = Bold, Cyan
 LS_COLORS=$LS_COLORS:'pi=33'          # Named pipe        = Yellow
 LS_COLORS=$LS_COLORS:'so=01;35'       # Socket            = Bold, Magenta
@@ -100,6 +100,8 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle ':completion:*' list-colors $LS_COLORS
 #zstyle ':completion:*' special-dirs ..
 
+alias screen="nocorrect screen"
+
 #bindkey -v                               # vi mode
 bindkey -e                               # emacs mode
 bindkey "\e[1~" beginning-of-line        # Home
@@ -115,6 +117,7 @@ bindkey "^G" get-line
 bindkey "^Z" undo
 bindkey "^Y" vi-undo-change
 
+alias vi="vim"
 alias vim="vim -p"
 alias df="df -h"
 alias ls="ls --color"
