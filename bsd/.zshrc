@@ -64,7 +64,7 @@ bindkey "^Y" vi-undo-change
 
 alias vim="vim -p"
 alias df="df -h"
-alias ls="ls -G"
+alias ls="ls -Gw"
 alias ll="ls -al"
 alias l="ls -a"
 alias cls="clear"
