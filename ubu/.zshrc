@@ -17,6 +17,16 @@ $(print '%{\e[0m%}') "
 #$(print '%{\e[38;5;28m%}>%{\e[0m%}')\
 #$(print '%{\e[38;5;40m%}>%{\e[0m%}')\
 
+export PROMPT2="$(print '%{\e[1;37m%}[%/$(git_prompt_info)] -%n- ')\
+$(print '%{\e[38;5;22m%}>')\
+$(print '%{\e[38;5;34m%}>')\
+$(print '%{\e[38;5;46m%}>')\
+$(print '%{\e[0m%}') %_ \
+$(print '%{\e[38;5;22m%}>')\
+$(print '%{\e[38;5;34m%}>')\
+$(print '%{\e[38;5;46m%}>')\
+$(print '%{\e[0m%}') "
+
 export RPROMPT="$(print '[%(?.%{\e[1;37m%}%T%{\e[0m%}. %{\e[38;5;185m%}%?%{\e[0m%} )]')"
 #export RPROMPT="$(print '[ %{\e[1;37m%}%(?.%T.%?)%{\e[0m%} ]')"
 #export RPROMPT=$'%(?..[ %B%?%b ])'
