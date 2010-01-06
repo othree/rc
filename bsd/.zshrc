@@ -21,7 +21,7 @@ export RPROMPT="$(print '[%(?.%{\e[1;37m%}%T%{\e[0m%}. %{\e[38;5;185m%}%?%{\e[0m
 #export RPROMPT="$(print '[ %{\e[1;37m%}%(?.%T.%?)%{\e[0m%} ]')"
 #export RPROMPT=$'%(?..[ %B%?%b ])'
 
-export LC_ALL=zh_TW.UTF8
+export LC_ALL=zh_TW.UTF-8
 export LANG=$LC_ALL
 export EDITOR="vim"
 export GREP_OPTIONS='--color=auto'
@@ -64,7 +64,7 @@ bindkey "^Y" vi-undo-change
 
 alias vim="vim -p"
 alias df="df -h"
-alias ls="ls -G"
+alias ls="ls -Gw"
 alias ll="ls -al"
 alias l="ls -a"
 alias cls="clear"
