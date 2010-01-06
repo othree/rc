@@ -9,25 +9,27 @@ git_prompt_info() {
 }
 
 export PROMPT="$(print '%{\e[1;37m%}[%/$(git_prompt_info)] -%n- ')\
+$(print '%1(j.%{\e[38;5;185m%}|%j|%{\e[1;37m%}.)')\
 $(print '%{\e[38;5;22m%}>')\
 $(print '%{\e[38;5;34m%}>')\
 $(print '%{\e[38;5;46m%}>')\
 $(print '%{\e[0m%}') "
-#$(print '%{\e[38;5;16m%}>%{\e[0m%}')\
-#$(print '%{\e[38;5;28m%}>%{\e[0m%}')\
-#$(print '%{\e[38;5;40m%}>%{\e[0m%}')\
+#$(print '%{\e[38;5;16m%}>')\
+#$(print '%{\e[38;5;28m%}>')\
+#$(print '%{\e[38;5;40m%}>')\
 
 export PROMPT2="$(print '%{\e[1;37m%}[%/$(git_prompt_info)] -%n- ')\
+$(print '%1(j.%{\e[38;5;185m%}|%j|%{\e[1;37m%}.)')\
 $(print '%{\e[38;5;22m%}>')\
+$(print '%{\e[38;5;28m%}>')\
 $(print '%{\e[38;5;34m%}>')\
-$(print '%{\e[38;5;46m%}>')\
 $(print '%{\e[0m%}') %_ \
-$(print '%{\e[38;5;22m%}>')\
 $(print '%{\e[38;5;34m%}>')\
+$(print '%{\e[38;5;40m%}>')\
 $(print '%{\e[38;5;46m%}>')\
 $(print '%{\e[0m%}') "
 
-export RPROMPT="$(print '[%(?.%{\e[1;37m%}%T%{\e[0m%}. %{\e[38;5;185m%}%?%{\e[0m%} )]')"
+export RPROMPT="$(print '[%(?.%{\e[1;37m%}%T%{\e[0m%}. %{\e[38;5;203m%}%?%{\e[0m%} )]')"
 #export RPROMPT="$(print '[ %{\e[1;37m%}%(?.%T.%?)%{\e[0m%} ]')"
 #export RPROMPT=$'%(?..[ %B%?%b ])'
 
@@ -101,6 +103,7 @@ setopt hist_ignore_all_dups
 setopt no_hist_beep
 setopt hist_save_no_dups
 setopt noflowcontrol                  #no flow control enable keybind for ^Q
+setopt menu_complete
 
 autoload -U compinit
 compinit
@@ -109,6 +112,8 @@ zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle ':completion:*' list-colors $LS_COLORS
 #zstyle ':completion:*' special-dirs ..
+
+zle_highlight=(region:bg=magenta special:bold isearch:underline)
 
 alias screen="nocorrect screen"
 
@@ -125,7 +130,7 @@ bindkey "\e[6~" history-search-forward   # PageDown
 bindkey "^Q" push-line
 bindkey "^G" get-line
 bindkey "^Z" undo
-bindkey "^Y" vi-undo-change
+#bindkey "^Y" vi-undo-change
 
 alias vi="vim"
 alias vim="vim -p"
