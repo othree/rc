@@ -24,7 +24,7 @@ bindkey "[D" prev
 
 bind ^p screen -t 'IRC' 1 irssi
 bind ^e screen -t "BAHA" 3 /home/othree/bbs/BAHA
-bind ^q eval 'defencoding big5' 'screen -t "CCC"   1 /home/othree/bbs/bbs.sh ----' 'defencoding utf8'
+bind ^q eval 'defencoding big5' 'screen -t "CCC"   1 /home/othree/bbs/bbs.sh 140.118.5.39' 'defencoding utf8'
 bind ^w eval 'defencoding big5' 'screen -t "CR"    2 /home/othree/bbs/bbs.sh acg.twbbs.org' 'defencoding utf8'
 bind ^r eval 'defencoding big5' 'screen -t "PTT"   4 /home/othree/bbs/bbs.sh ptt.cc' 'defencoding utf8'
 bind ^t eval 'defencoding big5' 'screen -t "P2"    5 /home/othree/bbs/bbs.sh ptt2.cc' 'defencoding utf8'
@@ -32,7 +32,7 @@ bind ^y eval 'defencoding big5' 'screen -t "KK"    6 /home/othree/bbs/bbs.sh bbs
 bind ^u eval 'defencoding big5' 'screen -t "DEPOT" 7 /bin/zsh' 'defencoding utf8'
 
 defencoding big5
-screen -t 'CCC'   1 /home/othree/bbs/bbs.sh ----
+screen -t 'CCC'   1 /home/othree/bbs/bbs.sh 140.118.5.39
 screen -t 'CR'    2 /home/othree/bbs/bbs.sh acg.twbbs.org
 screen -t 'PTT'   4 /home/othree/bbs/bbs.sh ptt.cc
 screen -t 'P2'    5 /home/othree/bbs/bbs.sh ptt2.cc
