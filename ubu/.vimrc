@@ -47,11 +47,12 @@ nnoremap <leader>q :QFix<CR>
 
 " Key Mapping
 "" function keys
-set pastetoggle=<F2>
+nnoremap <F2>  :set nonumber!<CR>
+nnoremap <F3>  :set nopaste!<CR>
 nnoremap <F5>  :tab ball<CR>
-nnoremap <F6>  :wrap!<CR>
-"nnoremap <F7>  :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-"map <F11> :JSLintLight<CR>
+nnoremap <F6>  :set wrap!<CR>
+nnoremap <F11> :QFix<CR>
+" F12 > JSLint
 
 "" tab to indent
 nmap <tab> V>
