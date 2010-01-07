@@ -1,11 +1,44 @@
-" Basic settings
+" .vimrc by othree ( othree AT gmail DOT com )
+"
+" Used Plugins: {{{
+" JavaScript syntax
+" http://www.vim.org/scripts/script.php?script_id=1491
+" Javascript Indentation
+" http://www.vim.org/scripts/script.php?script_id=1840
+" Vimball
+" http://www.vim.org/scripts/script.php?script_id=1502
+" VisIncr
+" http://www.vim.org/scripts/script.php?script_id=670
+" autocomplpop
+" http://www.vim.org/scripts/script.php?script_id=1879
+" snipMate
+" http://www.vim.org/scripts/script.php?script_id=2540
+" NERD_commenter
+" http://www.vim.org/scripts/script.php?script_id=1218
+" align
+" http://www.vim.org/scripts/script.php?script_id=294
+" xml/html
+" http://www.vim.org/scripts/script.php?script_id=1397
+" sparkup.vim
+" http://github.com/rstacruz/sparkup
+" jslint.vim
+" http://github.com/hallettj/jslint.vim
+" eregex.vim
+" http://www.vector.co.jp/soft/unix/writing/se265654.html
+" tir_black
+" http://www.vim.org/scripts/script.php?script_id=2777
+" }}}
+
+" Basic Settings: {{{
 syntax on
 filetype on
 filetype plugin on
 colors tir_black
 language message zh_TW.UTF-8
 
+set display+=lastline
 set nocp
+set wrap
 set showtabline=2 " always show tab line
 set ruler
 set number
@@ -17,6 +50,7 @@ set autoindent
 set smartindent
 set cindent
 set hlsearch
+set foldmethod=marker
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 
 " Encoding
@@ -28,9 +62,18 @@ set ambiwidth=double
 " Status Line
 set laststatus=2
 set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
+" }}}
 
+" Screen Fix: {{{
+if &term =~ '^screen' 
+    set t_k1=[11~
+    set t_k2=[12~
+    set t_k3=[13~
+    set t_k4=[14~
+endif
+" }}}
 
-" QuickFix
+" QuickFix: {{{
 " http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
 command -bang -nargs=? QFix call QFixToggle(<bang>0)
 function! QFixToggle(forced)
@@ -43,9 +86,9 @@ function! QFixToggle(forced)
   endif
 endfunction
 nnoremap <leader>q :QFix<CR>
+" }}}
 
-
-" Key Mapping
+" Key Mapping: {{{
 "" function keys
 nnoremap <F2>  :set nonumber!<CR>
 nnoremap <F3>  :set nopaste!<CR>
@@ -81,7 +124,6 @@ inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-
 "" tab control
 "" http://c9s.blogspot.com/2007/08/vim-my-key-mapping-for-tabs.html
 nmap    ,tn    :tabnew<cr>
@@ -91,9 +133,9 @@ nmap    ,th    :tab help<cr>
 nmap    <a-left>  :tabp<cr>
 nmap    <a-right> :tabn<cr>
 nmap    <C-\>  :tabn<CR>
+"}}}
 
-
-" Autocomplpop
+" Autocomplpop: {{{
 "" omnifunc setting
 "setlocal omnifunc=syntaxcomplete#Complete
 "autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -142,16 +184,16 @@ let jsbehavs = { 'javascript': [] }
 
 let g:acp_behavior = {}
 call extend(g:acp_behavior, jsbehavs, 'keep')
+" }}}
 
-
-" Popup highlight color
+" Popup Highlight: {{{
 highlight PMenu      cterm=bold ctermbg=Blue ctermfg=Gray
 highlight PMenuSel   cterm=bold ctermbg=Red ctermfg=White
 highlight PMenuSbar  cterm=bold ctermbg=darkgray
 highlight PMenuThumb cterm=bold ctermbg=White
+" }}}
 
-
-" html tag escape
+"HTML Tag Escape: {{{
 " http://vim.wikia.com/wiki/Escape_and_unescape_HTML_entities
 function HtmlEscape()
     silent s/&/\&amp;/eg
@@ -169,9 +211,9 @@ endfunction
 
 map <silent> <c-h> :call HtmlEscape()<CR>
 map <silent> <c-u> :call HtmlUnEscape()<CR>
+" }}}
 
-
-" yuicompressor and closure-compiler
+" Yuicompressor And ClosureCompiler: {{{
 " http://blog.othree.net/log/2009/12/26/javascript-on-vim/
 function Yuic ()
     let cwd = expand('<afile>:p:h')
@@ -192,9 +234,9 @@ function Yuic ()
 endfunction
 autocmd FileWritePost,BufWritePost *.js :call Yuic()
 autocmd FileWritePost,BufWritePost *.css :call Yuic()
+" }}}
 
-
-" auto unittest
+" Auto Unittest: {{{
 " javascripthttp://blog.othree.net/log/2009/12/26/javascript-on-vim/
 function Jsunit ()
     let ut = 'unit.test.js'
@@ -218,9 +260,9 @@ function Jsunit ()
     endif
 endfunction
 autocmd FileWritePost,BufWritePost *.js :call Jsunit()
+" }}}
 
-
-" command mapping
+" Command Mapping: {{{
 com! -bang W :w
 com! -bang Wq :wq
 com! -bang Wqa :wqa
@@ -229,9 +271,9 @@ com! -bang WQa :wqa
 com! -bang WQA :wqa
 com! -bang Q :q
 com! -bang Qa :qa
+" }}}
 
-
-" after loading all plugin
+" After Loading All Plugin: {{{
 function AfterStart ()
 
 " plugin commands
@@ -251,3 +293,5 @@ endif
 
 endfunction
 autocmd VimEnter * :call AfterStart()
+" }}}
+

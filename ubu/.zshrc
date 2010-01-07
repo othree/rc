@@ -116,6 +116,7 @@ zstyle ':completion:*' list-colors $LS_COLORS
 zle_highlight=(region:bg=magenta special:bold isearch:underline)
 
 alias screen="nocorrect screen"
+alias screen="nocorrect lessc"
 
 #bindkey -v                               # vi mode
 bindkey -e                               # emacs mode
@@ -152,7 +153,7 @@ alias -g .....='../../../../..'
 alias -g ......='../../../../../..'
 alias -g .......='../../../../../../..'
 
-if [ $TERM = "screen-256color-bce" ]; then
-    alias vim="TERM=xterm-256color vim"
-fi
+#if [ $TERM = "screen-256color-bce" ]; then
+    #alias vim="TERM=xterm-256color vim"
+#fi
 
