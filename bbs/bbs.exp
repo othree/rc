@@ -1,13 +1,17 @@
 #!/usr/bin/expect
 
 set CTRLX \030
+set ESC \033
 
 spawn telnet -8 [lrange $argv 0 0]
 
 interact {
-    :wq { send $CTRLX; send "\n" } # :wq replace Ctrl+x enter
+    $ESC:wq\r { send $CTRLX; send "\r" }
+    $ESC:Wq\r { send $CTRLX; send "\r" }
+    $ESC:WQ\r { send $CTRLX; send "\r" }
+    timeout 100 { send "\x00" }
 }
 
-interact timeout 100 { send "\x00" } # send "\x00" every 10 seconds
 
 exit
+
