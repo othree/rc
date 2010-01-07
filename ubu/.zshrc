@@ -152,3 +152,7 @@ alias -g .....='../../../../..'
 alias -g ......='../../../../../..'
 alias -g .......='../../../../../../..'
 
+if [ $TERM = "screen-256color-bce" ]; then
+    alias vim="TERM=xterm-256color vim"
+fi
+
