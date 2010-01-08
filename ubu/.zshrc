@@ -1,6 +1,9 @@
 #
 export PATH=$PATH:$HOME/bin
 
+echo -ne "\e]1;[zsh] `hostname`\a" # tab title
+echo -ne "\e]2;[zsh] `hostname`\a" # window title
+
 setopt prompt_subst
 
 git_prompt_info() {
@@ -28,6 +31,9 @@ $(print '%{\e[38;5;34m%}>')\
 $(print '%{\e[38;5;40m%}>')\
 $(print '%{\e[38;5;46m%}>')\
 $(print '%{\e[0m%}') "
+
+export PROMPT3="3 > "
+export PROMPT4="4 > "
 
 export RPROMPT="$(print '[%(?.%{\e[1;37m%}%T%{\e[0m%}. %{\e[38;5;203m%}%?%{\e[0m%} )]')"
 #export RPROMPT="$(print '[ %{\e[1;37m%}%(?.%T.%?)%{\e[0m%} ]')"
@@ -103,7 +109,7 @@ setopt hist_ignore_all_dups
 setopt no_hist_beep
 setopt hist_save_no_dups
 setopt noflowcontrol                  #no flow control enable keybind for ^Q
-setopt menu_complete
+#setopt menu_complete
 
 autoload -U compinit
 compinit
@@ -151,8 +157,4 @@ alias -g ....='../../..'
 alias -g .....='../../../../..'
 alias -g ......='../../../../../..'
 alias -g .......='../../../../../../..'
-
-#if [ $TERM = "screen-256color-bce" ]; then
-    #alias vim="TERM=xterm-256color vim"
-#fi
 
