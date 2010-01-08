@@ -116,7 +116,6 @@ zstyle ':completion:*' list-colors $LS_COLORS
 zle_highlight=(region:bg=magenta special:bold isearch:underline)
 
 alias screen="nocorrect screen"
-alias screen="nocorrect lessc"
 
 #bindkey -v                               # vi mode
 bindkey -e                               # emacs mode
