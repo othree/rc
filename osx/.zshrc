@@ -1,4 +1,6 @@
 #
+echo -ne "\e]1;[zsh] `hostname`\a"
+echo -ne "\e]2;[zsh] `hostname`\a"
 export PATH=$PATH:$HOME/bin
 
 setopt prompt_subst
