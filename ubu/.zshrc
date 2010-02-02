@@ -32,9 +32,6 @@ $(print '%{\e[38;5;40m%}>')\
 $(print '%{\e[38;5;46m%}>')\
 $(print '%{\e[0m%}') "
 
-export PROMPT3="3 > "
-export PROMPT4="4 > "
-
 export RPROMPT="$(print '[%(?.%{\e[1;37m%}%T%{\e[0m%}. %{\e[38;5;203m%}%?%{\e[0m%} )]')"
 #export RPROMPT="$(print '[ %{\e[1;37m%}%(?.%T.%?)%{\e[0m%} ]')"
 #export RPROMPT=$'%(?..[ %B%?%b ])'
@@ -121,8 +118,6 @@ zstyle ':completion:*' list-colors $LS_COLORS
 
 zle_highlight=(region:bg=magenta special:bold isearch:underline)
 
-alias screen="nocorrect screen"
-
 #bindkey -v                               # vi mode
 bindkey -e                               # emacs mode
 bindkey "\e[1~" beginning-of-line        # Home
@@ -139,6 +134,16 @@ bindkey "^Z" undo
 #bindkey "^Y" vi-undo-change
 bindkey "^Xc" copy-region-as-kill
 bindkey "^Xx" kill-region
+
+expand-to-home-or-insert () {
+  if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
+    LBUFFER+="~/"
+  else
+    zle self-insert
+  fi
+}
+zle -N expand-to-home-or-insert
+bindkey "\\"  expand-to-home-or-insert
 
 alias vi="vim"
 alias vim="vim -p"
@@ -157,4 +162,3 @@ alias -g ....='../../..'
 alias -g .....='../../../../..'
 alias -g ......='../../../../../..'
 alias -g .......='../../../../../../..'
-
