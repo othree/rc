@@ -136,9 +136,9 @@ alias vim="vim -p"
 alias ls="ls -G"
 alias ll="ls -al"
 alias cls="clear"
-alias g 'grep'
-alias :q 'exit'
-alias :Q 'exit'
+alias g='grep'
+alias :q='exit'
+alias :Q='exit'
 alias ~="cd ~"
 alias ..="cd .."
 alias -g ...='../..'
