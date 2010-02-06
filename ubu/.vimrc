@@ -27,6 +27,10 @@
 " http://www.vector.co.jp/soft/unix/writing/se265654.html
 " tir_black
 " http://www.vim.org/scripts/script.php?script_id=2777
+" lesscss syntax
+" http://ernstdehaan.blogspot.com/2009/08/vim-syntax-highlighting-for-lesscss.html
+" jQuery : Syntax file for jQuery
+" http://www.vim.org/scripts/script.php?script_id=2416
 " }}}
 
 " Basic Settings: {{{
@@ -62,6 +66,10 @@ set ambiwidth=double
 " Status Line
 set laststatus=2
 set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
+
+" Special File Types
+au BufNewFile,BufRead *.less set filetype=less
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " }}}
 
 " Screen Fix: {{{
@@ -213,9 +221,9 @@ map <silent> <c-h> :call HtmlEscape()<CR>
 map <silent> <c-u> :call HtmlUnEscape()<CR>
 " }}}
 
-" Yuicompressor And ClosureCompiler: {{{
+" Yuicompressor and ClosureCompiler and less: {{{
 " http://blog.othree.net/log/2009/12/26/javascript-on-vim/
-function Yuic ()
+function Js_css_compress ()
     let cwd = expand('<afile>:p:h')
     let nam = expand('<afile>:t:r')
     let ext = expand('<afile>:e')
@@ -224,16 +232,23 @@ function Yuic ()
     else
         let minfname = substitute(nam, "[\._]src$", "", "g").".".ext
     endif
-    if filewritable(cwd.'/'.minfname)
-        if ext == 'js' && executable('closure-compiler')
-            cal system( 'closure-compiler --js '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.minfname.' &')
-        elseif executable('yuicompressor')
-            cal system( 'yuicompressor '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.minfname.' &')
+    if ext == 'less'
+        if executable('lessc')
+            cal system( 'lessc '.cwd.'/'.nam.'.'.ext.' &')
+        endif
+    else
+        if filewritable(cwd.'/'.minfname)
+            if ext == 'js' && executable('closure-compiler')
+                cal system( 'closure-compiler --js '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.minfname.' &')
+            elseif executable('yuicompressor')
+                cal system( 'yuicompressor '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.minfname.' &')
+            endif
         endif
     endif
 endfunction
-autocmd FileWritePost,BufWritePost *.js :call Yuic()
-autocmd FileWritePost,BufWritePost *.css :call Yuic()
+autocmd FileWritePost,BufWritePost *.js :call Js_css_compress()
+autocmd FileWritePost,BufWritePost *.css :call Js_css_compress()
+autocmd FileWritePost,BufWritePost *.less :call Js_css_compress()
 " }}}
 
 " Auto Unittest: {{{
