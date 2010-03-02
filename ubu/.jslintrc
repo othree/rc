@@ -1,2 +1,2 @@
-/*jslint browser: true*/
+/*jslint browser: true, forin: true*/
 /*global jQuery $ */
