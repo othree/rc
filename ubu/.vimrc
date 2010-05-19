@@ -19,6 +19,8 @@
 " http://www.vim.org/scripts/script.php?script_id=294
 " xml/html
 " http://www.vim.org/scripts/script.php?script_id=1397
+" json
+" http://www.vim.org/scripts/script.php?script_id=1945
 " sparkup.vim
 " http://github.com/rstacruz/sparkup
 " jslint.vim
@@ -70,6 +72,7 @@ set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\
 " Special File Types
 au BufNewFile,BufRead *.less set filetype=less
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+au BufRead,BufNewFile *.json set syntax=json 
 " }}}
 
 " Screen Fix: {{{
@@ -141,6 +144,8 @@ nmap    ,th    :tab help<cr>
 nmap    <a-left>  :tabp<cr>
 nmap    <a-right> :tabn<cr>
 nmap    <C-\>  :tabn<CR>
+
+cmap w!! %!sudo tee > /dev/null %
 "}}}
 
 " Autocomplpop: {{{

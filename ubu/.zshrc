@@ -1,5 +1,5 @@
 #
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/bin:$PATH
 
 echo -ne "\e]1;[zsh] `hostname`\a" # tab title
 echo -ne "\e]2;[zsh] `hostname`\a" # window title
