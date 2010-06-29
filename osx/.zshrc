@@ -99,7 +99,7 @@ LS_COLORS=$LS_COLORS:'*.o=1;36'       # Object-Files      = Bold, Cyan
 LS_COLORS=$LS_COLORS:'*.a=1;36'       # Shared-libs       = Bold, Cyan
 export LS_COLORS
 
-setopt correctall
+#setopt correctall
 setopt append_history
 setopt extended_history
 setopt hist_find_no_dups
