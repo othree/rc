@@ -72,6 +72,7 @@ set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\
 " Special File Types
 au BufNewFile,BufRead *.less set filetype=less
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+au BufRead,BufNewFile *.tpl set ft=html
 au BufRead,BufNewFile *.json set syntax=json 
 " }}}
 
@@ -141,9 +142,13 @@ nmap    ,tn    :tabnew<cr>
 nmap    ,te    :tabedit
 nmap    ,tx    :tabedit .<cr>
 nmap    ,th    :tab help<cr>
-nmap    <a-left>  :tabp<cr>
-nmap    <a-right> :tabn<cr>
+nmap    <A-left>  :tabp<cr>
+nmap    <A-right> :tabn<cr>
+imap    <C-\>  <ESC>:tabn<CR>
 nmap    <C-\>  :tabn<CR>
+
+nmap    <C-]> :tabp<CR>
+imap    <C-]> <ESC>:tabp<CR>
 
 cmap w!! %!sudo tee > /dev/null %
 "}}}
@@ -239,7 +244,7 @@ function Js_css_compress ()
     endif
     if ext == 'less'
         if executable('lessc')
-            cal system( 'lessc '.cwd.'/'.nam.'.'.ext.' &')
+            cal system( 'lessc '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.nam.'.css &')
         endif
     else
         if filewritable(cwd.'/'.minfname)
