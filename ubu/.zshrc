@@ -98,6 +98,17 @@ LS_COLORS=$LS_COLORS:'*.o=1;36'       # Object-Files      = Bold, Cyan
 LS_COLORS=$LS_COLORS:'*.a=1;36'       # Shared-libs       = Bold, Cyan
 export LS_COLORS
 
+# colorful man page
+export PAGER="`which less` -s"
+export BROWSER="$PAGER"
+export LESS_TERMCAP_mb=$'\E[38;5;167m'
+export LESS_TERMCAP_md=$'\E[38;5;39m'
+export LESS_TERMCAP_me=$'\E[38;5;231m'
+export LESS_TERMCAP_se=$'\E[38;5;231m'
+export LESS_TERMCAP_so=$'\E[38;5;167m'
+export LESS_TERMCAP_ue=$'\E[38;5;231m'
+export LESS_TERMCAP_us=$'\E[38;5;167m'
+
 #setopt correctall
 setopt append_history
 setopt extended_history
@@ -146,7 +157,7 @@ zle -N expand-to-home-or-insert
 bindkey "\\"  expand-to-home-or-insert
 
 alias vi="vim"
-alias vim="vim -p"
+alias vim="/usr/local/bin/vim -p"
 alias df="df -h"
 alias ls="ls --color"
 alias ll="ls -al"

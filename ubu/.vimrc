@@ -64,16 +64,16 @@ set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,euc-jp,big5
 set ambiwidth=double
 
-
 " Status Line
 set laststatus=2
 set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
 
 " Special File Types
-au BufNewFile,BufRead *.less set filetype=less
+au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 au BufRead,BufNewFile *.tpl set ft=html
 au BufRead,BufNewFile *.json set syntax=json 
+au BufRead,BufNewFile *.n3  set ft=n3
 " }}}
 
 " Screen Fix: {{{
@@ -151,6 +151,26 @@ nmap    <C-]> :tabp<CR>
 imap    <C-]> <ESC>:tabp<CR>
 
 cmap w!! %!sudo tee > /dev/null %
+
+"" keypad
+"" http://vim.wikia.com/wiki/PuTTY_numeric_keypad_mappings
+inoremap <Esc>Oq 1
+inoremap <Esc>Or 2
+inoremap <Esc>Os 3
+inoremap <Esc>Ot 4
+inoremap <Esc>Ou 5
+inoremap <Esc>Ov 6
+inoremap <Esc>Ow 7
+inoremap <Esc>Ox 8
+inoremap <Esc>Oy 9
+inoremap <Esc>Op 0
+inoremap <Esc>On .
+inoremap <Esc>OQ /
+inoremap <Esc>OR *
+inoremap <Esc>Ol +
+inoremap <Esc>OS -
+
+let NERDMapleader='<Leader>c'
 "}}}
 
 " Autocomplpop: {{{
