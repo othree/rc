@@ -3,8 +3,10 @@
 " Used Plugins: {{{
 " JavaScript syntax
 " http://www.vim.org/scripts/script.php?script_id=1491
-" Javascript Indentation
-" http://www.vim.org/scripts/script.php?script_id=1840
+" " Javascript Indentation
+" " http://www.vim.org/scripts/script.php?script_id=1840
+" Simple Javascript Indenter
+" http://github.com/JiangMiao/simple-javascript-indenter
 " Vimball
 " http://www.vim.org/scripts/script.php?script_id=1502
 " VisIncr
@@ -12,9 +14,13 @@
 " autocomplpop
 " http://www.vim.org/scripts/script.php?script_id=1879
 " snipMate
-" http://www.vim.org/scripts/script.php?script_id=2540
+" http://github.com/msanders/snipmate.vim
 " NERD_commenter
-" http://www.vim.org/scripts/script.php?script_id=1218
+" http://github.com/scrooloose/nerdcommenter
+" NERD_Tree
+" http://github.com/scrooloose/nerdtree
+" vim-space
+" http://github.com/spiiph/vim-space
 " align
 " http://www.vim.org/scripts/script.php?script_id=294
 " xml/html
@@ -33,6 +39,8 @@
 " http://ernstdehaan.blogspot.com/2009/08/vim-syntax-highlighting-for-lesscss.html
 " jQuery : Syntax file for jQuery
 " http://www.vim.org/scripts/script.php?script_id=2416
+" snipmate snippets fork by othree
+" http://github.com/othree/snipmate-snippets
 " }}}
 
 " Basic Settings: {{{
@@ -333,7 +341,11 @@ endif
 
 if exists(":JSLint")
     autocmd FileWritePost,BufWritePost *.js :JSLint
-    map <F12> :JSLint<CR>
+    "map <F12> :JSLint<CR>
+endif
+
+if exists(":NERDTreeToggle")
+    map <F12> :NERDTreeToggle<CR>
 endif
 
 endfunction

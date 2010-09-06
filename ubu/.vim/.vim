@@ -1,1 +1,0 @@
-rc/ubu/.vim
