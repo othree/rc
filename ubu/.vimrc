@@ -39,6 +39,8 @@
 " http://ernstdehaan.blogspot.com/2009/08/vim-syntax-highlighting-for-lesscss.html
 " jQuery : Syntax file for jQuery
 " http://www.vim.org/scripts/script.php?script_id=2416
+" css_color
+" http://www.vim.org/scripts/script.php?script_id=2150
 " snipmate snippets fork by othree
 " http://github.com/othree/snipmate-snippets
 " }}}
