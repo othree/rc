@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/othree/www/blog/about'
 let g:netrw_dirhist_2='/home/othree/www/blog'
 let g:netrw_dirhist_3='/home/othree/www/blog/about'
@@ -7,3 +7,5 @@ let g:netrw_dirhist_4='/home/othree/www/blog'
 let g:netrw_dirhist_5='/home/othree/www/blog/stylesheets'
 let g:netrw_dirhist_6='/home/othree/www/blog/stylesheets/default'
 let g:netrw_dirhist_7='/home/othree/www/test/list-item'
+let g:netrw_dirhist_8='/home/othree/rc/ubu/.vim/test'
+let g:netrw_dirhist_9='/home/othree/rc/ubu/.vim/ftplugin/html'

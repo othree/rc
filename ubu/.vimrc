@@ -49,6 +49,7 @@
 syntax on
 filetype on
 filetype plugin on
+filetype indent on
 colors tir_black
 language message zh_TW.UTF-8
 
