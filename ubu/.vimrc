@@ -25,6 +25,7 @@
 " http://www.vim.org/scripts/script.php?script_id=294
 " xml/html
 " http://www.vim.org/scripts/script.php?script_id=1397
+" http://github.com/vim-scripts/xml.vim
 " json
 " http://www.vim.org/scripts/script.php?script_id=1945
 " sparkup.vim
@@ -184,6 +185,12 @@ inoremap <Esc>OS -
 let NERDMapleader='<Leader>c'
 "}}}
 
+" Indent: {{{
+let g:html_indent_inctags = "html,body,head,tbody,a"
+let g:event_handler_attributes_complete = 0
+let g:microdata_attributes_complete = 0
+" }}}
+
 " Autocomplpop: {{{
 "" omnifunc setting
 "setlocal omnifunc=syntaxcomplete#Complete
@@ -212,27 +219,55 @@ function AcpMeetsForJavaScript(context)
     return 1
 endfunction
 
-let jsbehavs = { 'javascript': [] }
-    call add(jsbehavs.javascript, {
+"" html behavior for html
+function AcpMeetsForHtmlOmni(context)
+    if g:acp_behaviorHtmlOmniLength >= 0
+        if a:context =~ '\(<\|<\/\|<[^>]\+ \|<[^>]\+=\"\)\k\{' .g:acp_behaviorHtmlOmniLength . ',}$'
+            return 1
+        elseif a:context =~ '\(\<\k\{1,}\(=\"\)\{0,1}\|\" \)$'
+            let cur = line('.')-1
+            while cur > 0
+                let lstr = getline(cur)
+                if lstr =~ '>[^>]*$'
+                    return 0
+                elseif lstr =~ '<[^<]*$'
+                    return 1
+                endif
+                let cur = cur-1
+            endwhile
+            return 0
+        endif
+    else
+        return 0
+    endif
+endfunction
+
+let behavs = { 'javascript': [], 'html': [] }
+    call add(behavs.javascript, {
         \   'command'      : "\<C-x>\<C-u>",
         \   'completefunc' : 'acp#completeSnipmate',
         \   'meets'        : 'acp#meetsForSnipmate',
         \   'onPopupClose' : 'acp#onPopupCloseSnipmate',
         \   'repeat'       : 0,
     \})
-    call add(jsbehavs.javascript, {
+    call add(behavs.javascript, {
         \   'command' : g:acp_behaviorKeywordCommand,
         \   'meets'   : 'acp#meetsForKeyword',
         \   'repeat'  : 0,
         \ })
-    call add(jsbehavs.javascript, {
+    call add(behavs.javascript, {
         \   'command' : "\<C-x>\<C-o>",
         \   'meets'   : 'AcpMeetsForJavaScript',
         \   'repeat'  : 0,
     \})
+    call add(behavs.html, {
+        \   'command' : "\<C-x>\<C-o>",
+        \   'meets'   : 'AcpMeetsForHtmlOmni',
+        \   'repeat'  : 1,
+    \})
 
 let g:acp_behavior = {}
-call extend(g:acp_behavior, jsbehavs, 'keep')
+call extend(g:acp_behavior, behavs, 'keep')
 " }}}
 
 " Popup Highlight: {{{
