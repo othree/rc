@@ -1,0 +1,1 @@
+{"generated_by":"Vimana-2010.09303","installer_type":"auto","version":0.2,"files":[{"checksum":"13aefdb09d3f53646fb6d371c1ca32a3","file":"/home/othree/.vim/doc/yankring.txt"},{"checksum":"a0bf7f8f83876ca3d3d2256f371d7035","file":"/home/othree/.vim/plugin/yankring.vim"}],"package":"yankring.vim"}

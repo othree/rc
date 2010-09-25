@@ -1,0 +1,1 @@
+/home/othree/apps/vim-plugins/html5.vim/syntax/html/html5.vim

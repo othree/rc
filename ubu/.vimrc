@@ -7,6 +7,8 @@
 " " http://www.vim.org/scripts/script.php?script_id=1840
 " Simple Javascript Indenter
 " http://github.com/JiangMiao/simple-javascript-indenter
+" yankring
+" http://www.vim.org/scripts/script.php?script_id=1234
 " Vimball
 " http://www.vim.org/scripts/script.php?script_id=1502
 " VisIncr
@@ -44,6 +46,8 @@
 " http://www.vim.org/scripts/script.php?script_id=2150
 " snipmate snippets fork by othree
 " http://github.com/othree/snipmate-snippets
+" Vim plugin for developing vim script
+" http://github.com/c9s/vim-dev-plugin
 " }}}
 
 " Basic Settings: {{{
@@ -210,64 +214,64 @@ let g:acp_completeOption = '.,w,b,u,t,i,k'
 let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorKeywordCommand = "\<C-n>"
 
-"" javascript behavior for acp
-function AcpMeetsForJavaScript(context)
-    let matches = matchlist(a:context, '\(\k\{1}\)$')
-    if empty(matches)
-        return 0
-    endif
-    return 1
-endfunction
+""" javascript behavior for acp
+"function AcpMeetsForJavaScript(context)
+    "let matches = matchlist(a:context, '\(\k\{1}\)$')
+    "if empty(matches)
+        "return 0
+    "endif
+    "return 1
+"endfunction
 
-"" html behavior for html
-function AcpMeetsForHtmlOmni(context)
-    if g:acp_behaviorHtmlOmniLength >= 0
-        if a:context =~ '\(<\|<\/\|<[^>]\+ \|<[^>]\+=\"\)\k\{' .g:acp_behaviorHtmlOmniLength . ',}$'
-            return 1
-        elseif a:context =~ '\(\<\k\{1,}\(=\"\)\{0,1}\|\" \)$'
-            let cur = line('.')-1
-            while cur > 0
-                let lstr = getline(cur)
-                if lstr =~ '>[^>]*$'
-                    return 0
-                elseif lstr =~ '<[^<]*$'
-                    return 1
-                endif
-                let cur = cur-1
-            endwhile
-            return 0
-        endif
-    else
-        return 0
-    endif
-endfunction
+""" html behavior for html
+"function AcpMeetsForHtmlOmni(context)
+    "if g:acp_behaviorHtmlOmniLength >= 0
+        "if a:context =~ '\(<\|<\/\|<[^>]\+ \|<[^>]\+=\"\)\k\{' .g:acp_behaviorHtmlOmniLength . ',}$'
+            "return 1
+        "elseif a:context =~ '\(\<\k\{1,}\(=\"\)\{0,1}\|\" \)$'
+            "let cur = line('.')-1
+            "while cur > 0
+                "let lstr = getline(cur)
+                "if lstr =~ '>[^>]*$'
+                    "return 0
+                "elseif lstr =~ '<[^<]*$'
+                    "return 1
+                "endif
+                "let cur = cur-1
+            "endwhile
+            "return 0
+        "endif
+    "else
+        "return 0
+    "endif
+"endfunction
 
-let behavs = { 'javascript': [], 'html': [] }
-    call add(behavs.javascript, {
-        \   'command'      : "\<C-x>\<C-u>",
-        \   'completefunc' : 'acp#completeSnipmate',
-        \   'meets'        : 'acp#meetsForSnipmate',
-        \   'onPopupClose' : 'acp#onPopupCloseSnipmate',
-        \   'repeat'       : 0,
-    \})
-    call add(behavs.javascript, {
-        \   'command' : g:acp_behaviorKeywordCommand,
-        \   'meets'   : 'acp#meetsForKeyword',
-        \   'repeat'  : 0,
-        \ })
-    call add(behavs.javascript, {
-        \   'command' : "\<C-x>\<C-o>",
-        \   'meets'   : 'AcpMeetsForJavaScript',
-        \   'repeat'  : 0,
-    \})
-    call add(behavs.html, {
-        \   'command' : "\<C-x>\<C-o>",
-        \   'meets'   : 'AcpMeetsForHtmlOmni',
-        \   'repeat'  : 1,
-    \})
+"let behavs = { 'javascript': [], 'html': [] }
+    "call add(behavs.javascript, {
+        "\   'command'      : "\<C-x>\<C-u>",
+        "\   'completefunc' : 'acp#completeSnipmate',
+        "\   'meets'        : 'acp#meetsForSnipmate',
+        "\   'onPopupClose' : 'acp#onPopupCloseSnipmate',
+        "\   'repeat'       : 0,
+    "\})
+    "call add(behavs.javascript, {
+        "\   'command' : g:acp_behaviorKeywordCommand,
+        "\   'meets'   : 'acp#meetsForKeyword',
+        "\   'repeat'  : 0,
+        "\ })
+    "call add(behavs.javascript, {
+        "\   'command' : "\<C-x>\<C-o>",
+        "\   'meets'   : 'AcpMeetsForJavaScript',
+        "\   'repeat'  : 0,
+    "\})
+    "call add(behavs.html, {
+        "\   'command' : "\<C-x>\<C-o>",
+        "\   'meets'   : 'AcpMeetsForHtmlOmni',
+        "\   'repeat'  : 1,
+    "\})
 
-let g:acp_behavior = {}
-call extend(g:acp_behavior, behavs, 'keep')
+"let g:acp_behavior = {}
+"call extend(g:acp_behavior, behavs, 'keep')
 " }}}
 
 " Popup Highlight: {{{
@@ -293,8 +297,13 @@ function HtmlUnEscape()
     silent s/&quot;/"/eg
 endfunction
 
-map <silent> <c-h> :call HtmlEscape()<CR>
-map <silent> <c-u> :call HtmlUnEscape()<CR>
+"map <silent> <c-h> :call HtmlEscape()<CR>
+"map <silent> <c-u> :call HtmlUnEscape()<CR>
+" }}}
+
+" NERDTree
+" {{{
+let NERDTreeShowHidden=1
 " }}}
 
 " Yuicompressor and ClosureCompiler and less: {{{
@@ -388,5 +397,8 @@ endif
 
 endfunction
 autocmd VimEnter * :call AfterStart()
+
+nmap <tab> V>
+xmap <tab> >gv
 " }}}
 
