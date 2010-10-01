@@ -21,8 +21,8 @@
 " http://github.com/scrooloose/nerdcommenter
 " NERD_Tree
 " http://github.com/scrooloose/nerdtree
-" vim-space
-" http://github.com/spiiph/vim-space
+" vim-surround
+" http://github.com/tpope/vim-surround
 " align
 " http://www.vim.org/scripts/script.php?script_id=294
 " xml/html
@@ -301,8 +301,7 @@ endfunction
 "map <silent> <c-u> :call HtmlUnEscape()<CR>
 " }}}
 
-" NERDTree
-" {{{
+" NERDTree {{{
 let NERDTreeShowHidden=1
 " }}}
 
