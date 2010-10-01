@@ -1,0 +1,25 @@
+
+"Vimball" [Not edited] --No lines in buffer--
+".VimballRecord" 9L, 6158C
+E486: Pattern not found: ^\s*$
+".VimballRecord" 9L, 6158C written
+Vimball Archive
+extracted <autoload/rainbow_parenthsis.vim>: 172 lines
+"~/.vim/autoload/rainbow_parenthsis.vim" [New] 172L, 14836C written
+wrote /home/othree/.vim/autoload/rainbow_parenthsis.vim
+extracted <doc/rainbow_parenthsis.txt>: 88 lines
+"~/.vim/doc/rainbow_parenthsis.txt" [New] 88L, 3405C written
+wrote /home/othree/.vim/doc/rainbow_parenthsis.txt
+extracted <plugin/rainbow_parenthsis.vim>: 40 lines
+"~/.vim/plugin/rainbow_parenthsis.vim" [New] 40L, 2079C written
+wrote /home/othree/.vim/plugin/rainbow_parenthsis.vim
+extracted <rainbow_parenthsis_options.vim>: 55 lines
+"~/.vim/rainbow_parenthsis_options.vim" [New] 55L, 2083C written
+wrote /home/othree/.vim/rainbow_parenthsis_options.vim
+Error detected while processing function vimball#Vimball:
+line  141:
+E154: Duplicate tag "funcref" in file /home/othree/.vim/doc/funcref.txt
+did helptags
+".VimballRecord" 9L, 6158C
+E486: Pattern not found: ^\s*$
+".VimballRecord" 10L, 6438C written
