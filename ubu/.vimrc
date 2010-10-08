@@ -56,6 +56,7 @@ filetype on
 filetype plugin on
 filetype indent on
 colors tir_black
+"colors google
 language message zh_TW.UTF-8
 
 set display+=lastline
