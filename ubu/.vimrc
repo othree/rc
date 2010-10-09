@@ -1,12 +1,19 @@
 " .vimrc by othree ( othree AT gmail DOT com )
-"
+" 
 " Used Plugins: {{{
 " JavaScript syntax
 " http://www.vim.org/scripts/script.php?script_id=1491
-" " Javascript Indentation
-" " http://www.vim.org/scripts/script.php?script_id=1840
 " Simple Javascript Indenter
+" http://www.vim.org/scripts/script.php?script_id=3227
 " http://github.com/JiangMiao/simple-javascript-indenter
+" json
+" http://www.vim.org/scripts/script.php?script_id=1945
+" jslint.vim
+" http://www.vim.org/scripts/script.php?script_id=2729
+" http://github.com/hallettj/jslint.vim
+" zencoding
+" http://www.vim.org/scripts/script.php?script_id=2981
+" http://github.com/mattn/zencoding-vim/
 " yankring
 " http://www.vim.org/scripts/script.php?script_id=1234
 " Vimball
@@ -15,25 +22,30 @@
 " http://www.vim.org/scripts/script.php?script_id=670
 " autocomplpop
 " http://www.vim.org/scripts/script.php?script_id=1879
+" https://bitbucket.org/ns9tks/vim-autocomplpop
+" fuzzyfinder
+" http://www.vim.org/scripts/script.php?script_id=1984
+" https://bitbucket.org/ns9tks/vim-fuzzyfinder
+" vim-l9
+" http://www.vim.org/scripts/script.php?script_id=3252
+" https://bitbucket.org/ns9tks/vim-l9
 " snipMate
+" http://www.vim.org/scripts/script.php?script_id=2540
 " http://github.com/msanders/snipmate.vim
 " NERD_commenter
+" http://www.vim.org/scripts/script.php?script_id=1218
 " http://github.com/scrooloose/nerdcommenter
 " NERD_Tree
+" http://www.vim.org/scripts/script.php?script_id=1658
 " http://github.com/scrooloose/nerdtree
 " vim-surround
+" http://www.vim.org/scripts/script.php?script_id=1697
 " http://github.com/tpope/vim-surround
 " align
 " http://www.vim.org/scripts/script.php?script_id=294
 " xml/html
 " http://www.vim.org/scripts/script.php?script_id=1397
-" http://github.com/vim-scripts/xml.vim
-" json
-" http://www.vim.org/scripts/script.php?script_id=1945
-" sparkup.vim
-" http://github.com/rstacruz/sparkup
-" jslint.vim
-" http://github.com/hallettj/jslint.vim
+" http://github.com/othree/xml.vim
 " eregex.vim
 " http://www.vector.co.jp/soft/unix/writing/se265654.html
 " tir_black
@@ -42,12 +54,14 @@
 " http://ernstdehaan.blogspot.com/2009/08/vim-syntax-highlighting-for-lesscss.html
 " jQuery : Syntax file for jQuery
 " http://www.vim.org/scripts/script.php?script_id=2416
-" css_color
-" http://www.vim.org/scripts/script.php?script_id=2150
 " snipmate snippets fork by othree
 " http://github.com/othree/snipmate-snippets
 " Vim plugin for developing vim script
 " http://github.com/c9s/vim-dev-plugin
+" mru.vim : Plugin to manage Most Recently Used (MRU) files 
+" http://www.vim.org/scripts/script.php?script_id=521
+" speeddating.vim
+" http://www.vim.org/scripts/script.php?script_id=2120
 " }}}
 
 " Basic Settings: {{{
@@ -59,6 +73,7 @@ colors tir_black
 "colors google
 language message zh_TW.UTF-8
 
+set nocompatible
 set display+=lastline
 set nocp
 set wrap
@@ -75,6 +90,7 @@ set cindent
 set hlsearch
 set foldmethod=marker
 set backspace=indent,eol,start whichwrap+=<,>,[,]
+set hidden
 
 " Encoding
 set encoding=utf-8
@@ -118,6 +134,11 @@ nnoremap <leader>q :QFix<CR>
 " }}}
 
 " Key Mapping: {{{
+
+let mapleader = ","
+" http://vim.wikia.com/wiki/Map_semicolon_to_colon
+map ; :
+
 "" function keys
 nnoremap <F2>  :set nonumber!<CR>
 nnoremap <F3>  :set nopaste!<CR>
@@ -128,8 +149,8 @@ nnoremap <F11> :QFix<CR>
 
 "" tab to indent
 nmap <tab> V>
-nmap <s-tab> V<
 xmap <tab> >gv
+nmap <s-tab> V<
 xmap <s-tab> <gv
 
 "" HOME END
@@ -155,17 +176,21 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "" tab control
 "" http://c9s.blogspot.com/2007/08/vim-my-key-mapping-for-tabs.html
-nmap    ,tn    :tabnew<cr>
-nmap    ,te    :tabedit
-nmap    ,tx    :tabedit .<cr>
-nmap    ,th    :tab help<cr>
-nmap    <A-left>  :tabp<cr>
-nmap    <A-right> :tabn<cr>
-imap    <C-\>  <ESC>:tabn<CR>
-nmap    <C-\>  :tabn<CR>
+nmap    <leader>tn    :tabnew<cr>
+nmap    <leader>te    :tabedit
+nmap    <leader>tx    :tabedit .<cr>
+nmap    <leader>th    :tab help<cr>
 
-nmap    <C-]> :tabp<CR>
-imap    <C-]> <ESC>:tabp<CR>
+" nmap    <C-t>     :tabnew<cr>
+" nmap    <C-w>     :tabc<cr>
+
+nmap    <C-left>  :tabp<cr>
+nmap    <C-right> :tabn<cr>
+
+imap    <C-j>  <ESC>:tabn<CR>
+nmap    <C-j>  :tabn<CR>
+imap    <C-k>  <ESC>:tabp<CR>
+nmap    <C-k>  :tabp<CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
@@ -194,6 +219,21 @@ let NERDMapleader='<Leader>c'
 let g:html_indent_inctags = "html,body,head,tbody,a"
 let g:event_handler_attributes_complete = 0
 let g:microdata_attributes_complete = 0
+" }}}
+
+" Zencoding: {{{
+let g:user_zen_settings = {
+    \  'php' : {
+    \    'extends' : 'html',
+    \    'filters' : 'c',
+    \  },
+    \  'xml' : {
+    \    'extends' : 'html',
+    \  },
+    \  'html' : {
+    \    'extends' : 'html',
+    \  },
+    \}
 " }}}
 
 " Autocomplpop: {{{
@@ -275,6 +315,10 @@ let g:acp_behaviorKeywordCommand = "\<C-n>"
 "call extend(g:acp_behavior, behavs, 'keep')
 " }}}
 
+" NERDCommenter: {{{
+let NERDSpaceDelims = 1
+" }}}
+
 " Popup Highlight: {{{
 highlight PMenu      cterm=bold ctermbg=Blue ctermfg=Gray
 highlight PMenuSel   cterm=bold ctermbg=Red ctermfg=White
@@ -302,8 +346,12 @@ endfunction
 "map <silent> <c-u> :call HtmlUnEscape()<CR>
 " }}}
 
-" NERDTree {{{
-let NERDTreeShowHidden=1
+" NERDTree: {{{
+let NERDTreeShowHidden = 1
+" }}}
+
+" FuzzyFinder: {{{
+let g:fuf_modesDisable = []
 " }}}
 
 " Yuicompressor and ClosureCompiler and less: {{{
@@ -373,6 +421,10 @@ com! -bang Q :q
 com! -bang Qa :qa
 " }}}
 
+" Macros: {{{
+runtime macros/matchit.vim
+" }}}
+
 " After Loading All Plugin: {{{
 function AfterStart ()
 
@@ -395,10 +447,52 @@ if exists(":NERDTreeToggle")
     map <F12> :NERDTreeToggle<CR>
 endif
 
+if exists(":FufFile")
+    nnoremap <leader>ff  :FufFile<CR>
+    nnoremap <leader>fb  :FufBuffer<CR>
+    nnoremap <leader>fr  :FufMRUFile<CR>
+endif
+
+"" speeddating.vim
+if exists(":SpeedDatingFormat")
+    SpeedDatingFormat %H:%M
+    SpeedDatingFormat %m/%d
+    SpeedDatingFormat %Y/%m/%d%[ T_-]%H:%M:%S%?[Z]
+endif
+
 endfunction
 autocmd VimEnter * :call AfterStart()
-
-nmap <tab> V>
-xmap <tab> >gv
 " }}}
 
+
+fun! ExtractClass(a,e)
+  let use_tag = 0
+  let buf =  [ '' , '' ]
+  if use_tag 
+    cal add(buf,'<style type="text/css">')
+  endif
+  for i in range(a:a,a:e) 
+    let line = getline(i)
+    let match = matchlist(  line , 'class="\([^"]\+\)"' )
+    if len(match) > 1 
+      let classattr = match[1]
+      let classlist = split( classattr )
+      " echo classlist
+      for c in classlist 
+        cal add( buf , '.' . c . ' {   } ' )
+      endfor
+    endif
+  endfor
+  if use_tag 
+    cal add(buf,'</style>')
+  endif
+  cal add(buf,'')
+  cal add(buf,'')
+  cal append( a:e , buf )
+  exec 'normal ' . (a:e + 1) . 'G'
+  exec 'normal V'  . (len(buf)-1) . 'j'
+endf
+com! -range ExtractClass cal ExtractClass(<line1>,<line2>)
+
+" mapping
+vmap <space>e :ExtractClass<CR>

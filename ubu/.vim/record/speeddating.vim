@@ -1,0 +1,1 @@
+{"generated_by":"Vimana-2010.09303","installer_type":"auto","version":0.2,"files":[{"checksum":"8ccc8a2c4d7ca17df0e64680cabbdc0d","file":"/home/othree/.vim/doc/speeddating.txt"},{"checksum":"78828a829c84fc6934c403b7a4d12bfa","file":"/home/othree/.vim/plugin/speeddating.vim"}],"package":"speeddating.vim"}

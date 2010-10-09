@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/othree/rc/ubu/.vim/ftplugin/html'
 let g:netrw_dirhist_2='/home/othree/www/test/list-item'
 let g:netrw_dirhist_3='/home/othree/rc/ubu/.vim/ftplugin/javascript/jslint'
+let g:netrw_dirhist_4='/home/othree/apps/vim-plugins/nerdcommenter/doc'

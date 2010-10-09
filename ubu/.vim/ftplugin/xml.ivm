@@ -612,6 +612,7 @@ fun! s:CloseTagFun()
         else
           exe "normal! 2f>s\<Cr>\<Esc>Ox\<Esc>>>$x"
         en
+        echo 
 				start!
 				retu
 			en

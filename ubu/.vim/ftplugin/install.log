@@ -1,0 +1,153 @@
+
+chdir(/usr/local/share/vim)
+fchdir() to previous dir
+could not source "$VIM/vimrc"
+chdir(/home/othree)
+fchdir() to previous dir
+sourcing "$HOME/.vimrc"
+chdir(/usr/local/share/vim/vim73/syntax)
+fchdir() to previous dir
+line 54: sourcing "/usr/local/share/vim/vim73/syntax/syntax.vim"
+Searching for "syntax/synload.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/syntax/synload.vim"
+Searching for "/usr/local/share/vim/vimfiles/syntax/synload.vim"
+Searching for "/usr/local/share/vim/vim73/syntax/synload.vim"
+chdir(/usr/local/share/vim/vim73/syntax)
+fchdir() to previous dir
+line 19: sourcing "/usr/local/share/vim/vim73/syntax/synload.vim"
+Searching for "syntax/syncolor.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/syntax/syncolor.vim"
+Searching for "/usr/local/share/vim/vimfiles/syntax/syncolor.vim"
+Searching for "/usr/local/share/vim/vim73/syntax/syncolor.vim"
+chdir(/usr/local/share/vim/vim73/syntax)
+fchdir() to previous dir
+line 21: sourcing "/usr/local/share/vim/vim73/syntax/syncolor.vim"
+finished sourcing /usr/local/share/vim/vim73/syntax/syncolor.vim
+continuing in /usr/local/share/vim/vim73/syntax/synload.vim
+Searching for "/usr/local/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/home/othree/.vim/after/syntax/syncolor.vim"
+finished sourcing /usr/local/share/vim/vim73/syntax/synload.vim
+continuing in /usr/local/share/vim/vim73/syntax/syntax.vim
+Searching for "filetype.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/filetype.vim"
+Searching for "/usr/local/share/vim/vimfiles/filetype.vim"
+Searching for "/usr/local/share/vim/vim73/filetype.vim"
+chdir(/usr/local/share/vim/vim73)
+fchdir() to previous dir
+line 25: sourcing "/usr/local/share/vim/vim73/filetype.vim"
+Searching for "ftdetect/*.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/ftdetect/*.vim"
+Searching for "/usr/local/share/vim/vimfiles/ftdetect/*.vim"
+Searching for "/usr/local/share/vim/vim73/ftdetect/*.vim"
+Searching for "/usr/local/share/vim/vimfiles/after/ftdetect/*.vim"
+Searching for "/home/othree/.vim/after/ftdetect/*.vim"
+not found in 'runtimepath': "ftdetect/*.vim"
+finished sourcing /usr/local/share/vim/vim73/filetype.vim
+continuing in /usr/local/share/vim/vim73/syntax/syntax.vim
+Searching for "/usr/local/share/vim/vimfiles/after/filetype.vim"
+Searching for "/home/othree/.vim/after/filetype.vim"
+finished sourcing /usr/local/share/vim/vim73/syntax/syntax.vim
+continuing in /home/othree/.vimrc
+Searching for "filetype.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/filetype.vim"
+Searching for "/usr/local/share/vim/vimfiles/filetype.vim"
+Searching for "/usr/local/share/vim/vim73/filetype.vim"
+chdir(/usr/local/share/vim/vim73)
+fchdir() to previous dir
+line 55: sourcing "/usr/local/share/vim/vim73/filetype.vim"
+finished sourcing /usr/local/share/vim/vim73/filetype.vim
+continuing in /home/othree/.vimrc
+Searching for "/usr/local/share/vim/vimfiles/after/filetype.vim"
+Searching for "/home/othree/.vim/after/filetype.vim"
+Searching for "filetype.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/filetype.vim"
+Searching for "/usr/local/share/vim/vimfiles/filetype.vim"
+Searching for "/usr/local/share/vim/vim73/filetype.vim"
+chdir(/usr/local/share/vim/vim73)
+fchdir() to previous dir
+line 56: sourcing "/usr/local/share/vim/vim73/filetype.vim"
+finished sourcing /usr/local/share/vim/vim73/filetype.vim
+continuing in /home/othree/.vimrc
+Searching for "/usr/local/share/vim/vimfiles/after/filetype.vim"
+Searching for "/home/othree/.vim/after/filetype.vim"
+Searching for "ftplugin.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/ftplugin.vim"
+Searching for "/usr/local/share/vim/vimfiles/ftplugin.vim"
+Searching for "/usr/local/share/vim/vim73/ftplugin.vim"
+chdir(/usr/local/share/vim/vim73)
+fchdir() to previous dir
+line 56: sourcing "/usr/local/share/vim/vim73/ftplugin.vim"
+finished sourcing /usr/local/share/vim/vim73/ftplugin.vim
+continuing in /home/othree/.vimrc
+Searching for "/usr/local/share/vim/vimfiles/after/ftplugin.vim"
+Searching for "/home/othree/.vim/after/ftplugin.vim"
+Searching for "filetype.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/filetype.vim"
+Searching for "/usr/local/share/vim/vimfiles/filetype.vim"
+Searching for "/usr/local/share/vim/vim73/filetype.vim"
+chdir(/usr/local/share/vim/vim73)
+fchdir() to previous dir
+line 57: sourcing "/usr/local/share/vim/vim73/filetype.vim"
+finished sourcing /usr/local/share/vim/vim73/filetype.vim
+continuing in /home/othree/.vimrc
+Searching for "/usr/local/share/vim/vimfiles/after/filetype.vim"
+Searching for "/home/othree/.vim/after/filetype.vim"
+Searching for "indent.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/indent.vim"
+Searching for "/usr/local/share/vim/vimfiles/indent.vim"
+Searching for "/usr/local/share/vim/vim73/indent.vim"
+chdir(/usr/local/share/vim/vim73)
+fchdir() to previous dir
+line 57: sourcing "/usr/local/share/vim/vim73/indent.vim"
+finished sourcing /usr/local/share/vim/vim73/indent.vim
+continuing in /home/othree/.vimrc
+Searching for "/usr/local/share/vim/vimfiles/after/indent.vim"
+Searching for "/home/othree/.vim/after/indent.vim"
+Searching for "colors/tir_black.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/colors/tir_black.vim"
+chdir(/home/othree/.vim/colors)
+fchdir() to previous dir
+line 58: sourcing "/home/othree/.vim/colors/tir_black.vim"
+Searching for "syntax/syncolor.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/syntax/syncolor.vim"
+Searching for "/usr/local/share/vim/vimfiles/syntax/syncolor.vim"
+Searching for "/usr/local/share/vim/vim73/syntax/syncolor.vim"
+chdir(/usr/local/share/vim/vim73/syntax)
+fchdir() to previous dir
+line 6: sourcing "/usr/local/share/vim/vim73/syntax/syncolor.vim"
+finished sourcing /usr/local/share/vim/vim73/syntax/syncolor.vim
+continuing in /home/othree/rc/ubu/.vim/colors/tir_black.vim
+Searching for "/usr/local/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/home/othree/.vim/after/syntax/syncolor.vim"
+Searching for "syntax/syncolor.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/syntax/syncolor.vim"
+Searching for "/usr/local/share/vim/vimfiles/syntax/syncolor.vim"
+Searching for "/usr/local/share/vim/vim73/syntax/syncolor.vim"
+chdir(/usr/local/share/vim/vim73/syntax)
+fchdir() to previous dir
+line 7: sourcing "/usr/local/share/vim/vim73/syntax/syncolor.vim"
+finished sourcing /usr/local/share/vim/vim73/syntax/syncolor.vim
+continuing in /home/othree/rc/ubu/.vim/colors/tir_black.vim
+Searching for "/usr/local/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/home/othree/.vim/after/syntax/syncolor.vim"
+Searching for "syntax/syncolor.vim" in "/home/othree/.vim,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim73,/usr/local/share/vim/vimfiles/after,/home/othree/.vim/after"
+Searching for "/home/othree/.vim/syntax/syncolor.vim"
+Searching for "/usr/local/share/vim/vimfiles/syntax/syncolor.vim"
+Searching for "/usr/local/share/vim/vim73/syntax/syncolor.vim"
+chdir(/usr/local/share/vim/vim73/syntax)
+fchdir() to previous dir
+line 10: sourcing "/usr/local/share/vim/vim73/syntax/syncolor.vim"
+finished sourcing /usr/local/share/vim/vim73/syntax/syncolor.vim
+continuing in /home/othree/rc/ubu/.vim/colors/tir_black.vim
+Searching for "/usr/local/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/home/othree/.vim/after/syntax/syncolor.vim"
+finished sourcing /home/othree/.vim/colors/tir_black.vim
+continuing in /home/othree/.vimrc
+finished sourcing $HOME/.vimrc
+Reading viminfo file "/home/othree/.viminfo" info oldfiles
+Opening the X display failed
+line 0: sourcing ".mkrecord"{'version': 0.3, 'files': [{'file': '/home/othree/.vim//xml.vim', 'checksum': ''}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'ftplugin', 'generated_by': 'Vim-Makefile'}
+Done
+    finished sourcing .mkrecord
+    continuing in command line
+    Writing viminfo file "/home/othree/.viminfo"
