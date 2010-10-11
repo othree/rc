@@ -70,7 +70,6 @@ filetype on
 filetype plugin on
 filetype indent on
 colors tir_black
-"colors google
 language message zh_TW.UTF-8
 
 set nocompatible
@@ -79,7 +78,8 @@ set nocp
 set wrap
 set showtabline=2 " always show tab line
 set ruler
-set number
+set nu
+set nuw=5
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -105,8 +105,19 @@ set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\
 au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 au BufRead,BufNewFile *.tpl set ft=html
+au BufRead,BufNewFile *.xsl set ft=html
 au BufRead,BufNewFile *.json set syntax=json 
 au BufRead,BufNewFile *.n3  set ft=n3
+
+" highlight line & column
+au WinLeave * set nocursorline
+au WinEnter * set cursorline
+set cursorline
+
+" Color Tweak for highlight
+highlight CursorLine    ctermbg=89
+highlight Comment       ctermfg=246
+
 " }}}
 
 " Screen Fix: {{{
@@ -326,8 +337,9 @@ highlight PMenuSbar  cterm=bold ctermbg=darkgray
 highlight PMenuThumb cterm=bold ctermbg=White
 " }}}
 
-"HTML Tag Escape: {{{
-" http://vim.wikia.com/wiki/Escape_and_unescape_HTML_entities
+" HTML: {{{
+"" HTML Tag Escape:
+""  http://vim.wikia.com/wiki/Escape_and_unescape_HTML_entities
 function HtmlEscape()
     silent s/&/\&amp;/eg
     silent s/</\&lt;/eg
@@ -344,6 +356,9 @@ endfunction
 
 "map <silent> <c-h> :call HtmlEscape()<CR>
 "map <silent> <c-u> :call HtmlUnEscape()<CR>
+
+"" HTML omni
+let b:html_omni_flavor = 'html5'
 " }}}
 
 " NERDTree: {{{
@@ -464,35 +479,3 @@ endfunction
 autocmd VimEnter * :call AfterStart()
 " }}}
 
-
-fun! ExtractClass(a,e)
-  let use_tag = 0
-  let buf =  [ '' , '' ]
-  if use_tag 
-    cal add(buf,'<style type="text/css">')
-  endif
-  for i in range(a:a,a:e) 
-    let line = getline(i)
-    let match = matchlist(  line , 'class="\([^"]\+\)"' )
-    if len(match) > 1 
-      let classattr = match[1]
-      let classlist = split( classattr )
-      " echo classlist
-      for c in classlist 
-        cal add( buf , '.' . c . ' {   } ' )
-      endfor
-    endif
-  endfor
-  if use_tag 
-    cal add(buf,'</style>')
-  endif
-  cal add(buf,'')
-  cal add(buf,'')
-  cal append( a:e , buf )
-  exec 'normal ' . (a:e + 1) . 'G'
-  exec 'normal V'  . (len(buf)-1) . 'j'
-endf
-com! -range ExtractClass cal ExtractClass(<line1>,<line2>)
-
-" mapping
-vmap <space>e :ExtractClass<CR>
