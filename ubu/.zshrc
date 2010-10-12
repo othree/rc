@@ -6,11 +6,6 @@ echo -ne "\e]2;[zsh] `hostname`\a" # window title
 
 setopt prompt_subst
 
-git_prompt_info() {
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-    print "|%{\e[38;5;197m%}${ref#refs/heads/}%{\e[0m%}"
-}
-
 autoload -Uz vcs_info && vcs_info
 zstyle ':vcs_info:*' formats "$(print '%{\e[1;37m%}|')\
 $(print '%{\e[38;5;45m%}%s%{\e[1;37m%}:%{\e[38;5;2m%}%b%{\e[0m%}')"
@@ -19,7 +14,6 @@ $(print '%{\e[38;5;45m%}%s%{\e[1;37m%}:%{\e[38;5;2m%}%b%')\
 $(print '%{\e[1;37m%}:%{\e[38;5;46m%}%b%{\e[0m%}')"
 precmd () { vcs_info }
 
-# export PROMPT="$(print '%{\e[1;37m%}[%/$(git_prompt_info)] -%n- ')\
 export PROMPT="$(print '%{\e[1;37m%}[%{\e[38;5;192m%}%/')\
 $(print '${vcs_info_msg_0_}%{\e[1;37m%}] ')\
 $(print '%{\e[0m%}-%{\e[1;37m%}%n%{\e[0m%}- ')\
