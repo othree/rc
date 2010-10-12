@@ -62,6 +62,10 @@
 " http://www.vim.org/scripts/script.php?script_id=521
 " speeddating.vim
 " http://www.vim.org/scripts/script.php?script_id=2120
+" git.zip
+" http://www.vim.org/scripts/script.php?script_id=1654
+" less syntax
+" http://leafo.net/lessphp/vim/less.vim
 " }}}
 
 " Basic Settings: {{{
@@ -465,7 +469,7 @@ endif
 if exists(":FufFile")
     nnoremap <leader>ff  :FufFile<CR>
     nnoremap <leader>fb  :FufBuffer<CR>
-    nnoremap <leader>fr  :FufMRUFile<CR>
+    nnoremap <leader>fr  :FufMruFile<CR>
 endif
 
 "" speeddating.vim
