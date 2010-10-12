@@ -11,7 +11,18 @@ git_prompt_info() {
     print "|%{\e[38;5;197m%}${ref#refs/heads/}%{\e[0m%}"
 }
 
-export PROMPT="$(print '%{\e[1;37m%}[%/$(git_prompt_info)] -%n- ')\
+autoload -Uz vcs_info && vcs_info
+zstyle ':vcs_info:*' formats "$(print '%{\e[1;37m%}|')\
+$(print '%{\e[38;5;45m%}%s%{\e[1;37m%}:%{\e[38;5;2m%}%b%{\e[0m%}')"
+zstyle ':vcs_info:*' actionformats "$(print '%{\e[1;37m%}|')\
+$(print '%{\e[38;5;45m%}%s%{\e[1;37m%}:%{\e[38;5;2m%}%b%')\
+$(print '%{\e[1;37m%}:%{\e[38;5;46m%}%b%{\e[0m%}')"
+precmd () { vcs_info }
+
+# export PROMPT="$(print '%{\e[1;37m%}[%/$(git_prompt_info)] -%n- ')\
+export PROMPT="$(print '%{\e[1;37m%}[%{\e[38;5;192m%}%/')\
+$(print '${vcs_info_msg_0_}%{\e[1;37m%}] ')\
+$(print '%{\e[0m%}-%{\e[1;37m%}%n%{\e[0m%}- ')\
 $(print '%1(j.%{\e[38;5;185m%}|%j|%{\e[1;37m%}.)')\
 $(print '%{\e[38;5;22m%}>')\
 $(print '%{\e[38;5;34m%}>')\
@@ -21,12 +32,14 @@ $(print '%{\e[0m%}') "
 #$(print '%{\e[38;5;28m%}>')\
 #$(print '%{\e[38;5;40m%}>')\
 
-export PROMPT2="$(print '%{\e[1;37m%}[%/$(git_prompt_info)] -%n- ')\
-$(print '%1(j.%{\e[38;5;185m%}|%j|%{\e[1;37m%}.)')\
+export PROMPT2="$(print '%{\e[1;37m%}[%{\e[38;5;192m%}%/')\
+$(print '${vcs_info_msg_0_}%{\e[1;37m%}] ')\
+$(print '%{\e[0m%}-%{\e[1;37m%}%n%{\e[0m%}- ')\
+$(print '%1(j.%{\e[38;5;192m%}|%j|%{\e[1;37m%}.)')\
 $(print '%{\e[38;5;22m%}>')\
 $(print '%{\e[38;5;28m%}>')\
 $(print '%{\e[38;5;34m%}>')\
-$(print '%{\e[38;5;27m%}') %_ \
+$(print '%{\e[38;5;33m%}') %_ \
 $(print '%{\e[38;5;34m%}>')\
 $(print '%{\e[38;5;40m%}>')\
 $(print '%{\e[38;5;46m%}>')\
