@@ -50,6 +50,7 @@ export GREP_OPTIONS='--color=auto'
 export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.history
+export JS_CMD="js"
 
 #export LSCOLORS=ExFxCxdxBxegedabagacad
 LS_COLORS=''

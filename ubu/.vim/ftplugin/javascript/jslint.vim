@@ -67,7 +67,7 @@ else
   elseif executable('/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc')
     let s:cmd = '/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc'
   elseif executable('node')
-    let s:cmd = 'js'
+    let s:cmd = 'node'
   elseif executable('js')
     let s:cmd = 'js'
   else

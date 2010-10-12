@@ -448,24 +448,30 @@ runtime macros/matchit.vim
 function AfterStart ()
 
 " plugin commands
+"" Align
 if exists(":Align")
     com! -bang -range -nargs=* A <line1>,<line2>call Align#Align(<bang>0,<q-args>)
 endif
 
+"" eregex
 if exists(":M")
     nnoremap / :M/
+    nnoremap ? :M?
     nnoremap ,/ /
 endif
 
+"" JSLint
 if exists(":JSLint")
     autocmd FileWritePost,BufWritePost *.js :JSLint
     "map <F12> :JSLint<CR>
 endif
 
+
 if exists(":NERDTreeToggle")
     map <F12> :NERDTreeToggle<CR>
 endif
 
+"" FuzzyFinder
 if exists(":FufFile")
     nnoremap <leader>ff  :FufFile<CR>
     nnoremap <leader>fb  :FufBuffer<CR>
