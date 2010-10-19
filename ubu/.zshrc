@@ -169,8 +169,6 @@ bindkey "\\"  expand-to-home-or-insert
 # http://github.com/joelthelion/autojump
 source /etc/profile.d/autojump.zsh
 
-function cdl { cd $1; ls;}
-
 alias vi="vim"
 alias vim="/usr/local/bin/vim -p"
 alias df="df -h"
@@ -189,7 +187,3 @@ alias -g .....='../../../../..'
 alias -g ......='../../../../../..'
 alias -g .......='../../../../../../..'
 
-alias sudo='sudo env PATH=$PATH'
-alias cdwww='cd /www'
-alias cdblog='cd /www/blog'
-alias cdvimp='cd ~/apps/vim-plugins/'
