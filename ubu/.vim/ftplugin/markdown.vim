@@ -1,7 +1,6 @@
 " Vim filetype plugin
 " Language:		Markdown
 " Maintainer:		Tim Pope <vimNOSPAM@tpope.org>
-" Last Change:		2010 May 21
 
 if exists("b:did_ftplugin")
   finish
@@ -15,9 +14,9 @@ setlocal formatoptions+=tcqln
 setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\|^[-*+]\\s\\+
 
 if exists("b:undo_ftplugin")
-  let b:undo_ftplugin = "|setl cms< com< fo<" . b:undo_ftplugin
+  let b:undo_ftplugin .= "|setl cms< com< fo<"
 else
   let b:undo_ftplugin = "|setl cms< com< fo<"
-endif
+end
 
 " vim:set sw=2:

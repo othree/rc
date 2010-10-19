@@ -1,0 +1,1 @@
+{'version': 0.3, 'files': [{'file': '/home/othree/.vim/ftdetect/markdown.vim', 'checksum': ''}, {'file': '/home/othree/.vim/ftplugin/markdown.vim', 'checksum': ''}, {'file': '/home/othree/.vim/syntax/markdown.vim', 'checksum': ''}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'vim-markdown', 'generated_by': 'Vim-Makefile'}

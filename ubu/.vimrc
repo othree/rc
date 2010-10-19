@@ -157,6 +157,7 @@ map ; :
 "" function keys
 nnoremap <F2>  :set nonumber!<CR>
 nnoremap <F3>  :set nopaste!<CR>
+nnoremap <F4>  :set spell!<CR>
 nnoremap <F5>  :tab ball<CR>
 nnoremap <F6>  :set wrap!<CR>
 nnoremap <F11> :QFix<CR>

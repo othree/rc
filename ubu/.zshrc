@@ -1,5 +1,6 @@
 #
 export PATH=$HOME/bin:$PATH
+export PATH=/opt/ruby-enterprise-1.8.7-2010.02/bin:$PATH
 
 echo -ne "\e]1;[zsh] `hostname`\a" # tab title
 echo -ne "\e]2;[zsh] `hostname`\a" # window title
@@ -56,7 +57,7 @@ export JS_CMD="js"
 LS_COLORS=''
 LS_COLORS=$LS_COLORS:'no=0'           # Normal text       = Default foreground  
 LS_COLORS=$LS_COLORS:'fi=0'           # Regular file      = Default foreground
-LS_COLORS=$LS_COLORS:'di=01;34'       # Directory         = Bold, Blue
+LS_COLORS=$LS_COLORS:'di=38;5;27'       # Directory         = Bold, Blue
 LS_COLORS=$LS_COLORS:'ln=01;36'       # Symbolic link     = Bold, Cyan
 LS_COLORS=$LS_COLORS:'pi=33'          # Named pipe        = Yellow
 LS_COLORS=$LS_COLORS:'so=01;35'       # Socket            = Bold, Magenta
@@ -101,7 +102,7 @@ LS_COLORS=$LS_COLORS:'*.html=36'      # HTML              = Cyan
 LS_COLORS=$LS_COLORS:'*.htm=1;34'     # HTML              = Bold, Blue
 LS_COLORS=$LS_COLORS:'*.php=1;45'     # PHP               = White, Cyan
 LS_COLORS=$LS_COLORS:'*.doc=1;34'     # MS-Word *lol*     = Bold, Blue
-LS_COLORS=$LS_COLORS:'*.txt=1;34'     # Plain/Text        = Bold, Blue
+LS_COLORS=$LS_COLORS:'*.txt=0'        # Plain/Text        = Default Foreground
 LS_COLORS=$LS_COLORS:'*.o=1;36'       # Object-Files      = Bold, Cyan
 LS_COLORS=$LS_COLORS:'*.a=1;36'       # Shared-libs       = Bold, Cyan
 export LS_COLORS
@@ -164,6 +165,12 @@ expand-to-home-or-insert () {
 zle -N expand-to-home-or-insert
 bindkey "\\"  expand-to-home-or-insert
 
+# autojump 
+# http://github.com/joelthelion/autojump
+source /etc/profile.d/autojump.zsh
+
+function cdl { cd $1; ls;}
+
 alias vi="vim"
 alias vim="/usr/local/bin/vim -p"
 alias df="df -h"
@@ -181,3 +188,8 @@ alias -g ....='../../..'
 alias -g .....='../../../../..'
 alias -g ......='../../../../../..'
 alias -g .......='../../../../../../..'
+
+alias sudo='sudo env PATH=$PATH'
+alias cdwww='cd /www'
+alias cdblog='cd /www/blog'
+alias cdvimp='cd ~/apps/vim-plugins/'
