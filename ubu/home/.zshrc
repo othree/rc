@@ -137,8 +137,8 @@ zstyle ':completion:*' list-colors $LS_COLORS
 #zstyle ':completion:*' special-dirs ..
 
 # git flow
-# http://github.com/bobthecow/git-flow-completion
-source ~/.git-flow-completion.zsh
+# http://github.com/nvie/git-flow-completion
+# source ~/.git-flow-completion.zsh
 
 zle_highlight=(region:bg=magenta special:bold isearch:underline)
 
