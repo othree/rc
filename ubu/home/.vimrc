@@ -95,6 +95,7 @@ set hlsearch
 set foldmethod=marker
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 set hidden
+set nobomb
 
 " Encoding
 set encoding=utf-8
@@ -332,7 +333,7 @@ let g:acp_behaviorKeywordCommand = "\<C-n>"
 " }}}
 
 " NERDCommenter: {{{
-let NERDSpaceDelims = 1
+"let NERDSpaceDelims = 1
 " }}}
 
 " Popup Highlight: {{{
@@ -359,6 +360,10 @@ function HtmlUnEscape()
     silent s/&quot;/"/eg
 endfunction
 
+function HtmlReIndent()
+    silent %s/\(<\/\w\+\)>\s\?</\1></eg
+    normal gg=G
+endfunction
 "map <silent> <c-h> :call HtmlEscape()<CR>
 "map <silent> <c-u> :call HtmlUnEscape()<CR>
 

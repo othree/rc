@@ -90,14 +90,15 @@ LS_COLORS=$LS_COLORS:'*.ppm=1;32'     # Images            = Bold, Green
 LS_COLORS=$LS_COLORS:'*.pgm=1;32'     # Images            = Bold, Green
 LS_COLORS=$LS_COLORS:'*.pbm=1;32'     # Images            = Bold, Green
 LS_COLORS=$LS_COLORS:'*.tar=31'       # Archive           = Red
-LS_COLORS=$LS_COLORS:'*.tgz=31'       # Archive           = Red
-LS_COLORS=$LS_COLORS:'*.gz=31'        # Archive           = Red
+LS_COLORS=$LS_COLORS:'*.tgz=1;31'       # Archive           = Red
+LS_COLORS=$LS_COLORS:'*.gz=1;31'        # Archive           = Red
+LS_COLORS=$LS_COLORS:'*.xz=1;31'        # Archive           = Red
 LS_COLORS=$LS_COLORS:'*.zip=31'       # Archive           = Red
 LS_COLORS=$LS_COLORS:'*.sit=31'       # Archive           = Red
 LS_COLORS=$LS_COLORS:'*.lha=31'       # Archive           = Red
 LS_COLORS=$LS_COLORS:'*.lzh=31'       # Archive           = Red
 LS_COLORS=$LS_COLORS:'*.arj=31'       # Archive           = Red
-LS_COLORS=$LS_COLORS:'*.bz2=31'       # Archive           = Red
+LS_COLORS=$LS_COLORS:'*.bz2=1;31'       # Archive           = Red
 LS_COLORS=$LS_COLORS:'*.html=36'      # HTML              = Cyan
 LS_COLORS=$LS_COLORS:'*.htm=1;34'     # HTML              = Bold, Blue
 LS_COLORS=$LS_COLORS:'*.php=1;45'     # PHP               = White, Cyan
@@ -180,6 +181,7 @@ alias ls="ls --color"
 alias ll="ls -al"
 alias l="ls -a"
 alias cls="clear"
+alias clc="clear"
 alias g='grep'
 alias :q='exit'
 alias :Q='exit'
