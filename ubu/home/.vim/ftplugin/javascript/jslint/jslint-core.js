@@ -1,1 +1,1 @@
-/home/othree/apps/jslint.com-mirror/www.jslint.com/fulljslint.js
+/home/othree/apps/JSLint/fulljslint.js

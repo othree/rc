@@ -256,7 +256,7 @@ let g:user_zen_settings = {
 " Autocomplpop: {{{
 "" omnifunc setting
 "setlocal omnifunc=syntaxcomplete#Complete
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 "autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
 "autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
@@ -264,6 +264,7 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
 "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 "autocmd FileType c set omnifunc=ccomplete#Complete
 "autocmd FileType cpp set omnifunc=ccomplete#Complete
+autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
 
 "" acp options
 let g:acp_enableAtStartup = 1
