@@ -1,1 +1,0 @@
-/Users/othree/apps/JSLint/fulljslint.js
