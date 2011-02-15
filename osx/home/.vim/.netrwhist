@@ -1,6 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/othree/.rvm'
 let g:netrw_dirhist_2='/Users/othree'
 let g:netrw_dirhist_3='/Users/othree/projects/htcsense-custom'
 let g:netrw_dirhist_4='/Users/othree/apps/html5.vim'
+let g:netrw_dirhist_5='/Users/othree/apps/nerdcommenter/plugin'
+let g:netrw_dirhist_6='/Users/othree/apps/nerdcommenter'
+let g:netrw_dirhist_7='/Users/othree/apps'
+let g:netrw_dirhist_8='/Users/othree/apps/n'
+let g:netrw_dirhist_9='/Users/othree/apps/n/plugin'

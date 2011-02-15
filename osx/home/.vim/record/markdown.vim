@@ -1,0 +1,1 @@
+{'version': 0.3, 'files': [{'file': '/Users/othree/.vim/doc/markdown.cnx', 'checksum': 'c1381d886fbd1a0d2560f330b8bfc975'}, {'file': '/Users/othree/.vim/doc/markdown.txt', 'checksum': 'b6ec9c74bcd652182e5f8b9b3b824ad2'}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'markdown.vim', 'generated_by': 'Vim-Makefile'}

@@ -68,6 +68,11 @@
 " http://leafo.net/lessphp/vim/less.vim
 " css3 syntax
 " https://github.com/hail2u/vim-css3-syntax
+" extend docs
+" markdown
+" https://github.com/hotoo/markdown.vim
+" git
+" https://github.com/hotoo/git.vim
 " }}}
 
 " Basic Settings: {{{
