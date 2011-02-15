@@ -1,0 +1,1 @@
+{'version': 0.3, 'files': [{'file': '/Users/othree/.vim/doc/fugitive.txt', 'checksum': 'c42297fe6e520c4cda2cef6b00edd7b0'}, {'file': '/Users/othree/.vim/plugin/fugitive.vim', 'checksum': 'd82fdfd38bd24ce5e438ca5f62472906'}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'vim-fugitive', 'generated_by': 'Vim-Makefile'}

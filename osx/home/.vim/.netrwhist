@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/othree/.rvm'
+let g:netrw_dirhist_2='/Users/othree'
+let g:netrw_dirhist_3='/Users/othree/projects/htcsense-custom'
+let g:netrw_dirhist_4='/Users/othree/apps/html5.vim'

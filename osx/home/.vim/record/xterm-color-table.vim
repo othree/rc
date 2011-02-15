@@ -1,0 +1,1 @@
+{'version': 0.3, 'files': [{'file': '/Users/othree/.vim/plugin/xterm-color-table.vim', 'checksum': 'c54ca1892df087c67f9207c26de9e92f'}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'xterm-color-table.vim', 'generated_by': 'Vim-Makefile'}
