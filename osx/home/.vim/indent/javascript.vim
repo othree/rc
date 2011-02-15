@@ -1,116 +1,310 @@
-"
-" Copyright 2006 Tye Zdrojewski 
-"
-" Licensed under the Apache License, Version 2.0 (the "License"); you may not
-" use this file except in compliance with the License. You may obtain a copy of
-" the License at
-" 
-" 	http://www.apache.org/licenses/LICENSE-2.0
-" 
-" Unless required by applicable law or agreed to in writing, software distributed
-" under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-" CONDITIONS OF ANY KIND, either express or implied. See the License for the
-" specific language governing permissions and limitations under the License.
-" 
-"
-"
-" Script:
-"
-"   Javascript Indentation
-"
-" Version: 1.1.2
-"
-" Description:
-"
-"   Indentation for Javascript.  This script uses the IndentAnything plugin.
-"
-"
-" Installation:
-"
-"   Place this file in your home directory under ~/.vim/indent/, or replace
-"   the system indent/javascript.vim file to affect all users.
-"
-" Maintainer: Tye Z. <zdro@yahoo.com>
-"
-"
-" History:
-"
-"   1.1.1  -  Added license
-"   1.1.2  -  Added indentation for [...] pairs
-"   1.1.3  -  Fixed silly syntax error
-"
-"
+" Vim indent file
+" Language:	JavaScript
+" Maintainer:	JiangMiao <jiangfriend@gmail.com>
+" Last Change:  2011-01-08
+" Version: 1.3.3
 
-let IndentAnything_Dbg = 0
-let IndentAnything_Dbg = 1
-
-" Only load this indent file when no other was loaded.
-if exists("b:did_indent") && ! IndentAnything_Dbg
+if exists('b:did_indent')
   finish
+endif
+
+" Disable Assginment let script will not indent assignment.
+if(!exists('g:SimpleJsIndenter_DisableAssignment'))
+  let g:SimpleJsIndenter_DisableAssignment = 0
+endif
+
+" Brief Mode will indent no more than one level.
+if(!exists('g:SimpleJsIndenter_BriefMode'))
+  let g:SimpleJsIndenter_BriefMode = 0
 endif
 
 let b:did_indent = 1
+let b:indented = 0
+let b:in_comment = 0
 
-setlocal indentexpr=IndentAnything()
-setlocal indentkeys+=0),0},),;
-
-" Only define the function once.
-if exists("*IndentAnything") && ! IndentAnything_Dbg
-  finish
+setlocal indentexpr=GetJsIndent()
+setlocal indentkeys+=0},0),0],0=*/,0=/*,*<Return>
+if exists("*GetJsIndent")
+  finish 
 endif
 
-setlocal indentexpr=IndentAnything()
+let s:expr_left = '[\[\{\(]'
+let s:expr_right = '[\)\}\]]'
+let s:expr_all = '[\[\{\(\)\}\]]'
 
-""" BEGIN IndentAnything specification
+" Check prev line
+function! DoIndentPrev(ind,str) 
+  let ind = a:ind
+  let pline = a:str
+  let first = 1
+  let last = 0
+  let mstr = matchstr(pline, '^'.s:expr_right.'*')
+  let last = strlen(mstr)
+  while 1
+    let last=match(pline, s:expr_all, last)
+    if last == -1
+      break
+    endif
+    let str = pline[last]
+    let last = last + 1
 
-"
-" Syntax name REs for comments and strings.
-"
-let b:commentRE      = 'javaScript\(Line\)\?Comment'
-let b:lineCommentRE  = 'javaScriptLineComment'
-let b:blockCommentRE = 'javaScriptComment'
-let b:stringRE            = 'javaScriptString\(S\|D\)'
-let b:singleQuoteStringRE = 'javaScriptStringS'
-let b:doubleQuoteStringRE = 'javaScriptStringD'
+    if match(str, s:expr_left) != -1
+      let ind = ind + &sw
+    else
+      let ind = ind - &sw
+    endif
+
+  endwhile
+
+  "BriefMode
+  if(g:SimpleJsIndenter_BriefMode) 
+    if(ind<a:ind)
+      let ind =  a:ind - &sw
+    endif
+    if(ind>a:ind)
+      let ind =  a:ind + &sw
+    endif
+  endif
+
+  return ind
+endfunction
 
 
-"
-" Setup for C-style comment indentation.
-"
-let b:blockCommentStartRE  = '/\*'
-let b:blockCommentMiddleRE = '\*'
-let b:blockCommentEndRE    = '\*/'
-let b:blockCommentMiddleExtra = 1
+" Check current line
+function! DoIndent(ind, str) 
+  let ind = a:ind
+  let line = a:str
+  let last = 0
+  let first = 1
+  let mstr = matchstr(line, '^'.s:expr_right.'*')
+  let ind = ind - &sw * strlen(mstr)
 
-"
-" Indent another level for each non-closed paren/'(' , bracket/'[', and
-" brace/'{' on the previous line.
+  "BriefMode
+  if(g:SimpleJsIndenter_BriefMode) 
+    if(ind<a:ind)
+      let ind = a:ind - &sw
+    endif
+    if(ind>a:ind)
+      let ind = a:ind + &sw
+    endif
+  endif
 
-let b:indentTrios = [
-            \ [ '(',  '',                      ')'  ],
-            \ [ '{',  '\(default:\|case.*:\)', '}'  ],
-            \ [ '\[', '',                      '\]' ]
-\]
+  if ind<0
+    let ind=0
+  endif
+  return ind
+endfunction
+
+" Remove strings and comments
+function! TrimLine(pline)
+  let line = substitute(a:pline, "\\\\\\\\", '_','g')
+  let line = substitute(line, "\\\\.", '_','g')
+
+  " Strings
+  let new_line = ''
+  let min_pos = 0
+  while 1 
+    let new_line = line
+    let c = ''
+    let pos = match(new_line, '''', min_pos)
+    if pos != -1 && (pos < min_pos||min_pos==0)
+      let c = ''''
+      let min_pos = pos
+    endif
+    let pos = match(new_line, '"')
+    if pos != -1 && (pos < min_pos||min_pos==0)
+      let c = '"'
+      let min_pos = pos
+    endif
+    let pos = match(new_line, '/')
+    if pos != -1 && (pos < min_pos||min_pos==0)
+      let c = '/'
+      let min_pos = pos
+    endif
+    if min_pos == -1
+      break
+    endif
+
+    if c == ''''
+      let new_line = substitute(new_line, "'[^']*'", '_','g')
+      let min_pos = min_pos + 1
+    elseif c == '"'
+      let new_line = substitute(new_line, '"[^"]*"','_','g')
+      let min_pos = min_pos + 1
+    elseif c == '/'
+      " Skip all if match a comment
+      if new_line[min_pos+1] == '/' 
+        let new_line = substitute(new_line, '/.*', '', 'g')
+        let line = new_line
+        break
+      elseif new_line[min_pos+1] == '*'
+        let new_line = substitute(new_line, '/\*.\{-}\*/', '', 'g')
+      else
+        let new_line = substitute(new_line, '/[^/]\+/','_','g')
+        let min_pos = min_pos + 1
+      endif
+    endif
+    if(new_line==line)
+      break
+    endif
+    let line = new_line
+  endwhile
+  let line = substitute(line, "'.*'",'_', 'g')
+  let line = substitute(line, '".*"','_', 'g')
+
+  " Comment
+  let line = substitute(line, "/\\*.\\{-}\\*/",'','g')
+  let line = substitute(line, '^\s*\*.*','','g')
+  let line = substitute(line, '^\s*//.*$','//c','g')
+  let line = substitute(line, '[^/]//.*$','','')
+  let line = substitute(line, "/\\*.*$",'/*','')
+
+  " Brackets
+  let new_line = ''
+  while new_line != line
+    let new_line = line
+    let line = substitute(new_line,'\(([^\)\(]*)\|\[[^\]\[]*\]\|{[^\}\{]*}\)','_','g')
+  endwhile
+
+  " Trim Blank
+  " let line = substitute(line, '\(\w\+\)\s\+\(\W\+\)','\1\2','g')
+  let line = matchlist(line, "^\\s*\\(.\\{-}\\)\\s*$")[1]
+  return line
+endfunction
+
+function! s:GetLine(num)
+  return TrimLine(getline(a:num))
+endfunction
+
+let s:expr_partial = '[\+\-\*\/\|\&\,]$'
+let s:expr_partial2 = '[\+\-\*\/\|\&]$'
+function! s:IsPartial(line)
+  " Add IndentLoose for
+  " function a() {
+  "   test(["hello",
+  "     "world",
+  "     "a",
+  "     "b"
+  "   ]) // Failed
+  " }
+  return match(a:line, '\*/$') == -1 && match(a:line, s:expr_partial)!=-1 && ( match(a:line, s:expr_all)==-1 || s:IsOneLineIndentLoose(a:line) )
+endfunction
+
+function! s:IsComment(line)
+  return match(line, '^//.*$') != -1
+endfunction
+function! s:SearchBack(num)
+  let num = a:num
+  let new_num = num
+  while 1
+    if new_num == 0
+      break
+    endif
+    let line = getline(new_num)
+    if !s:IsComment(line)
+      let line = TrimLine(line)
+      if !s:IsPartial(line)
+        break
+      endif
+      if match(line, s:expr_all)!=-1
+        let num = new_num
+        break
+      endif
+    endif
+    let num = new_num
+    let new_num = num - 1
+  endwhile
+  return num
+endfunction
+
+function! s:AssignIndent(line)
+  let ind = 0
+  let line = a:line
+  let line = matchlist(line, "^\\s*\\(.\\{-}\\)\\s*$")[1]
+
+  if(match(line,'.*=.*'.s:expr_partial2) != -1)
+    return ind + strlen(matchstr(line, '.*=\s*'))
+  elseif(match(line,'var\s\+.*=\s*') != -1)
+    return ind + strlen(matchstr(line, 'var\s\+'))
+  elseif(match(line,'var\s\+') != -1)
+    return ind + strlen(matchstr(line, 'var\s\+'))
+  elseif(match(line,'^\w\s\+=\s*.*[^,]$') != -1)
+    return ind + strlen(matchstr(line, '^\w\s\+=\s*'))
+  endif
+  return ind
+endfunction
+
+function! s:IsAssign(line)
+  return match(a:line, s:expr_all) == -1 && s:AssignIndent(a:line)>0
+endfunction
+
+function DoIndentAssign(ind, line)
+  return a:ind + s:AssignIndent(a:line)
+endfunction
+
+function! s:IsOneLineIndent(line)
+  return match(a:line, '^[\}\)\]]*\s*\(if\|else\|while\|try\|catch\|finally\|for\|else\s\+if\)\s*_\=$') != -1
+endfunction
+
+function! s:IsOneLineIndentLoose(line)
+  " _\= equal _? in PCRE
+  return match(a:line, '^[\}\)\]]*\s*\(if\|else\|while\|try\|catch\|finally\|for\|else\s\+if\)') != -1
+endfunction
 
 
-"
-" Line continuations.  Lines that are continued on the next line are
-" if/for/while statements that are NOT followed by a '{' block and operators
-" at the end of a line.
-"
-let b:lineContList = [
-            \ { 'pattern' : '^\s*\(if\|for\|while\)\s*(.*)\s*\(\(//.*\)\|/\*.*\*/\s*\)\?\_$\(\_s*{\)\@!' },
-            \ { 'pattern' : '^\s*else' .                 '\s*\(\(//.*\)\|/\*.*\*/\s*\)\?\_$\(\_s*{\)\@!' },
-            \ { 'pattern' : '\(+\|=\|+=\|-=\)\s*\(\(//.*\)\|/\*.*\*/\s*\)\?$' }
-\]
+function! GetJsIndent()
+  if v:lnum == 1
+    return 0
+  endif
+  let pnum = prevnonblank(v:lnum-1)
+  let pline = s:GetLine(pnum)
 
-"
-" If a continued line and its continuation can have line-comments between
-" them, then this should be true.  For example,
-"
-"       if (x)
-"           // comment here
-"           statement
-"
-let b:contTraversesLineComments = 1
+  let ppnum = prevnonblank(pnum - 1)
+  let ppline = s:GetLine(ppnum)
 
+  if (s:IsPartial(pline) && pnum == v:lnum-1)||match(pline, s:expr_left)!=-1
+    let pnum = s:SearchBack(pnum)
+    let ind = indent(pnum)
+    let pline = s:GetLine(pnum)
+    let ind = DoIndentPrev(ind, pline)
+    if(!g:SimpleJsIndenter_DisableAssignment) 
+      if s:IsAssign(pline) && match(s:GetLine(v:lnum), s:expr_all)==-1
+        let ind = DoIndentAssign(ind, pline)
+      endif
+    endif
+  else
+    if s:IsPartial(ppline) && ppnum == pnum-1
+      let pnum =  s:SearchBack(ppnum)
+    endif
+    let ind = indent(pnum)
+    let pline = s:GetLine(pnum)
+    let ind = DoIndentPrev(ind, pline)
+
+    let ppnum = prevnonblank(pnum-1)
+    let ppline = s:GetLine(ppnum)
+    if s:IsOneLineIndent(pline) && match(s:GetLine(v:lnum), s:expr_all)==-1
+      let ind = ind + &sw
+    endif
+    if s:IsOneLineIndent(ppline)
+      let ind = ind - &sw
+    endif
+  endif
+
+  " If pline is indented, and ppline is partial then indent 
+  " Fix for
+  " function() {
+  "   b( this,
+  "     a(),
+  "     d() ); 
+  " },
+  let real_pnum = prevnonblank(v:lnum-1)
+  if(real_pnum!=pnum)
+    let pline = s:GetLine(real_pnum)
+    let ind = DoIndentPrev(ind, pline)
+  endif
+
+  let line = s:GetLine(v:lnum)
+  let ind = DoIndent(ind, line)
+
+  return ind
+endfunction

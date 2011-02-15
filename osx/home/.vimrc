@@ -1,30 +1,51 @@
 " .vimrc by othree ( othree AT gmail DOT com )
-"
+" 
 " Used Plugins: {{{
 " JavaScript syntax
 " http://www.vim.org/scripts/script.php?script_id=1491
-" Javascript Indentation
-" http://www.vim.org/scripts/script.php?script_id=1840
+" Simple Javascript Indenter
+" http://www.vim.org/scripts/script.php?script_id=3227
+" http://github.com/JiangMiao/simple-javascript-indenter
+" json
+" http://www.vim.org/scripts/script.php?script_id=1945
+" jslint.vim
+" http://www.vim.org/scripts/script.php?script_id=2729
+" http://github.com/hallettj/jslint.vim
+" zencoding
+" http://www.vim.org/scripts/script.php?script_id=2981
+" http://github.com/mattn/zencoding-vim/
+" yankring
+" http://www.vim.org/scripts/script.php?script_id=1234
 " Vimball
 " http://www.vim.org/scripts/script.php?script_id=1502
 " VisIncr
 " http://www.vim.org/scripts/script.php?script_id=670
 " autocomplpop
 " http://www.vim.org/scripts/script.php?script_id=1879
+" https://bitbucket.org/ns9tks/vim-autocomplpop
+" fuzzyfinder
+" http://www.vim.org/scripts/script.php?script_id=1984
+" https://bitbucket.org/ns9tks/vim-fuzzyfinder
+" vim-l9
+" http://www.vim.org/scripts/script.php?script_id=3252
+" https://bitbucket.org/ns9tks/vim-l9
 " snipMate
 " http://www.vim.org/scripts/script.php?script_id=2540
+" http://github.com/msanders/snipmate.vim
 " NERD_commenter
 " http://www.vim.org/scripts/script.php?script_id=1218
+" http://github.com/scrooloose/nerdcommenter
+" NERD_Tree
+" http://www.vim.org/scripts/script.php?script_id=1658
+" http://github.com/scrooloose/nerdtree
+" vim-surround
+" http://www.vim.org/scripts/script.php?script_id=1697
+" http://github.com/tpope/vim-surround
 " align
 " http://www.vim.org/scripts/script.php?script_id=294
 " xml/html
 " http://www.vim.org/scripts/script.php?script_id=1397
-" json
-" http://www.vim.org/scripts/script.php?script_id=1945
-" sparkup.vim
-" http://github.com/rstacruz/sparkup
-" jslint.vim
-" http://github.com/hallettj/jslint.vim
+" http://github.com/othree/xml.vim
 " eregex.vim
 " http://www.vector.co.jp/soft/unix/writing/se265654.html
 " tir_black
@@ -33,21 +54,36 @@
 " http://ernstdehaan.blogspot.com/2009/08/vim-syntax-highlighting-for-lesscss.html
 " jQuery : Syntax file for jQuery
 " http://www.vim.org/scripts/script.php?script_id=2416
+" snipmate snippets fork by othree
+" http://github.com/othree/snipmate-snippets
+" Vim plugin for developing vim script
+" http://github.com/c9s/vim-dev-plugin
+" mru.vim : Plugin to manage Most Recently Used (MRU) files 
+" http://www.vim.org/scripts/script.php?script_id=521
+" speeddating.vim
+" http://www.vim.org/scripts/script.php?script_id=2120
+" git.zip
+" http://www.vim.org/scripts/script.php?script_id=1654
+" less syntax
+" http://leafo.net/lessphp/vim/less.vim
 " }}}
 
 " Basic Settings: {{{
 syntax on
 filetype on
 filetype plugin on
+filetype indent on
 colors tir_black
 language message zh_TW.UTF-8
 
+set nocompatible
 set display+=lastline
 set nocp
 set wrap
 set showtabline=2 " always show tab line
 set ruler
-set number
+set nu
+set nuw=5
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -58,21 +94,35 @@ set cindent
 set hlsearch
 set foldmethod=marker
 set backspace=indent,eol,start whichwrap+=<,>,[,]
+set hidden
+set nobomb
 
 " Encoding
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,euc-jp,big5
 set ambiwidth=double
 
-
 " Status Line
 set laststatus=2
 set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
 
 " Special File Types
-au BufNewFile,BufRead *.less set filetype=less
+au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+au BufRead,BufNewFile *.tpl set ft=html
+au BufRead,BufNewFile *.xsl set ft=html
 au BufRead,BufNewFile *.json set syntax=json 
+au BufRead,BufNewFile *.n3  set ft=n3
+
+" highlight line & column
+au WinLeave * set nocursorline
+au WinEnter * set cursorline
+set cursorline
+
+" Color Tweak for highlight
+highlight CursorLine    ctermbg=89
+highlight Comment       ctermfg=246
+
 " }}}
 
 " Screen Fix: {{{
@@ -100,9 +150,15 @@ nnoremap <leader>q :QFix<CR>
 " }}}
 
 " Key Mapping: {{{
+
+let mapleader = ","
+" http://vim.wikia.com/wiki/Map_semicolon_to_colon
+map ; :
+
 "" function keys
 nnoremap <F2>  :set nonumber!<CR>
 nnoremap <F3>  :set nopaste!<CR>
+nnoremap <F4>  :set spell!<CR>
 nnoremap <F5>  :tab ball<CR>
 nnoremap <F6>  :set wrap!<CR>
 nnoremap <F11> :QFix<CR>
@@ -110,8 +166,8 @@ nnoremap <F11> :QFix<CR>
 
 "" tab to indent
 nmap <tab> V>
-nmap <s-tab> V<
 xmap <tab> >gv
+nmap <s-tab> V<
 xmap <s-tab> <gv
 
 "" HOME END
@@ -137,21 +193,71 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "" tab control
 "" http://c9s.blogspot.com/2007/08/vim-my-key-mapping-for-tabs.html
-nmap    ,tn    :tabnew<cr>
-nmap    ,te    :tabedit
-nmap    ,tx    :tabedit .<cr>
-nmap    ,th    :tab help<cr>
-nmap    <a-left>  :tabp<cr>
-nmap    <a-right> :tabn<cr>
-nmap    <C-\>  :tabn<CR>
+nmap    <leader>tn    :tabnew<cr>
+nmap    <leader>te    :tabedit
+nmap    <leader>tx    :tabedit .<cr>
+nmap    <leader>th    :tab help<cr>
+
+" nmap    <C-t>     :tabnew<cr>
+" nmap    <C-w>     :tabc<cr>
+
+nmap    <C-left>  :tabp<cr>
+nmap    <C-right> :tabn<cr>
+
+imap    <C-j>  <ESC>:tabn<CR>
+nmap    <C-j>  :tabn<CR>
+imap    <C-k>  <ESC>:tabp<CR>
+nmap    <C-k>  :tabp<CR>
 
 cmap w!! %!sudo tee > /dev/null %
+
+"" keypad
+"" http://vim.wikia.com/wiki/PuTTY_numeric_keypad_mappings
+inoremap <Esc>Oq 1
+inoremap <Esc>Or 2
+inoremap <Esc>Os 3
+inoremap <Esc>Ot 4
+inoremap <Esc>Ou 5
+inoremap <Esc>Ov 6
+inoremap <Esc>Ow 7
+inoremap <Esc>Ox 8
+inoremap <Esc>Oy 9
+inoremap <Esc>Op 0
+inoremap <Esc>On .
+inoremap <Esc>OQ /
+inoremap <Esc>OR *
+inoremap <Esc>Ol +
+inoremap <Esc>OS -
+
+let NERDMapleader='<Leader>c'
 "}}}
+
+" Indent: {{{
+let g:html_indent_inctags = "html,body,head,tbody,a"
+let g:event_handler_attributes_complete = 0
+let g:microdata_attributes_complete = 0
+let g:SimpleJsIndenter_BriefMode = 1
+" }}}
+
+" Zencoding: {{{
+let g:user_zen_settings = {
+    \  'php' : {
+    \    'extends' : 'html',
+    \    'filters' : 'c',
+    \  },
+    \  'xml' : {
+    \    'extends' : 'html',
+    \  },
+    \  'html' : {
+    \    'extends' : 'html',
+    \  },
+    \}
+" }}}
 
 " Autocomplpop: {{{
 "" omnifunc setting
 "setlocal omnifunc=syntaxcomplete#Complete
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 "autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
 "autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
@@ -159,6 +265,7 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
 "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 "autocmd FileType c set omnifunc=ccomplete#Complete
 "autocmd FileType cpp set omnifunc=ccomplete#Complete
+autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
 
 "" acp options
 let g:acp_enableAtStartup = 1
@@ -167,36 +274,68 @@ let g:acp_completeOption = '.,w,b,u,t,i,k'
 let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorKeywordCommand = "\<C-n>"
 
-"" javascript behavior for acp
-function AcpMeetsForJavaScript(context)
-    let matches = matchlist(a:context, '\(\k\{1}\)$')
-    if empty(matches)
-        return 0
-    endif
-    return 1
-endfunction
+""" javascript behavior for acp
+"function AcpMeetsForJavaScript(context)
+    "let matches = matchlist(a:context, '\(\k\{1}\)$')
+    "if empty(matches)
+        "return 0
+    "endif
+    "return 1
+"endfunction
 
-let jsbehavs = { 'javascript': [] }
-    call add(jsbehavs.javascript, {
-        \   'command'      : "\<C-x>\<C-u>",
-        \   'completefunc' : 'acp#completeSnipmate',
-        \   'meets'        : 'acp#meetsForSnipmate',
-        \   'onPopupClose' : 'acp#onPopupCloseSnipmate',
-        \   'repeat'       : 0,
-    \})
-    call add(jsbehavs.javascript, {
-        \   'command' : g:acp_behaviorKeywordCommand,
-        \   'meets'   : 'acp#meetsForKeyword',
-        \   'repeat'  : 0,
-        \ })
-    call add(jsbehavs.javascript, {
-        \   'command' : "\<C-x>\<C-o>",
-        \   'meets'   : 'AcpMeetsForJavaScript',
-        \   'repeat'  : 0,
-    \})
+""" html behavior for html
+"function AcpMeetsForHtmlOmni(context)
+    "if g:acp_behaviorHtmlOmniLength >= 0
+        "if a:context =~ '\(<\|<\/\|<[^>]\+ \|<[^>]\+=\"\)\k\{' .g:acp_behaviorHtmlOmniLength . ',}$'
+            "return 1
+        "elseif a:context =~ '\(\<\k\{1,}\(=\"\)\{0,1}\|\" \)$'
+            "let cur = line('.')-1
+            "while cur > 0
+                "let lstr = getline(cur)
+                "if lstr =~ '>[^>]*$'
+                    "return 0
+                "elseif lstr =~ '<[^<]*$'
+                    "return 1
+                "endif
+                "let cur = cur-1
+            "endwhile
+            "return 0
+        "endif
+    "else
+        "return 0
+    "endif
+"endfunction
 
-let g:acp_behavior = {}
-call extend(g:acp_behavior, jsbehavs, 'keep')
+"let behavs = { 'javascript': [], 'html': [] }
+    "call add(behavs.javascript, {
+        "\   'command'      : "\<C-x>\<C-u>",
+        "\   'completefunc' : 'acp#completeSnipmate',
+        "\   'meets'        : 'acp#meetsForSnipmate',
+        "\   'onPopupClose' : 'acp#onPopupCloseSnipmate',
+        "\   'repeat'       : 0,
+    "\})
+    "call add(behavs.javascript, {
+        "\   'command' : g:acp_behaviorKeywordCommand,
+        "\   'meets'   : 'acp#meetsForKeyword',
+        "\   'repeat'  : 0,
+        "\ })
+    "call add(behavs.javascript, {
+        "\   'command' : "\<C-x>\<C-o>",
+        "\   'meets'   : 'AcpMeetsForJavaScript',
+        "\   'repeat'  : 0,
+    "\})
+    "call add(behavs.html, {
+        "\   'command' : "\<C-x>\<C-o>",
+        "\   'meets'   : 'AcpMeetsForHtmlOmni',
+        "\   'repeat'  : 1,
+    "\})
+
+"let g:acp_behavior = {}
+"call extend(g:acp_behavior, behavs, 'keep')
+" }}}
+
+" NERDCommenter: {{{
+"let NERDSpaceDelims = 1
 " }}}
 
 " Popup Highlight: {{{
@@ -206,8 +345,9 @@ highlight PMenuSbar  cterm=bold ctermbg=darkgray
 highlight PMenuThumb cterm=bold ctermbg=White
 " }}}
 
-"HTML Tag Escape: {{{
-" http://vim.wikia.com/wiki/Escape_and_unescape_HTML_entities
+" HTML: {{{
+"" HTML Tag Escape:
+""  http://vim.wikia.com/wiki/Escape_and_unescape_HTML_entities
 function HtmlEscape()
     silent s/&/\&amp;/eg
     silent s/</\&lt;/eg
@@ -222,8 +362,23 @@ function HtmlUnEscape()
     silent s/&quot;/"/eg
 endfunction
 
-map <silent> <c-h> :call HtmlEscape()<CR>
-map <silent> <c-u> :call HtmlUnEscape()<CR>
+function HtmlReIndent()
+    silent %s/\(<\/\w\+\)>\s\?</\1></eg
+    normal gg=G
+endfunction
+"map <silent> <c-h> :call HtmlEscape()<CR>
+"map <silent> <c-u> :call HtmlUnEscape()<CR>
+
+"" HTML omni
+let b:html_omni_flavor = 'html5'
+" }}}
+
+" NERDTree: {{{
+let NERDTreeShowHidden = 1
+" }}}
+
+" FuzzyFinder: {{{
+let g:fuf_modesDisable = []
 " }}}
 
 " Yuicompressor and ClosureCompiler and less: {{{
@@ -239,7 +394,7 @@ function Js_css_compress ()
     endif
     if ext == 'less'
         if executable('lessc')
-            cal system( 'lessc '.cwd.'/'.nam.'.'.ext.' &')
+            cal system( 'lessc '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.nam.'.css &')
         endif
     else
         if filewritable(cwd.'/'.minfname)
@@ -293,22 +448,49 @@ com! -bang Q :q
 com! -bang Qa :qa
 " }}}
 
+" Macros: {{{
+runtime macros/matchit.vim
+" }}}
+
 " After Loading All Plugin: {{{
 function AfterStart ()
 
 " plugin commands
+"" Align
 if exists(":Align")
     com! -bang -range -nargs=* A <line1>,<line2>call Align#Align(<bang>0,<q-args>)
 endif
 
+"" eregex
 if exists(":M")
     nnoremap / :M/
+    nnoremap ? :M?
     nnoremap ,/ /
 endif
 
+"" JSLint
 if exists(":JSLint")
     autocmd FileWritePost,BufWritePost *.js :JSLint
-    map <F12> :JSLint<CR>
+    "map <F12> :JSLint<CR>
+endif
+
+
+if exists(":NERDTreeToggle")
+    map <F12> :NERDTreeToggle<CR>
+endif
+
+"" FuzzyFinder
+if exists(":FufFile")
+    nnoremap <leader>ff  :FufFile<CR>
+    nnoremap <leader>fb  :FufBuffer<CR>
+    nnoremap <leader>fr  :FufMruFile<CR>
+endif
+
+"" speeddating.vim
+if exists(":SpeedDatingFormat")
+    SpeedDatingFormat %H:%M
+    SpeedDatingFormat %m/%d
+    SpeedDatingFormat %Y/%m/%d%[ T_-]%H:%M:%S%?[Z]
 endif
 
 endfunction
