@@ -1,0 +1,1 @@
+{'version': 0.3, 'files': [{'file': '/Users/othree/.vim/plugin/fecompressor.vim', 'checksum': 'def6a1ec1426c3a6a4977fb5ab959ba2'}], 'install_type': 'makefile', 'script_version': '0.01', 'package': 'fecompressor.vim', 'generated_by': 'Vim-Makefile'}
