@@ -282,63 +282,63 @@ let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorKeywordCommand = "\<C-n>"
 
 """ javascript behavior for acp
-"function AcpMeetsForJavaScript(context)
-    "let matches = matchlist(a:context, '\(\k\{1}\)$')
-    "if empty(matches)
-        "return 0
-    "endif
-    "return 1
-"endfunction
+function AcpMeetsForJavaScript(context)
+    let matches = matchlist(a:context, '\(\k\{1}\)$')
+    if empty(matches)
+        return 0
+    endif
+    return 1
+endfunction
 
-""" html behavior for html
-"function AcpMeetsForHtmlOmni(context)
-    "if g:acp_behaviorHtmlOmniLength >= 0
-        "if a:context =~ '\(<\|<\/\|<[^>]\+ \|<[^>]\+=\"\)\k\{' .g:acp_behaviorHtmlOmniLength . ',}$'
-            "return 1
-        "elseif a:context =~ '\(\<\k\{1,}\(=\"\)\{0,1}\|\" \)$'
-            "let cur = line('.')-1
-            "while cur > 0
-                "let lstr = getline(cur)
-                "if lstr =~ '>[^>]*$'
-                    "return 0
-                "elseif lstr =~ '<[^<]*$'
-                    "return 1
-                "endif
-                "let cur = cur-1
-            "endwhile
-            "return 0
-        "endif
-    "else
-        "return 0
-    "endif
-"endfunction
+"" html behavior for html
+function AcpMeetsForHtmlOmni(context)
+    if g:acp_behaviorHtmlOmniLength >= 0
+        if a:context =~ '\(<\|<\/\|<[^>]\+ \|<[^>]\+=\"\)\k\{' .g:acp_behaviorHtmlOmniLength . ',}$'
+            return 1
+        elseif a:context =~ '\(\<\k\{1,}\(=\"\)\{0,1}\|\" \)$'
+            let cur = line('.')-1
+            while cur > 0
+                let lstr = getline(cur)
+                if lstr =~ '>[^>]*$'
+                    return 0
+                elseif lstr =~ '<[^<]*$'
+                    return 1
+                endif
+                let cur = cur-1
+            endwhile
+            return 0
+        endif
+    else
+        return 0
+    endif
+endfunction
 
-"let behavs = { 'javascript': [], 'html': [] }
-    "call add(behavs.javascript, {
-        "\   'command'      : "\<C-x>\<C-u>",
-        "\   'completefunc' : 'acp#completeSnipmate',
-        "\   'meets'        : 'acp#meetsForSnipmate',
-        "\   'onPopupClose' : 'acp#onPopupCloseSnipmate',
-        "\   'repeat'       : 0,
-    "\})
-    "call add(behavs.javascript, {
-        "\   'command' : g:acp_behaviorKeywordCommand,
-        "\   'meets'   : 'acp#meetsForKeyword',
-        "\   'repeat'  : 0,
-        "\ })
-    "call add(behavs.javascript, {
-        "\   'command' : "\<C-x>\<C-o>",
-        "\   'meets'   : 'AcpMeetsForJavaScript',
-        "\   'repeat'  : 0,
-    "\})
-    "call add(behavs.html, {
-        "\   'command' : "\<C-x>\<C-o>",
-        "\   'meets'   : 'AcpMeetsForHtmlOmni',
-        "\   'repeat'  : 1,
-    "\})
+let behavs = { 'javascript': [], 'html': [] }
+    call add(behavs.javascript, {
+        \   'command'      : "\<C-x>\<C-u>",
+        \   'completefunc' : 'acp#completeSnipmate',
+        \   'meets'        : 'acp#meetsForSnipmate',
+        \   'onPopupClose' : 'acp#onPopupCloseSnipmate',
+        \   'repeat'       : 0,
+    \})
+    call add(behavs.javascript, {
+        \   'command' : g:acp_behaviorKeywordCommand,
+        \   'meets'   : 'acp#meetsForKeyword',
+        \   'repeat'  : 0,
+        \ })
+    call add(behavs.javascript, {
+        \   'command' : "\<C-x>\<C-o>",
+        \   'meets'   : 'AcpMeetsForJavaScript',
+        \   'repeat'  : 0,
+    \})
+    call add(behavs.html, {
+        \   'command' : "\<C-x>\<C-o>",
+        \   'meets'   : 'AcpMeetsForHtmlOmni',
+        \   'repeat'  : 1,
+    \})
 
-"let g:acp_behavior = {}
-"call extend(g:acp_behavior, behavs, 'keep')
+let g:acp_behavior = {}
+call extend(g:acp_behavior, behavs, 'keep')
 " }}}
 
 " NERDCommenter: {{{
@@ -444,13 +444,6 @@ if exists(":M")
     nnoremap ? :M?
     nnoremap ,/ /
 endif
-
-"" JSLint
-if exists(":JSLint")
-    autocmd FileWritePost,BufWritePost *.js :JSLint
-    "map <F12> :JSLint<CR>
-endif
-
 
 if exists(":NERDTreeToggle")
     map <F12> :NERDTreeToggle<CR>
