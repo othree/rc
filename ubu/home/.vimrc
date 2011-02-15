@@ -1,16 +1,6 @@
 " .vimrc by othree ( othree AT gmail DOT com )
 " 
 " Used Plugins: {{{
-" JavaScript syntax
-" http://www.vim.org/scripts/script.php?script_id=1491
-" Simple Javascript Indenter
-" http://www.vim.org/scripts/script.php?script_id=3227
-" http://github.com/JiangMiao/simple-javascript-indenter
-" json
-" http://www.vim.org/scripts/script.php?script_id=1945
-" jslint.vim
-" http://www.vim.org/scripts/script.php?script_id=2729
-" http://github.com/hallettj/jslint.vim
 " zencoding
 " http://www.vim.org/scripts/script.php?script_id=2981
 " http://github.com/mattn/zencoding-vim/
@@ -52,8 +42,6 @@
 " http://www.vim.org/scripts/script.php?script_id=2777
 " lesscss syntax
 " http://ernstdehaan.blogspot.com/2009/08/vim-syntax-highlighting-for-lesscss.html
-" jQuery : Syntax file for jQuery
-" http://www.vim.org/scripts/script.php?script_id=2416
 " snipmate snippets fork by othree
 " http://github.com/othree/snipmate-snippets
 " Vim plugin for developing vim script
@@ -66,6 +54,35 @@
 " http://www.vim.org/scripts/script.php?script_id=1654
 " less syntax
 " http://leafo.net/lessphp/vim/less.vim
+"
+" JavaScript
+" JavaScript syntax
+" http://www.vim.org/scripts/script.php?script_id=1491
+" Simple Javascript Indenter
+" http://www.vim.org/scripts/script.php?script_id=3227
+" http://github.com/JiangMiao/simple-javascript-indenter
+" json
+" http://www.vim.org/scripts/script.php?script_id=1945
+" jslint.vim
+" http://www.vim.org/scripts/script.php?script_id=2729
+" http://github.com/hallettj/jslint.vim
+" jQuery : Syntax file for jQuery
+" http://www.vim.org/scripts/script.php?script_id=2416
+"
+" python
+" pythoncomplete
+" http://www.vim.org/scripts/script.php?script_id=1542
+" python syntax
+" http://www.vim.org/scripts/script.php?script_id=790
+" python indent
+" http://www.vim.org/scripts/script.php?script_id=974
+" conceal
+" vim-cute-python
+" https://github.com/ehamberg/vim-cute-python
+" perl-conceal.vim
+" https://github.com/c9s/perl-conceal.vim
+" js-mask
+" http://www.vim.org/scripts/script.php?script_id=3324
 " }}}
 
 " Basic Settings: {{{
@@ -105,6 +122,7 @@ set ambiwidth=double
 " Status Line
 set laststatus=2
 set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
+"set statusline=%t%(\ [%n%M]%)%(\ %H%R%W%)\ %(%c-%v,\ %l\ of\ %L,\ (%o)\ %P\ 0x%B\ (%b)%)
 
 " Special File Types
 au BufRead,BufNewFile *.less set ft=less
@@ -378,36 +396,6 @@ let NERDTreeShowHidden = 1
 
 " FuzzyFinder: {{{
 let g:fuf_modesDisable = []
-" }}}
-
-" Yuicompressor and ClosureCompiler and less: {{{
-" http://blog.othree.net/log/2009/12/26/javascript-on-vim/
-function Js_css_compress ()
-    let cwd = expand('<afile>:p:h')
-    let nam = expand('<afile>:t:r')
-    let ext = expand('<afile>:e')
-    if -1 == match(nam, "[\._]src$")
-        let minfname = nam.".min.".ext
-    else
-        let minfname = substitute(nam, "[\._]src$", "", "g").".".ext
-    endif
-    if ext == 'less'
-        if executable('lessc')
-            cal system( 'lessc '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.nam.'.css &')
-        endif
-    else
-        if filewritable(cwd.'/'.minfname)
-            if ext == 'js' && executable('closure-compiler')
-                cal system( 'closure-compiler --js '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.minfname.' &')
-            elseif executable('yuicompressor')
-                cal system( 'yuicompressor '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.minfname.' &')
-            endif
-        endif
-    endif
-endfunction
-autocmd FileWritePost,BufWritePost *.js :call Js_css_compress()
-autocmd FileWritePost,BufWritePost *.css :call Js_css_compress()
-autocmd FileWritePost,BufWritePost *.less :call Js_css_compress()
 " }}}
 
 " Auto Unittest: {{{
