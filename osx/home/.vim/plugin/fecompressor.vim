@@ -5,10 +5,10 @@ function Fe_compress ()
     let nam = expand('<afile>:t:r')
     let ext = expand('<afile>:e')
     let cssnam = nam.'.css'
-    if ext == 'less' && executable('lessc') && filewritable(cwd.'/'.cssnam)
+    if ext == 'less' && executable('lessc')
         cal system( 'lessc '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.cssnam.' &')
         cal Css_compress()
-    elseif ext == 'scss' && executable('sass') && filewritable(cwd.'/'.cssnam)
+    elseif ext == 'scss' && executable('sass')
         cal system( 'sass '.cwd.'/'.nam.'.'.ext.' > '.cwd.'/'.cssnam.' &')
         cal Css_compress()
     elseif ext == 'css'

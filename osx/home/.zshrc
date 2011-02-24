@@ -188,7 +188,6 @@ alias -g .....='../../../../..'
 alias -g ......='../../../../../..'
 alias -g .......='../../../../../../..'
 
-
 #autojump
 #Copyright Joel Schaerer 2008, 2009
 #This file is part of autojump

@@ -1,0 +1,1 @@
+{'version': 0.3, 'files': [{'file': '/Users/othree/.vim/syntax/.javascript.vim.swp', 'checksum': 'ada9ef9a063d1cde3360f60db597c38d'}, {'file': '/Users/othree/.vim/syntax/javascript.vim', 'checksum': 'e576a68fba8d064ff2c2f5b0d3c79a6a'}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'javascript-syntax.vim', 'generated_by': 'Vim-Makefile'}

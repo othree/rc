@@ -168,7 +168,8 @@ nnoremap <F3>  :set nopaste!<CR>
 nnoremap <F4>  :set spell!<CR>
 nnoremap <F5>  :tab ball<CR>
 nnoremap <F6>  :set wrap!<CR>
-nnoremap <F11> :QFix<CR>
+nnoremap <F7>  :QFix<CR>
+nnoremap <F8>  :GundoToggle<CR>
 " F12 > JSLint
 
 "" tab to indent
