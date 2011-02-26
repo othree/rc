@@ -1,0 +1,1 @@
+{'version': 0.3, 'files': [{'file': '/home/othree/.vim/syntax/javascript.vim', 'checksum': ''}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'javascript-syntax.vim', 'generated_by': 'Vim-Makefile'}

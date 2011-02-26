@@ -7,6 +7,14 @@
 "
 " TODO:
 "  - Add the HTML syntax inside the JSDoc
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Modified Javascript Syntax file
+" By: Jose Elera Campana
+" Last Change: 29/01/11 01:14:12
+" Changes: 
+" - Added support for Browser, DOM and Ajax Objects, Ajax methods and properties, 
 
 if !exists("main_syntax")
   if version < 600
@@ -43,11 +51,24 @@ if !exists("javascript_ignore_javaScriptdoc")
   "syntax include @javaHtml <sfile>:p:h/html.vim
   "unlet b:current_syntax
 
-  syntax region javaScriptDocComment    matchgroup=javaScriptComment start="/\*\*\s*$"  end="\*/" contains=javaScriptDocTags,javaScriptCommentTodo,javaScriptCvsTag,@javaScriptHtml,@Spell fold
-  syntax match  javaScriptDocTags       contained "@\(param\|argument\|requires\|exception\|throws\|type\|class\|extends\|see\|link\|member\|module\|method\|title\|namespace\|optional\|default\|base\|file\)\>" nextgroup=javaScriptDocParam,javaScriptDocSeeTag skipwhite
-  syntax match  javaScriptDocTags       contained "@\(beta\|deprecated\|description\|fileoverview\|author\|license\|version\|returns\=\|constructor\|private\|protected\|final\|ignore\|addon\|exec\)\>"
+  syntax region javaScriptDocComment    matchgroup=javaScriptComment start="/\*\*"  end="\*/" contains=javaScriptDocTags,javaScriptCommentTodo,javaScriptCvsTag,@javaScriptHtml,@Spell fold
+  syntax match  javaScriptDocTags       contained "@\(constant\|constructor\|constrructs\|event\|function\|ignore\|inner\|private\|public\|static\)\>"
+  syntax match  javaScriptDocTags       contained "@\(arguments\|lends\|memberOf\|name\|type\|link\)\>" nextgroup=javaScriptDocParam skipwhite
+  syntax match  javaScriptDocTags       contained "@\(author\|class\|default\|deprecated\|description\|fileOverview\|namespace\|requires\|since\|version\)\>" nextgroup=javaScriptDocDesc skipwhite
+  syntax match  javaScriptDocTags       contained "@\(borrows\|exports\)\>" nextgroup=javaScriptDocA skipwhite
+  syntax match  javaScriptDocTags       contained "@\(example\)\>"
+  syntax match  javaScriptDocTags       contained "@\(param\|property\)\>" nextgroup=javaScriptDocNamedParamType skipwhite
+  syntax match  javaScriptDocTags       contained "@\(returns\|throws\)\>" nextgroup=javaScriptDocParamType skipwhite
+  syntax match  javaScriptDocTags       contained "@\(see\)\>" nextgroup=javaScriptDocRef skipwhite
+  syntax match  javaScriptDocNamedParamType      contained "{\w\+}" nextgroup=javaScriptDocParamName skipwhite
+  syntax match  javaScriptDocParamName      contained "\w+" nextgroup=javaScriptDocDesc skipwhite
+  syntax match  javaScriptDocParamType      contained "{\w\+}" nextgroup=javaScriptDocDesc skipwhite
+  syntax match  javaScriptDocA          contained "\%(#\|\w\|\.\|:\|\/\)\+" nextgroup=javaScriptDocAs skipwhite
+  syntax match  javaScriptDocAs         contained "\s*as\s*" nextgroup=javaScriptDocB skipwhite
+  syntax match  javaScriptDocB          contained "\%(#\|\w\|\.\|:\|\/\)\+"
   syntax match  javaScriptDocParam      contained "\%(#\|\w\|\.\|:\|\/\)\+"
-  syntax region javaScriptDocSeeTag     contained matchgroup=javaScriptDocSeeTag start="{" end="}" contains=javaScriptDocTags
+  syntax match  javaScriptDocRef        contained "\%(#\|\w\|\.\|:\|\/\)\+"
+  syntax region javaScriptDocLinkTag     contained matchgroup=javaScriptDocLinkTag start="{" end="}" contains=javaScriptDocTags
 
   syntax case match
 endif   "" JSDoc end
@@ -65,6 +86,32 @@ syntax match   javaScriptLabel          /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 
 "" JavaScript Prototype
 syntax keyword javaScriptPrototype      prototype
+
+""""""""""""""""""""""""
+"  JavaScript Support  "
+""""""""""""""""""""""""
+" (** Modified by Jose Elera)
+"
+syntax keyword javaScriptBrowserObjects      window navigator screen history location
+
+syntax keyword javaScriptDOMObjects      document event HTMLElement Anchor Area Base Body Button Form Frame Frameset Image Link Meta Option Select Style Table TableCell TableRow Textarea
+syntax keyword javaScriptDOMMethods   insertBefore replaceChild removeChild appendChild  hasChildNodes  cloneNode  normalize  isSupported  hasAttributes  getAttribute  setAttribute  removeAttribute  getAttributeNode  setAttributeNode  removeAttributeNode  getElementsByTagName  hasAttribute  getElementById
+syntax keyword javaScriptDOMProperties nodeName  nodeValue  nodeType  parentNode  childNodes  firstChild  lastChild  previousSibling  nextSibling  attributes  ownerDocument  namespaceURI  prefix  localName  tagName
+
+syntax keyword javaScriptAjaxObjects     XMLHttpRequest
+syntax keyword javaScriptAjaxProperties readyState responseText responseXML status statusText
+syntax keyword javaScriptAjaxMethods onreadystatechange abort getAllResponseHeaders getResponseHeader open send setRequestHeader
+
+syntax keyword javaScriptPropietaryObjects    ActiveXObject
+syntax keyword javaScriptPropietaryMethods    attachEvent
+
+syntax keyword javaScriptHtmlElemProperties className  clientHeight  clientLeft  clientTop  clientWidth  dir  href  id  innerHTML  lang  length  offsetHeight  offsetLeft  offsetParent  offsetTop  offsetWidth  scrollHeight  scrollLeft  scrollTop  scrollWidth  style  tabIndex  target  title 
+
+syntax keyword javaScriptEventListenerKeywords   blur  click  focus  scrollIntoView  addEventListener  dispatchEvent  removeEventListener  mouseover mouseout load item
+
+""""""""""""""""""
+"  end modified  "
+""""""""""""""""""
 
 "" Programm Keywords
 syntax keyword javaScriptSource         import export
@@ -97,7 +144,7 @@ syntax keyword javaScriptFutureKeys     abstract enum int short boolean export i
 
   " HTML events and internal variables
   syntax case ignore
-  syntax keyword javaScriptHtmlEvents     onblur onclick oncontextmenu ondblclick onfocus onkeydown onkeypress onkeyup onmousedown onmousemove onmouseout onmouseover onmouseup onresize
+  syntax keyword javaScriptHtmlEvents     onblur onclick oncontextmenu ondblclick onfocus onkeydown onkeypress onkeyup onmousedown onmousemove onmouseout onmouseover onmouseup onresize onload onsubmit
   syntax case match
 
 " Follow stuff should be highligh within a special context
@@ -135,7 +182,7 @@ endif "DOM/HTML/CSS
 
 
 "" Code blocks
-syntax cluster javaScriptAll       contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation
+syntax cluster javaScriptAll       contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation,javaScriptBrowserObjects,javaScriptDOMObjects,javaScriptAjaxObjects,javaScriptPropietaryObjects,javaScriptDOMMethods,javaScriptHtmlElemProperties,javaScriptDOMProperties,javaScriptEventListenerKeywords,javaScriptAjaxProperties,javaScriptAjaxMethods
 syntax region  javaScriptBracket   matchgroup=javaScriptBracket transparent start="\[" end="\]" contains=@javaScriptAll,javaScriptParensErrB,javaScriptParensErrC,javaScriptBracket,javaScriptParen,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptParen     matchgroup=javaScriptParen   transparent start="("  end=")"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrC,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptBlock     matchgroup=javaScriptBlock   transparent start="{"  end="}"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc 
@@ -185,12 +232,18 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   endif
   HiLink javaScriptComment              Comment
   HiLink javaScriptLineComment          Comment
-  HiLink javaScriptDocComment           Comment
+  HiLink javaScriptDocComment           Character
   HiLink javaScriptCommentTodo          Todo
   HiLink javaScriptCvsTag               Function
   HiLink javaScriptDocTags              Special
-  HiLink javaScriptDocSeeTag            Function
+  HiLink javaScriptDocLinkTag           Function
   HiLink javaScriptDocParam             Function
+  HiLink javaScriptDocParamType         Type
+  HiLink javaScriptDocNamedParamType    Type
+  HiLink javaScriptDocRef               Function
+  HiLink javaScriptDocA                 Function
+  HiLink javaScriptDocB                 Function
+  HiLink javaScriptDesc                 Label
   HiLink javaScriptStringS              String
   HiLink javaScriptStringD              String
   HiLink javaScriptRegexpString         String

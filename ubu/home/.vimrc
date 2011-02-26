@@ -33,11 +33,13 @@
 " http://github.com/tpope/vim-surround
 " align
 " http://www.vim.org/scripts/script.php?script_id=294
+" html5.vim
+" https://github.com/othree/html5.vim
 " xml/html
 " http://www.vim.org/scripts/script.php?script_id=1397
 " http://github.com/othree/xml.vim
 " eregex.vim
-" http://www.vector.co.jp/soft/unix/writing/se265654.html
+" https://github.com/othree/eregex.vim
 " tir_black
 " http://www.vim.org/scripts/script.php?script_id=2777
 " lesscss syntax
@@ -57,7 +59,7 @@
 "
 " JavaScript
 " JavaScript syntax
-" http://www.vim.org/scripts/script.php?script_id=1491
+" https://github.com/othree/javascript-syntax.vim
 " Simple Javascript Indenter
 " http://www.vim.org/scripts/script.php?script_id=3227
 " http://github.com/JiangMiao/simple-javascript-indenter
@@ -83,6 +85,11 @@
 " https://github.com/c9s/perl-conceal.vim
 " js-mask
 " http://www.vim.org/scripts/script.php?script_id=3324
+"
+" fecompressor
+" https://github.com/othree/fecompressor.vim
+" gundo.vim
+" http://sjl.bitbucket.org/gundo.vim/
 " }}}
 
 " Basic Settings: {{{
@@ -179,6 +186,7 @@ nnoremap <F3>  :set nopaste!<CR>
 nnoremap <F4>  :set spell!<CR>
 nnoremap <F5>  :tab ball<CR>
 nnoremap <F6>  :set wrap!<CR>
+nnoremap <F8>  :GundoToggle<CR>
 nnoremap <F11> :QFix<CR>
 " F12 > JSLint
 
