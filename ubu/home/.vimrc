@@ -56,6 +56,8 @@
 " http://www.vim.org/scripts/script.php?script_id=1654
 " less syntax
 " http://leafo.net/lessphp/vim/less.vim
+" Better CSS syntax
+" https://github.com/ChrisYip/Better-CSS-Syntax-for-vim
 "
 " JavaScript
 " JavaScript syntax
