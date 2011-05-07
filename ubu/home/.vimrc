@@ -58,6 +58,8 @@
 " http://leafo.net/lessphp/vim/less.vim
 " Better CSS syntax
 " https://github.com/ChrisYip/Better-CSS-Syntax-for-vim
+" css3 syntax for vim
+" http://www.vim.org/scripts/script.php?script_id=3042
 "
 " JavaScript
 " JavaScript syntax
@@ -134,6 +136,7 @@ set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\
 "set statusline=%t%(\ [%n%M]%)%(\ %H%R%W%)\ %(%c-%v,\ %l\ of\ %L,\ (%o)\ %P\ 0x%B\ (%b)%)
 
 " Special File Types
+au BufRead,BufNewFile *.scss set filetype=scss
 au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 au BufRead,BufNewFile *.tpl set ft=html
