@@ -1,7 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/othree/.vim'
-let g:netrw_dirhist_2='/Users/othree/.vim/plugin'
-let g:netrw_dirhist_3='/Users/othree'
-let g:netrw_dirhist_4='/Users/othree/projects/cs-front-app/config'
-let g:netrw_dirhist_5='/private/etc/apache2/passenger_pane_vhosts'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Resources/zh_TW.lproj'
+let g:netrw_dirhist_2='/Users/othree/.ssh'

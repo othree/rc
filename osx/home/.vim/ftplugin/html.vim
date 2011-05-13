@@ -1439,7 +1439,8 @@ else
     execute "inoremap <silent> <buffer> " . g:xml_tag_completion_map . " ><Esc>:call <SID>CloseTagFun()<Cr>"
 endif
 
-
+" Undo the stuff we changed.
+let b:undo_ftplugin = ""
 
 finish
 
@@ -1851,4 +1852,5 @@ The following is a sample html.vim file type plugin you could use:
 " vim:tw=78:ts=2:ft=help:norl:
 " vim: set foldmethod=marker  tabstop=2 shiftwidth=2 softtabstop=2 smartindent smarttab  :
 "fileencoding=utf-8
+
 

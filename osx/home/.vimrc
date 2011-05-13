@@ -73,6 +73,8 @@
 " https://github.com/hotoo/markdown.vim
 " git
 " https://github.com/hotoo/git.vim
+" gundo.vim
+" http://sjl.bitbucket.org/gundo.vim/
 " }}}
 
 " Basic Settings: {{{
