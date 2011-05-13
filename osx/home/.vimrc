@@ -110,6 +110,7 @@ set nobomb
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,euc-jp,big5
 set ambiwidth=double
+set t_Co=256
 
 " Status Line
 set laststatus=2
