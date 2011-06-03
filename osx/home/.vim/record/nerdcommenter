@@ -1,1 +1,0 @@
-{'version': 0.3, 'files': [{'file': '/Users/othree/.vim/doc/NERD_commenter.txt', 'checksum': '266436aaa7c8bd9382255ef947b96952'}, {'file': '/Users/othree/.vim/plugin/NERD_commenter.vim', 'checksum': '4e4e1beb0c992ff3434727794f16a763'}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'nerdcommenter', 'generated_by': 'Vim-Makefile'}

@@ -1,1 +1,0 @@
-{'version': 0.3, 'files': [{'file': '/Users/othree/.vim/doc/git.txt', 'checksum': '9a66976e54475bccbbbbb330c5c7e7ea'}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'git.vim', 'generated_by': 'Vim-Makefile'}
