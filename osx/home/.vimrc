@@ -1,81 +1,46 @@
 " .vimrc by othree ( othree AT gmail DOT com )
-" 
-" Used Plugins: {{{
-" JavaScript syntax
-" http://www.vim.org/scripts/script.php?script_id=1491
-" Simple Javascript Indenter
-" http://www.vim.org/scripts/script.php?script_id=3227
-" http://github.com/JiangMiao/simple-javascript-indenter
-" json
-" http://www.vim.org/scripts/script.php?script_id=1945
-" jslint.vim
-" http://www.vim.org/scripts/script.php?script_id=2729
-" http://github.com/hallettj/jslint.vim
-" zencoding
-" http://www.vim.org/scripts/script.php?script_id=2981
-" http://github.com/mattn/zencoding-vim/
-" yankring
-" http://www.vim.org/scripts/script.php?script_id=1234
-" Vimball
-" http://www.vim.org/scripts/script.php?script_id=1502
-" VisIncr
-" http://www.vim.org/scripts/script.php?script_id=670
-" autocomplpop
-" http://www.vim.org/scripts/script.php?script_id=1879
-" https://bitbucket.org/ns9tks/vim-autocomplpop
-" fuzzyfinder
-" http://www.vim.org/scripts/script.php?script_id=1984
-" https://bitbucket.org/ns9tks/vim-fuzzyfinder
-" vim-l9
-" http://www.vim.org/scripts/script.php?script_id=3252
-" https://bitbucket.org/ns9tks/vim-l9
-" snipMate
-" http://www.vim.org/scripts/script.php?script_id=2540
-" http://github.com/msanders/snipmate.vim
-" NERD_commenter
-" http://www.vim.org/scripts/script.php?script_id=1218
-" http://github.com/scrooloose/nerdcommenter
-" NERD_Tree
-" http://www.vim.org/scripts/script.php?script_id=1658
-" http://github.com/scrooloose/nerdtree
-" vim-surround
-" http://www.vim.org/scripts/script.php?script_id=1697
-" http://github.com/tpope/vim-surround
-" align
-" http://www.vim.org/scripts/script.php?script_id=294
-" xml/html
-" http://www.vim.org/scripts/script.php?script_id=1397
-" http://github.com/othree/xml.vim
-" eregex.vim
-" http://www.vector.co.jp/soft/unix/writing/se265654.html
-" tir_black
-" http://www.vim.org/scripts/script.php?script_id=2777
-" lesscss syntax
-" http://ernstdehaan.blogspot.com/2009/08/vim-syntax-highlighting-for-lesscss.html
-" jQuery : Syntax file for jQuery
-" http://www.vim.org/scripts/script.php?script_id=2416
-" snipmate snippets fork by othree
-" http://github.com/othree/snipmate-snippets
-" Vim plugin for developing vim script
-" http://github.com/c9s/vim-dev-plugin
-" mru.vim : Plugin to manage Most Recently Used (MRU) files 
-" http://www.vim.org/scripts/script.php?script_id=521
-" speeddating.vim
-" http://www.vim.org/scripts/script.php?script_id=2120
-" git.zip
-" http://www.vim.org/scripts/script.php?script_id=1654
-" less syntax
-" http://leafo.net/lessphp/vim/less.vim
-" css3 syntax
-" https://github.com/hail2u/vim-css3-syntax
-" extend docs
-" markdown
-" https://github.com/hotoo/markdown.vim
-" git
-" https://github.com/hotoo/git.vim
-" gundo.vim
-" http://sjl.bitbucket.org/gundo.vim/
-" }}}
+
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'tir_black'
+
+Bundle 'mattn/zencoding-vim'
+
+Bundle 'YankRing.vim'
+Bundle 'VisIncr'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-surround'
+Bundle 'Align'
+Bundle 'othree/eregex.vim'
+Bundle 'mru.vim'
+Bundle 'sjl/gundo.vim'
+
+Bundle 'AutoComplPop'
+Bundle 'othree/snipmate.vim'
+Bundle 'othree/snipmate-snippets'
+
+Bundle 'othree/html5.vim'
+Bundle 'othree/xml.vim'
+
+Bundle 'JavaScript-syntax'
+Bundle 'JiangMiao/simple-javascript-indenter'
+Bundle 'JSON.vim'
+Bundle 'othree/jslint.vim'
+Bundle 'jQuery'
+
+Bundle 'hail2u/vim-css3-syntax'
+
+Bundle 'plasticboy/vim-markdown'
+
+filetype plugin indent on 
 
 " Basic Settings: {{{
 syntax on
