@@ -1,5 +1,8 @@
 " .vimrc by othree ( othree AT gmail DOT com )
 
+" Vundle
+" git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
 set nocompatible               " be iMproved
 filetype off                   " required!
 
