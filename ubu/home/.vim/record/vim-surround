@@ -1,1 +1,0 @@
-{'version': 0.3, 'files': [{'file': '/home/othree/.vim/doc/surround.txt', 'checksum': ''}, {'file': '/home/othree/.vim/plugin/surround.vim', 'checksum': ''}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'vim-surround', 'generated_by': 'Vim-Makefile'}

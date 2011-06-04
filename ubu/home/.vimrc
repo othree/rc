@@ -1,100 +1,49 @@
 " .vimrc by othree ( othree AT gmail DOT com )
-" 
-" Used Plugins: {{{
-" zencoding
-" http://www.vim.org/scripts/script.php?script_id=2981
-" http://github.com/mattn/zencoding-vim/
-" yankring
-" http://www.vim.org/scripts/script.php?script_id=1234
-" Vimball
-" http://www.vim.org/scripts/script.php?script_id=1502
-" VisIncr
-" http://www.vim.org/scripts/script.php?script_id=670
-" autocomplpop
-" http://www.vim.org/scripts/script.php?script_id=1879
-" https://bitbucket.org/ns9tks/vim-autocomplpop
-" fuzzyfinder
-" http://www.vim.org/scripts/script.php?script_id=1984
-" https://bitbucket.org/ns9tks/vim-fuzzyfinder
-" vim-l9
-" http://www.vim.org/scripts/script.php?script_id=3252
-" https://bitbucket.org/ns9tks/vim-l9
-" snipMate
-" http://www.vim.org/scripts/script.php?script_id=2540
-" http://github.com/msanders/snipmate.vim
-" NERD_commenter
-" http://www.vim.org/scripts/script.php?script_id=1218
-" http://github.com/scrooloose/nerdcommenter
-" NERD_Tree
-" http://www.vim.org/scripts/script.php?script_id=1658
-" http://github.com/scrooloose/nerdtree
-" vim-surround
-" http://www.vim.org/scripts/script.php?script_id=1697
-" http://github.com/tpope/vim-surround
-" align
-" http://www.vim.org/scripts/script.php?script_id=294
-" html5.vim
-" https://github.com/othree/html5.vim
-" xml/html
-" http://www.vim.org/scripts/script.php?script_id=1397
-" http://github.com/othree/xml.vim
-" eregex.vim
-" https://github.com/othree/eregex.vim
-" tir_black
-" http://www.vim.org/scripts/script.php?script_id=2777
-" lesscss syntax
-" http://ernstdehaan.blogspot.com/2009/08/vim-syntax-highlighting-for-lesscss.html
-" snipmate snippets fork by othree
-" http://github.com/othree/snipmate-snippets
-" Vim plugin for developing vim script
-" http://github.com/c9s/vim-dev-plugin
-" mru.vim : Plugin to manage Most Recently Used (MRU) files 
-" http://www.vim.org/scripts/script.php?script_id=521
-" speeddating.vim
-" http://www.vim.org/scripts/script.php?script_id=2120
-" git.zip
-" http://www.vim.org/scripts/script.php?script_id=1654
-" less syntax
-" http://leafo.net/lessphp/vim/less.vim
-" Better CSS syntax
-" https://github.com/ChrisYip/Better-CSS-Syntax-for-vim
-" css3 syntax for vim
-" http://www.vim.org/scripts/script.php?script_id=3042
-"
-" JavaScript
-" JavaScript syntax
-" https://github.com/othree/javascript-syntax.vim
-" Simple Javascript Indenter
-" http://www.vim.org/scripts/script.php?script_id=3227
-" http://github.com/JiangMiao/simple-javascript-indenter
-" json
-" http://www.vim.org/scripts/script.php?script_id=1945
-" jslint.vim
-" http://www.vim.org/scripts/script.php?script_id=2729
-" http://github.com/hallettj/jslint.vim
-" jQuery : Syntax file for jQuery
-" http://www.vim.org/scripts/script.php?script_id=2416
-"
-" python
-" pythoncomplete
-" http://www.vim.org/scripts/script.php?script_id=1542
-" python syntax
-" http://www.vim.org/scripts/script.php?script_id=790
-" python indent
-" http://www.vim.org/scripts/script.php?script_id=974
-" conceal
-" vim-cute-python
-" https://github.com/ehamberg/vim-cute-python
-" perl-conceal.vim
-" https://github.com/c9s/perl-conceal.vim
-" js-mask
-" http://www.vim.org/scripts/script.php?script_id=3324
-"
-" fecompressor
-" https://github.com/othree/fecompressor.vim
-" gundo.vim
-" http://sjl.bitbucket.org/gundo.vim/
-" }}}
+
+" Vundle
+" git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'tir_black'
+
+Bundle 'mattn/zencoding-vim'
+
+Bundle 'YankRing.vim'
+Bundle 'VisIncr'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-surround'
+Bundle 'Align'
+Bundle 'othree/eregex.vim'
+Bundle 'mru.vim'
+Bundle 'sjl/gundo.vim'
+
+Bundle 'AutoComplPop'
+Bundle 'othree/snipmate.vim'
+Bundle 'othree/snipmate-snippets'
+
+Bundle 'othree/html5.vim'
+Bundle 'othree/xml.vim'
+
+Bundle 'JavaScript-syntax'
+Bundle 'JiangMiao/simple-javascript-indenter'
+Bundle 'JSON.vim'
+Bundle 'othree/jslint.vim'
+Bundle 'jQuery'
+
+Bundle 'hail2u/vim-css3-syntax'
+
+Bundle 'plasticboy/vim-markdown'
+
+filetype plugin indent on 
 
 " Basic Settings: {{{
 syntax on
@@ -129,14 +78,13 @@ set nobomb
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,euc-jp,big5
 set ambiwidth=double
+set t_Co=256
 
 " Status Line
 set laststatus=2
 set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
-"set statusline=%t%(\ [%n%M]%)%(\ %H%R%W%)\ %(%c-%v,\ %l\ of\ %L,\ (%o)\ %P\ 0x%B\ (%b)%)
 
 " Special File Types
-au BufRead,BufNewFile *.scss set filetype=scss
 au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 au BufRead,BufNewFile *.tpl set ft=html
@@ -191,8 +139,8 @@ nnoremap <F3>  :set nopaste!<CR>
 nnoremap <F4>  :set spell!<CR>
 nnoremap <F5>  :tab ball<CR>
 nnoremap <F6>  :set wrap!<CR>
+nnoremap <F7>  :QFix<CR>
 nnoremap <F8>  :GundoToggle<CR>
-nnoremap <F11> :QFix<CR>
 " F12 > JSLint
 
 "" tab to indent
@@ -267,6 +215,7 @@ let NERDMapleader='<Leader>c'
 let g:html_indent_inctags = "html,body,head,tbody,a"
 let g:event_handler_attributes_complete = 0
 let g:microdata_attributes_complete = 0
+let g:SimpleJsIndenter_BriefMode = 1
 " }}}
 
 " Zencoding: {{{
@@ -305,67 +254,67 @@ let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorKeywordCommand = "\<C-n>"
 
 """ javascript behavior for acp
-"function AcpMeetsForJavaScript(context)
-    "let matches = matchlist(a:context, '\(\k\{1}\)$')
-    "if empty(matches)
-        "return 0
-    "endif
-    "return 1
-"endfunction
+function AcpMeetsForJavaScript(context)
+    let matches = matchlist(a:context, '\(\k\{1}\)$')
+    if empty(matches)
+        return 0
+    endif
+    return 1
+endfunction
 
-""" html behavior for html
-"function AcpMeetsForHtmlOmni(context)
-    "if g:acp_behaviorHtmlOmniLength >= 0
-        "if a:context =~ '\(<\|<\/\|<[^>]\+ \|<[^>]\+=\"\)\k\{' .g:acp_behaviorHtmlOmniLength . ',}$'
-            "return 1
-        "elseif a:context =~ '\(\<\k\{1,}\(=\"\)\{0,1}\|\" \)$'
-            "let cur = line('.')-1
-            "while cur > 0
-                "let lstr = getline(cur)
-                "if lstr =~ '>[^>]*$'
-                    "return 0
-                "elseif lstr =~ '<[^<]*$'
-                    "return 1
-                "endif
-                "let cur = cur-1
-            "endwhile
-            "return 0
-        "endif
-    "else
-        "return 0
-    "endif
-"endfunction
+"" html behavior for html
+function AcpMeetsForHtmlOmni(context)
+    if g:acp_behaviorHtmlOmniLength >= 0
+        if a:context =~ '\(<\|<\/\|<[^>]\+ \|<[^>]\+=\"\)\k\{' .g:acp_behaviorHtmlOmniLength . ',}$'
+            return 1
+        elseif a:context =~ '\(\<\k\{1,}\(=\"\)\{0,1}\|\" \)$'
+            let cur = line('.')-1
+            while cur > 0
+                let lstr = getline(cur)
+                if lstr =~ '>[^>]*$'
+                    return 0
+                elseif lstr =~ '<[^<]*$'
+                    return 1
+                endif
+                let cur = cur-1
+            endwhile
+            return 0
+        endif
+    else
+        return 0
+    endif
+endfunction
 
-"let behavs = { 'javascript': [], 'html': [] }
-    "call add(behavs.javascript, {
-        "\   'command'      : "\<C-x>\<C-u>",
-        "\   'completefunc' : 'acp#completeSnipmate',
-        "\   'meets'        : 'acp#meetsForSnipmate',
-        "\   'onPopupClose' : 'acp#onPopupCloseSnipmate',
-        "\   'repeat'       : 0,
-    "\})
-    "call add(behavs.javascript, {
-        "\   'command' : g:acp_behaviorKeywordCommand,
-        "\   'meets'   : 'acp#meetsForKeyword',
-        "\   'repeat'  : 0,
-        "\ })
-    "call add(behavs.javascript, {
-        "\   'command' : "\<C-x>\<C-o>",
-        "\   'meets'   : 'AcpMeetsForJavaScript',
-        "\   'repeat'  : 0,
-    "\})
-    "call add(behavs.html, {
-        "\   'command' : "\<C-x>\<C-o>",
-        "\   'meets'   : 'AcpMeetsForHtmlOmni',
-        "\   'repeat'  : 1,
-    "\})
+let behavs = { 'javascript': [], 'html': [] }
+    call add(behavs.javascript, {
+        \   'command'      : "\<C-x>\<C-u>",
+        \   'completefunc' : 'acp#completeSnipmate',
+        \   'meets'        : 'acp#meetsForSnipmate',
+        \   'onPopupClose' : 'acp#onPopupCloseSnipmate',
+        \   'repeat'       : 0,
+    \})
+    call add(behavs.javascript, {
+        \   'command' : g:acp_behaviorKeywordCommand,
+        \   'meets'   : 'acp#meetsForKeyword',
+        \   'repeat'  : 0,
+        \ })
+    call add(behavs.javascript, {
+        \   'command' : "\<C-x>\<C-o>",
+        \   'meets'   : 'AcpMeetsForJavaScript',
+        \   'repeat'  : 0,
+    \})
+    call add(behavs.html, {
+        \   'command' : "\<C-x>\<C-o>",
+        \   'meets'   : 'AcpMeetsForHtmlOmni',
+        \   'repeat'  : 1,
+    \})
 
-"let g:acp_behavior = {}
-"call extend(g:acp_behavior, behavs, 'keep')
+let g:acp_behavior = {}
+call extend(g:acp_behavior, behavs, 'keep')
 " }}}
 
 " NERDCommenter: {{{
-"let NERDSpaceDelims = 1
+let NERDSpaceDelims = 1
 " }}}
 
 " Popup Highlight: {{{
@@ -467,13 +416,6 @@ if exists(":M")
     nnoremap ? :M?
     nnoremap ,/ /
 endif
-
-"" JSLint
-if exists(":JSLint")
-    autocmd FileWritePost,BufWritePost *.js :JSLint
-    "map <F12> :JSLint<CR>
-endif
-
 
 if exists(":NERDTreeToggle")
     map <F12> :NERDTreeToggle<CR>

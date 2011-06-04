@@ -1,1 +1,0 @@
-/home/othree/apps/vim-plugins/html5.vim/autoload/xml/html5.vim

@@ -1,1 +1,0 @@
-{'version': 0.3, 'files': [{'file': '/home/othree/.vim/indent/javascript.vim', 'checksum': ''}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'simple-javascript-indenter', 'generated_by': 'Vim-Makefile'}
