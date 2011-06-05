@@ -43,6 +43,8 @@ Bundle 'hail2u/vim-css3-syntax'
 
 Bundle 'plasticboy/vim-markdown'
 
+Bundle 'othree/fecompressor.vim'
+
 filetype plugin indent on 
 
 " Basic Settings: {{{
