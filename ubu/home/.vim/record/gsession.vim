@@ -1,1 +1,0 @@
-{'version': 0.3, 'files': [{'file': '/home/othree/.vim/plugin/gsession.vim', 'checksum': ''}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'gsession.vim', 'generated_by': 'Vim-Makefile'}

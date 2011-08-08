@@ -1,2 +1,0 @@
-related work: statically check function arguments:
-http://vimargumentchec.hg.sourceforge.net:8000/hgroot/vimargumentchec/vimargumentchec

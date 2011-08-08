@@ -1,1 +1,0 @@
-{'version': 0.3, 'files': [{'file': '/home/othree/.vim/autoload/rails.vim', 'checksum': ''}, {'file': '/home/othree/.vim/doc/rails.txt', 'checksum': ''}, {'file': '/home/othree/.vim/plugin/rails.vim', 'checksum': ''}], 'install_type': 'makefile', 'script_version': '0.1', 'package': 'vim-rails', 'generated_by': 'Vim-Makefile'}
