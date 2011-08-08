@@ -27,21 +27,28 @@ Bundle 'mru.vim'
 Bundle 'sjl/gundo.vim'
 
 Bundle 'AutoComplPop'
-Bundle 'othree/snipmate.vim'
-Bundle 'othree/snipmate-snippets'
+
+Bundle "MarcWeber/vim-addon-mw-utils.git"
+Bundle "tomtom/tlib_vim.git"
+Bundle "honza/snipmate-snippets.git"
+Bundle "garbas/vim-snipmate.git"
 
 Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
 
-Bundle 'JavaScript-syntax'
+Bundle 'othree/javascript-syntax.vim'
 Bundle 'JiangMiao/simple-javascript-indenter'
 Bundle 'JSON.vim'
 Bundle 'othree/jslint.vim'
 Bundle 'jQuery'
 
+Bundle 'nginx.vim'
+
 Bundle 'hail2u/vim-css3-syntax'
 
 Bundle 'plasticboy/vim-markdown'
+
+Bundle 'Lokaltog/vim-easymotion'
 
 filetype plugin indent on 
 
@@ -91,6 +98,8 @@ au BufRead,BufNewFile *.tpl set ft=html
 au BufRead,BufNewFile *.xsl set ft=html
 au BufRead,BufNewFile *.json set syntax=json 
 au BufRead,BufNewFile *.n3  set ft=n3
+au BufRead,BufNewFile /usr/local/etc/nginx/* set ft=nginx 
+au BufRead,BufNewFile /etc/nginx/* set ft=nginx 
 
 " highlight line & column
 au WinLeave * set nocursorline

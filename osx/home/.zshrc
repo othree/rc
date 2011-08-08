@@ -1,5 +1,5 @@
 #
-#export PATH=$HOME/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
 #export PATH=/usr/local/share/npm/bin:$PATH
 #export PATH=/opt/ruby-enterprise-1.8.7-2010.02/bin:$PATH
 
@@ -45,7 +45,7 @@ export RPROMPT="$(print '[%(?.%{\e[1;37m%}%T%{\e[0m%}. %{\e[38;5;203m%}%?%{\e[0m
 #export RPROMPT="$(print '[ %{\e[1;37m%}%(?.%T.%?)%{\e[0m%} ]')"
 #export RPROMPT=$'%(?..[ %B%?%b ])'
 
-export LC_ALL=zh_TW.UTF-8
+export LC_ALL=en_US.UTF-8
 export LANG=$LC_ALL
 export EDITOR="vim"
 export GREP_OPTIONS='--color=auto'
