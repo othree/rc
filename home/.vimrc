@@ -27,11 +27,13 @@ Bundle 'mru.vim'
 Bundle 'sjl/gundo.vim'
 
 Bundle 'AutoComplPop'
+" Bundle 'ervandew/supertab'
 
-Bundle "MarcWeber/vim-addon-mw-utils.git"
-Bundle "tomtom/tlib_vim.git"
-Bundle "honza/snipmate-snippets.git"
-Bundle "garbas/vim-snipmate.git"
+Bundle 'MarcWeber/vim-addon-mw-utils.git'
+Bundle 'tomtom/tlib_vim.git'
+Bundle 'honza/snipmate-snippets.git'
+" Bundle 'garbas/vim-snipmate.git'
+Bundle 'othree/vim-snipmate'
 
 Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
@@ -175,11 +177,11 @@ inoremap <C-End> <Esc>G<End>i
 "inoremap <Up>   <C-O>gk
 
 "" Fix up/down in popup
-inoremap <silent><expr><Up> pumvisible() ? "<Up>" : "<C-O>gk"
-inoremap <silent><expr><Down> pumvisible() ? "<Down>" : "<C-O>gj"
-inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" inoremap <silent><expr><Up> pumvisible() ? "<Up>" : "<C-O>gk"
+" inoremap <silent><expr><Down> pumvisible() ? "<Down>" : "<C-O>gj"
+" inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
+" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "" tab control
 "" http://c9s.blogspot.com/2007/08/vim-my-key-mapping-for-tabs.html
@@ -261,7 +263,7 @@ autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
 let g:acp_enableAtStartup = 1
 "let g:acp_mappingDriven = 1
 let g:acp_completeOption = '.,w,b,u,t,i,k'
-let g:acp_behaviorSnipmateLength = 1
+" let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorKeywordCommand = "\<C-n>"
 
 """ javascript behavior for acp
