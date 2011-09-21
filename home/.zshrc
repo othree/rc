@@ -239,3 +239,7 @@ preexec_functions+=autojump_preexec
 alias jumpstat="autojump --stat"
 
 function j { local new_path="$(autojump $@)";if [ -n "$new_path" ]; then echo -e "\\033[31m${new_path}\\033[0m"; cd "$new_path";fi }
+
+
+alias updatedemo-sb="ssh aps_user@50.18.186.203 'cd ~/workspace/scene-builder;git pull'"
+alias updatedemo-common="ssh aps_user@50.18.186.203 'cd ~/workspace/scene-builder;git pull'"

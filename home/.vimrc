@@ -32,8 +32,8 @@ Bundle 'AutoComplPop'
 Bundle 'MarcWeber/vim-addon-mw-utils.git'
 Bundle 'tomtom/tlib_vim.git'
 Bundle 'honza/snipmate-snippets.git'
-" Bundle 'garbas/vim-snipmate.git'
-Bundle 'othree/vim-snipmate'
+Bundle 'garbas/vim-snipmate.git'
+" Bundle 'othree/vim-snipmate'
 
 Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
@@ -158,9 +158,9 @@ nnoremap <F8>  :GundoToggle<CR>
 
 "" tab to indent
 nmap <tab> V>
-xmap <tab> >gv
+vmap <tab> >gv
 nmap <s-tab> V<
-xmap <s-tab> <gv
+vmap <s-tab> <gv
 
 "" HOME END
 nnoremap <C-Home> gg
@@ -447,6 +447,10 @@ if exists(":SpeedDatingFormat")
     SpeedDatingFormat %m/%d
     SpeedDatingFormat %Y/%m/%d%[ T_-]%H:%M:%S%?[Z]
 endif
+
+" Fix for vim-snipmate
+nmap <tab> V>
+vmap <tab> >gv
 
 endfunction
 autocmd VimEnter * :call AfterStart()
