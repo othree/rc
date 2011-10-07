@@ -222,6 +222,8 @@ inoremap <Esc>OR *
 inoremap <Esc>Ol +
 inoremap <Esc>OS -
 
+nnoremap <Esc><Esc> :nohlsearch<CR>
+
 let NERDMapleader='<Leader>c'
 "}}}
 
