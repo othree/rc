@@ -25,6 +25,7 @@ Bundle 'Align'
 Bundle 'othree/eregex.vim'
 Bundle 'mru.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'tpope/vim-abolish'
 
 Bundle 'AutoComplPop'
 " Bundle 'ervandew/supertab'
@@ -39,7 +40,7 @@ Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
 
 Bundle 'othree/javascript-syntax.vim'
-Bundle 'JiangMiao/simple-javascript-indenter'
+Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'JSON.vim'
 Bundle 'othree/jslint.vim'
 Bundle 'jQuery'
@@ -335,6 +336,10 @@ highlight PMenu      cterm=bold ctermbg=Blue ctermfg=Gray
 highlight PMenuSel   cterm=bold ctermbg=Red ctermfg=White
 highlight PMenuSbar  cterm=bold ctermbg=darkgray
 highlight PMenuThumb cterm=bold ctermbg=White
+" }}}
+
+" SpeelBad Highlight: {{{
+highlight SpellBad   ctermbg=124
 " }}}
 
 " HTML: {{{
