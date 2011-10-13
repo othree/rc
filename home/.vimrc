@@ -20,12 +20,10 @@ Bundle 'YankRing.vim'
 Bundle 'VisIncr'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-surround'
 Bundle 'Align'
 Bundle 'othree/eregex.vim'
 Bundle 'mru.vim'
 Bundle 'sjl/gundo.vim'
-Bundle 'tpope/vim-abolish'
 
 Bundle 'AutoComplPop'
 " Bundle 'ervandew/supertab'
@@ -54,6 +52,11 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'othree/fecompressor.vim'
+
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-abolish'
 
 filetype plugin indent on 
 
@@ -85,6 +88,8 @@ set foldmethod=marker
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 set hidden
 set nobomb
+
+let mapleader = ","
 
 " Encoding
 set encoding=utf-8
@@ -143,7 +148,6 @@ nnoremap <leader>q :QFix<CR>
 
 " Key Mapping: {{{
 
-let mapleader = ","
 " http://vim.wikia.com/wiki/Map_semicolon_to_colon
 map ; :
 
