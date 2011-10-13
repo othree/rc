@@ -44,7 +44,7 @@ export RPROMPT="$(print '[%(?.%{\e[1;37m%}%T%{\e[0m%}. %{\e[38;5;203m%}%?%{\e[0m
 #export RPROMPT="$(print '[ %{\e[1;37m%}%(?.%T.%?)%{\e[0m%} ]')"
 #export RPROMPT=$'%(?..[ %B%?%b ])'
 
-export LC_ALL=en_US.UTF-8
+export LC_ALL=zh_TW.UTF-8
 export LANG=$LC_ALL
 export EDITOR="vim"
 export GREP_OPTIONS='--color=auto'
