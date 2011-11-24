@@ -103,7 +103,7 @@ set t_Co=256
 
 " Status Line
 set laststatus=2
-set statusline=%f\ %y%r\ %{g:HahHah()}%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
+set statusline=%f\ %y%r%1*%m%*\ %{g:HahHah()}%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
 " set statusline=%=%{g:HahHah()}
 
 " Special File Types
