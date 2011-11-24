@@ -13,6 +13,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'tir_black'
+Bundle 'jellybeans.vim'
 
 Bundle 'mattn/zencoding-vim'
 
@@ -58,6 +59,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-abolish'
 
+Bundle 'mattn/hahhah-vim'
+
 filetype plugin indent on 
 
 " Basic Settings: {{{
@@ -65,7 +68,8 @@ syntax on
 filetype on
 filetype plugin on
 filetype indent on
-colors tir_black
+" colors tir_black
+colors jellybeans
 language message zh_TW.UTF-8
 
 set nocompatible
@@ -99,7 +103,8 @@ set t_Co=256
 
 " Status Line
 set laststatus=2
-set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
+set statusline=%f\ %y%r\ %{g:HahHah()}%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
+" set statusline=%=%{g:HahHah()}
 
 " Special File Types
 au BufRead,BufNewFile *.less set ft=less

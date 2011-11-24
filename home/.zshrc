@@ -243,3 +243,10 @@ function j { local new_path="$(autojump $@)";if [ -n "$new_path" ]; then echo -e
 
 alias updatedemo-sb="ssh aps_user@50.18.186.203 'cd ~/workspace/scene-builder;git pull'"
 alias updatedemo-common="ssh aps_user@50.18.186.203 'cd ~/workspace/scene-builder;git pull'"
+
+function check_compression {
+    local unzipped=`curl "$1" --silent --write-out "%{size_download}"  --output /dev/null`
+    local zipped=`curl -H "Accept-Encoding: gzip,deflate" "$1" --silent --write-out "%{size_download}" --output /dev/null`
+    echo "unzipped size: $unzipped, zipped size: $zipped"
+}
+
