@@ -14,6 +14,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'tir_black'
 Bundle 'jellybeans.vim'
+Bundle 'altercation/vim-colors-solarized'
 
 Bundle 'mattn/zencoding-vim'
 
@@ -48,6 +49,8 @@ Bundle 'nginx.vim'
 
 Bundle 'hail2u/vim-css3-syntax'
 
+Bundle 'nono/vim-handlebars'
+
 Bundle 'plasticboy/vim-markdown'
 
 Bundle 'Lokaltog/vim-easymotion'
@@ -59,7 +62,10 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-abolish'
 
+Bundle 'kchmck/vim-coffee-script'
+
 Bundle 'mattn/hahhah-vim'
+Bundle 'tyru/banban.vim'
 
 filetype plugin indent on 
 
@@ -69,7 +75,11 @@ filetype on
 filetype plugin on
 filetype indent on
 " colors tir_black
-colors jellybeans
+" colors jellybeans
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+set background=dark
+colorscheme solarized
 language message zh_TW.UTF-8
 
 set nocompatible
@@ -122,8 +132,8 @@ au WinEnter * set cursorline
 set cursorline
 
 " Color Tweak for highlight
-highlight CursorLine    ctermbg=89
-highlight Comment       ctermfg=246
+" highlight CursorLine    ctermbg=89
+" highlight Comment       ctermfg=246
 
 " }}}
 
@@ -269,6 +279,8 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
 "autocmd FileType cpp set omnifunc=ccomplete#Complete
 autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
 
+autocmd FileType coffee set ts=2 sw=2 sts=2
+
 "" acp options
 let g:acp_enableAtStartup = 1
 "let g:acp_mappingDriven = 1
@@ -341,10 +353,10 @@ let NERDSpaceDelims = 1
 " }}}
 
 " Popup Highlight: {{{
-highlight PMenu      cterm=bold ctermbg=Blue ctermfg=Gray
-highlight PMenuSel   cterm=bold ctermbg=Red ctermfg=White
-highlight PMenuSbar  cterm=bold ctermbg=darkgray
-highlight PMenuThumb cterm=bold ctermbg=White
+" highlight PMenu      cterm=bold ctermbg=Blue ctermfg=Gray
+" highlight PMenuSel   cterm=bold ctermbg=Red ctermfg=White
+" highlight PMenuSbar  cterm=bold ctermbg=darkgray
+" highlight PMenuThumb cterm=bold ctermbg=White
 " }}}
 
 " SpeelBad Highlight: {{{

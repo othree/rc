@@ -1,6 +1,6 @@
 #
-export PATH=$HOME/bin:$PATH
-export PATH=/opt/ruby-enterprise-1.8.7-2010.02/bin:$PATH
+
+source ~/.profile
 
 echo -ne "\e]1;[zsh] `hostname`\a" # tab title
 echo -ne "\e]2;[zsh] `hostname`\a" # window title
@@ -187,6 +187,7 @@ alias clc="clear"
 alias g='grep'
 alias :q='exit'
 alias :Q='exit'
+alias vf="cd"
 alias ~="cd ~"
 alias ..="cd .."
 alias -g ...='../..'
