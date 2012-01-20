@@ -63,6 +63,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-abolish'
 
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'othree/coffee-check.vim'
 
 Bundle 'mattn/hahhah-vim'
 Bundle 'tyru/banban.vim'
