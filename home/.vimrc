@@ -160,6 +160,22 @@ function! QFixToggle(forced)
   endif
 endfunction
 nnoremap <leader>q :QFix<CR>
+
+" http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" http://vim.wikia.com/wiki/Automatically_quit_Vim_if_quickfix_window_is_the_last
+au BufEnter * call MyLastWindow()
+function! MyLastWindow()
+  " if the window is quickfix go on
+  if &buftype=="quickfix"
+    " if this window is last on screen quit without warning
+    if winbufnr(2) == -1
+      quit!
+    endif
+  endif
+endfunction
 " }}}
 
 " Key Mapping: {{{
@@ -281,6 +297,7 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
 autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
 
 autocmd FileType coffee set ts=2 sw=2 sts=2
+autocmd FileType vim set ts=2 sw=2 sts=2
 
 "" acp options
 let g:acp_enableAtStartup = 1
