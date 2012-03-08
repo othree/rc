@@ -251,3 +251,4 @@ function check_compression {
     echo "unzipped size: $unzipped, zipped size: $zipped"
 }
 
+[[ -s "/Users/othree/.rvm/scripts/rvm" ]] && source "/Users/othree/.rvm/scripts/rvm"

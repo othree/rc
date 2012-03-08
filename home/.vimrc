@@ -20,12 +20,11 @@ Bundle 'mattn/zencoding-vim'
 
 Bundle 'YankRing.vim'
 Bundle 'VisIncr'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
 Bundle 'Align'
 Bundle 'othree/eregex.vim'
 Bundle 'mru.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'spiiph/vim-space'
 
 Bundle 'AutoComplPop'
 " Bundle 'ervandew/supertab'
@@ -51,11 +50,17 @@ Bundle 'hail2u/vim-css3-syntax'
 
 Bundle 'nono/vim-handlebars'
 
+Bundle 'juvenn/mustache.vim'
+
 Bundle 'plasticboy/vim-markdown'
 
 Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'othree/fecompressor.vim'
+
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
@@ -63,7 +68,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-abolish'
 
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'othree/coffee-check.vim'
+" Bundle 'othree/coffee-check.vim'
 
 Bundle 'mattn/hahhah-vim'
 Bundle 'tyru/banban.vim'
@@ -126,6 +131,8 @@ au BufRead,BufNewFile *.json set syntax=json
 au BufRead,BufNewFile *.n3  set ft=n3
 au BufRead,BufNewFile /usr/local/etc/nginx/* set ft=nginx 
 au BufRead,BufNewFile /etc/nginx/* set ft=nginx 
+au BufRead,BufNewFile *.rb set sw=2 sts=2 st=2
+au BufRead,BufNewFile *.rake set sw=2 sts=2 st=2
 
 " highlight line & column
 au WinLeave * set nocursorline
