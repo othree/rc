@@ -12,12 +12,12 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+" Colors
 Bundle 'tir_black'
 Bundle 'jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
 
-Bundle 'mattn/zencoding-vim'
-
+" Improve
 Bundle 'YankRing.vim'
 Bundle 'VisIncr'
 Bundle 'Align'
@@ -29,12 +29,30 @@ Bundle 'spiiph/vim-space'
 Bundle 'AutoComplPop'
 " Bundle 'ervandew/supertab'
 
+Bundle 'kana/vim-operator-user'
+Bundle 'kana/vim-operator-replace'
+
 Bundle 'MarcWeber/vim-addon-mw-utils.git'
 Bundle 'tomtom/tlib_vim.git'
 Bundle 'honza/snipmate-snippets.git'
 Bundle 'garbas/vim-snipmate.git'
 " Bundle 'othree/vim-snipmate'
 
+Bundle 'Lokaltog/vim-easymotion'
+
+" 
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+" Bundle 'scrooloose/syntastic'
+
+" Tim Pope
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-abolish'
+
+" Filetype
+Bundle 'mattn/zencoding-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
 
@@ -43,6 +61,10 @@ Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'JSON.vim'
 Bundle 'othree/jslint.vim'
 Bundle 'jQuery'
+
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'othree/coffee-check.vim'
+Bundle 'othree/fecompressor.vim'
 
 Bundle 'nginx.vim'
 
@@ -54,22 +76,7 @@ Bundle 'juvenn/mustache.vim'
 
 Bundle 'plasticboy/vim-markdown'
 
-Bundle 'Lokaltog/vim-easymotion'
-
-Bundle 'othree/fecompressor.vim'
-
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-abolish'
-
-Bundle 'kchmck/vim-coffee-script'
-" Bundle 'othree/coffee-check.vim'
-
+" For Fun
 Bundle 'mattn/hahhah-vim'
 Bundle 'tyru/banban.vim'
 
@@ -188,16 +195,16 @@ endfunction
 " Key Mapping: {{{
 
 " http://vim.wikia.com/wiki/Map_semicolon_to_colon
-map ; :
+" map ; :
 
 "" function keys
-nnoremap <F2>  :set nonumber!<CR>
-nnoremap <F3>  :set nopaste!<CR>
-nnoremap <F4>  :set spell!<CR>
-nnoremap <F5>  :tab ball<CR>
-nnoremap <F6>  :set wrap!<CR>
-nnoremap <F7>  :QFix<CR>
-nnoremap <F8>  :GundoToggle<CR>
+nmap <F2>  :set nonumber!<CR>
+nmap <F3>  :set nopaste!<CR>
+nmap <F4>  :set spell!<CR>
+nmap <F5>  :tab ball<CR>
+nmap <F6>  :set wrap!<CR>
+nmap <F7>  :QFix<CR>
+nmap <F8>  :GundoToggle<CR>
 " F12 > JSLint
 
 "" tab to indent
@@ -207,10 +214,10 @@ nmap <s-tab> V<
 vmap <s-tab> <gv
 
 "" HOME END
-nnoremap <C-Home> gg
-nnoremap <C-End> G<End>
-inoremap <C-Home> <Esc>ggi
-inoremap <C-End> <Esc>G<End>i
+nmap <C-Home> gg
+nmap <C-End> G<End>
+imap <C-Home> <Esc>ggi
+imap <C-End> <Esc>G<End>i
 
 "" up/down base on screen
 "noremap  <C-J>       gj
@@ -249,21 +256,25 @@ cmap w!! %!sudo tee > /dev/null %
 
 "" keypad
 "" http://vim.wikia.com/wiki/PuTTY_numeric_keypad_mappings
-inoremap <Esc>Oq 1
-inoremap <Esc>Or 2
-inoremap <Esc>Os 3
-inoremap <Esc>Ot 4
-inoremap <Esc>Ou 5
-inoremap <Esc>Ov 6
-inoremap <Esc>Ow 7
-inoremap <Esc>Ox 8
-inoremap <Esc>Oy 9
-inoremap <Esc>Op 0
-inoremap <Esc>On .
-inoremap <Esc>OQ /
-inoremap <Esc>OR *
-inoremap <Esc>Ol +
-inoremap <Esc>OS -
+imap <Esc>Oq 1
+imap <Esc>Or 2
+imap <Esc>Os 3
+imap <Esc>Ot 4
+imap <Esc>Ou 5
+imap <Esc>Ov 6
+imap <Esc>Ow 7
+imap <Esc>Ox 8
+imap <Esc>Oy 9
+imap <Esc>Op 0
+imap <Esc>On .
+imap <Esc>OQ /
+imap <Esc>OR *
+imap <Esc>Ol +
+imap <Esc>OS -
+
+" Replace Operator
+nmap <Leader>r <Plug>(operator-replace)
+xmap <Leader>r <Plug>(operator-replace)
 
 let NERDMapleader='<Leader>c'
 "}}}
