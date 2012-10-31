@@ -13,18 +13,18 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'tir_black'
+Bundle 'jellybeans.vim'
+Bundle 'altercation/vim-colors-solarized'
 
 Bundle 'mattn/zencoding-vim'
 
 Bundle 'YankRing.vim'
 Bundle 'VisIncr'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-surround'
 Bundle 'Align'
 Bundle 'othree/eregex.vim'
 Bundle 'mru.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'spiiph/vim-space'
 
 Bundle 'AutoComplPop'
 " Bundle 'ervandew/supertab'
@@ -48,11 +48,30 @@ Bundle 'nginx.vim'
 
 Bundle 'hail2u/vim-css3-syntax'
 
+Bundle 'nono/vim-handlebars'
+
+Bundle 'juvenn/mustache.vim'
+
 Bundle 'plasticboy/vim-markdown'
 
 Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'othree/fecompressor.vim'
+
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-abolish'
+
+Bundle 'kchmck/vim-coffee-script'
+" Bundle 'othree/coffee-check.vim'
+
+Bundle 'mattn/hahhah-vim'
+Bundle 'tyru/banban.vim'
 
 filetype plugin indent on 
 
@@ -61,7 +80,12 @@ syntax on
 filetype on
 filetype plugin on
 filetype indent on
-colors tir_black
+" colors tir_black
+" colors jellybeans
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+set background=dark
+colorscheme solarized
 language message zh_TW.UTF-8
 
 set nocompatible
@@ -85,6 +109,8 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 set hidden
 set nobomb
 
+let mapleader = ","
+
 " Encoding
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,euc-jp,big5
@@ -93,7 +119,8 @@ set t_Co=256
 
 " Status Line
 set laststatus=2
-set statusline=%f\ %y%r%1*%m%*%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
+set statusline=%f\ %y%r%1*%m%*\ %{g:HahHah()}%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
+" set statusline=%=%{g:HahHah()}
 
 " Special File Types
 au BufRead,BufNewFile *.less set ft=less
@@ -104,6 +131,8 @@ au BufRead,BufNewFile *.json set syntax=json
 au BufRead,BufNewFile *.n3  set ft=n3
 au BufRead,BufNewFile /usr/local/etc/nginx/* set ft=nginx 
 au BufRead,BufNewFile /etc/nginx/* set ft=nginx 
+au BufRead,BufNewFile *.rb set sw=2 sts=2 st=2
+au BufRead,BufNewFile *.rake set sw=2 sts=2 st=2
 
 " highlight line & column
 au WinLeave * set nocursorline
@@ -111,8 +140,8 @@ au WinEnter * set cursorline
 set cursorline
 
 " Color Tweak for highlight
-highlight CursorLine    ctermbg=89
-highlight Comment       ctermfg=246
+" highlight CursorLine    ctermbg=89
+" highlight Comment       ctermfg=246
 
 " }}}
 
@@ -138,11 +167,26 @@ function! QFixToggle(forced)
   endif
 endfunction
 nnoremap <leader>q :QFix<CR>
+
+" http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" http://vim.wikia.com/wiki/Automatically_quit_Vim_if_quickfix_window_is_the_last
+au BufEnter * call MyLastWindow()
+function! MyLastWindow()
+  " if the window is quickfix go on
+  if &buftype=="quickfix"
+    " if this window is last on screen quit without warning
+    if winbufnr(2) == -1
+      quit!
+    endif
+  endif
+endfunction
 " }}}
 
 " Key Mapping: {{{
 
-let mapleader = ","
 " http://vim.wikia.com/wiki/Map_semicolon_to_colon
 map ; :
 
@@ -259,6 +303,9 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
 "autocmd FileType cpp set omnifunc=ccomplete#Complete
 autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
 
+autocmd FileType coffee set ts=2 sw=2 sts=2
+autocmd FileType vim set ts=2 sw=2 sts=2
+
 "" acp options
 let g:acp_enableAtStartup = 1
 "let g:acp_mappingDriven = 1
@@ -331,10 +378,14 @@ let NERDSpaceDelims = 1
 " }}}
 
 " Popup Highlight: {{{
-highlight PMenu      cterm=bold ctermbg=Blue ctermfg=Gray
-highlight PMenuSel   cterm=bold ctermbg=Red ctermfg=White
-highlight PMenuSbar  cterm=bold ctermbg=darkgray
-highlight PMenuThumb cterm=bold ctermbg=White
+" highlight PMenu      cterm=bold ctermbg=Blue ctermfg=Gray
+" highlight PMenuSel   cterm=bold ctermbg=Red ctermfg=White
+" highlight PMenuSbar  cterm=bold ctermbg=darkgray
+" highlight PMenuThumb cterm=bold ctermbg=White
+" }}}
+
+" SpeelBad Highlight: {{{
+highlight SpellBad   ctermbg=124
 " }}}
 
 " HTML: {{{

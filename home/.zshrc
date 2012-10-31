@@ -1,6 +1,6 @@
 #
-export PATH=$HOME/bin:$PATH
-export PATH=/opt/ruby-enterprise-1.8.7-2010.02/bin:$PATH
+
+source ~/.profile
 
 echo -ne "\e]1;[zsh] `hostname`\a" # tab title
 echo -ne "\e]2;[zsh] `hostname`\a" # window title
@@ -187,6 +187,7 @@ alias clc="clear"
 alias g='grep'
 alias :q='exit'
 alias :Q='exit'
+alias vf="cd"
 alias ~="cd ~"
 alias ..="cd .."
 alias -g ...='../..'
@@ -243,3 +244,11 @@ function j { local new_path="$(autojump $@)";if [ -n "$new_path" ]; then echo -e
 
 alias updatedemo-sb="ssh aps_user@50.18.186.203 'cd ~/workspace/scene-builder;git pull'"
 alias updatedemo-common="ssh aps_user@50.18.186.203 'cd ~/workspace/scene-builder;git pull'"
+
+function check_compression {
+    local unzipped=`curl "$1" --silent --write-out "%{size_download}"  --output /dev/null`
+    local zipped=`curl -H "Accept-Encoding: gzip,deflate" "$1" --silent --write-out "%{size_download}" --output /dev/null`
+    echo "unzipped size: $unzipped, zipped size: $zipped"
+}
+
+[[ -s "/Users/othree/.rvm/scripts/rvm" ]] && source "/Users/othree/.rvm/scripts/rvm"
