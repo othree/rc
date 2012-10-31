@@ -39,7 +39,7 @@ Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
 
 Bundle 'othree/javascript-syntax.vim'
-Bundle 'JiangMiao/simple-javascript-indenter'
+Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'JSON.vim'
 Bundle 'othree/jslint.vim'
 Bundle 'jQuery'
