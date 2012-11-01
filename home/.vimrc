@@ -22,7 +22,8 @@ Bundle 'YankRing.vim'
 Bundle 'VisIncr'
 Bundle 'Align'
 Bundle 'othree/eregex.vim'
-Bundle 'mru.vim'
+" Bundle 'mru.vim'
+Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'spiiph/vim-space'
 
@@ -69,6 +70,7 @@ Bundle 'othree/fecompressor.vim'
 Bundle 'nginx.vim'
 
 Bundle 'hail2u/vim-css3-syntax'
+Bundle 'ap/vim-css-color'
 
 Bundle 'juvenn/mustache.vim'
 Bundle 'nono/vim-handlebars'
@@ -435,30 +437,20 @@ let NERDTreeShowHidden = 1
 let g:fuf_modesDisable = []
 " }}}
 
-" Auto Unittest: {{{
-" javascripthttp://blog.othree.net/log/2009/12/26/javascript-on-vim/
-function Jsunit ()
-    let ut = 'unit.test.js'
-    let fn = expand('<afile>:t') 
-    if fn != ut
-        let cwd = expand('<afile>:p:h')
-        if filereadable(cwd.'/unit.test.js')
-            let has_error = 0
-            let cmd = 'js '. ut
-            let output = system(cmd)
-            for error in split(output, "\n")
-                let has_error = 1
-                caddexpr expand("%") . fn . ":0:0:" . error
-            endfor
-            if has_error == 1
-                copen
-            else
-                echo 'Unit  : All OK.'
-            endif
-        endif
-    endif
-endfunction
-autocmd FileWritePost,BufWritePost *.js :call Jsunit()
+" ctrlp: {{{
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+let g:ctrlp_working_path_mode = 'ra'
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
+
 " }}}
 
 " Command Mapping: {{{
