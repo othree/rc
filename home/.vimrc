@@ -70,9 +70,8 @@ Bundle 'nginx.vim'
 
 Bundle 'hail2u/vim-css3-syntax'
 
-Bundle 'nono/vim-handlebars'
-
 Bundle 'juvenn/mustache.vim'
+Bundle 'nono/vim-handlebars'
 
 Bundle 'plasticboy/vim-markdown'
 
@@ -138,6 +137,7 @@ au BufRead,BufNewFile *.json set syntax=json
 au BufRead,BufNewFile *.n3  set ft=n3
 au BufRead,BufNewFile /usr/local/etc/nginx/* set ft=nginx 
 au BufRead,BufNewFile /etc/nginx/* set ft=nginx 
+au BufRead,BufNewFile *.hbs set ft=handlebars
 au BufRead,BufNewFile *.rb set sw=2 sts=2 st=2
 au BufRead,BufNewFile *.rake set sw=2 sts=2 st=2
 

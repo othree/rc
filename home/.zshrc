@@ -254,3 +254,5 @@ function check_compression {
 }
 
 [[ -s "/Users/othree/.rvm/scripts/rvm" ]] && source "/Users/othree/.rvm/scripts/rvm"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
