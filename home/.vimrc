@@ -203,10 +203,11 @@ endfunction
 nmap <F2>  :set nonumber!<CR>
 nmap <F3>  :set nopaste!<CR>
 nmap <F4>  :set spell!<CR>
-nmap <F5>  :tab ball<CR>
+" Leave F5 for ctrlp
 nmap <F6>  :set wrap!<CR>
 nmap <F7>  :QFix<CR>
 nmap <F8>  :GundoToggle<CR>
+nmap <F12> :tab ball<CR>
 " F12 > JSLint
 
 "" tab to indent
@@ -444,11 +445,23 @@ let g:ctrlp_cmd = 'CtrlP'
 
 let g:ctrlp_working_path_mode = 'ra'
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+" let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
+
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': [],
+  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+  \ }
 
 " }}}
 
