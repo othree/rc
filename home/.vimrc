@@ -27,6 +27,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'spiiph/vim-space'
 
+Bundle 'vim-scripts/matchit.zip'
+
 Bundle 'AutoComplPop'
 " Bundle 'ervandew/supertab'
 
@@ -51,7 +53,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-abolish'
-
+Bundle 'tpope/vim-haml'
 " Filetype
 Bundle 'mattn/zencoding-vim'
 Bundle 'othree/html5.vim'
