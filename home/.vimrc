@@ -59,6 +59,7 @@ Bundle 'SyntaxRange'
 Bundle 'mattn/zencoding-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
+Bundle 'othree/javascript-libries-syntax.vim'
 
 " JavaScript
 Bundle 'othree/javascript-syntax.vim'
@@ -488,3 +489,7 @@ endfunction
 autocmd VimEnter * :call AfterStart()
 " }}}
 
+
+map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
