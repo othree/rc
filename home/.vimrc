@@ -27,7 +27,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'spiiph/vim-space'
 
-Bundle 'AutoComplPop'
+Bundle 'L9'
+Bundle 'othree/vim-autocomplpop'
 " Bundle 'ervandew/supertab'
 
 Bundle 'kana/vim-operator-user'
@@ -53,7 +54,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-ragtag'
 
-" Filetype
+" filetype
+Bundle 'SyntaxRange'
 Bundle 'mattn/zencoding-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
@@ -160,6 +162,23 @@ set cursorline
 " highlight CursorLine    ctermbg=89
 " highlight Comment       ctermfg=246
 
+" }}}
+
+" FileType: {{{
+"" omnifunc setting
+setlocal omnifunc=syntaxcomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
+"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags noci
+"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+"autocmd FileType c set omnifunc=ccomplete#Complete
+"autocmd FileType cpp set omnifunc=ccomplete#Complete
+autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
+
+autocmd FileType coffee set ts=2 sw=2 sts=2
+autocmd FileType vim set ts=2 sw=2 sts=2
 " }}}
 
 " Screen Fix: {{{
@@ -297,6 +316,13 @@ let g:microdata_attributes_complete = 0
 let g:SimpleJsIndenter_BriefMode = 1
 " }}}
 
+" SyntaxRange {{{
+
+autocmd FileType html call SyntaxRange#Include('/<script[^>]*>/', '</script>', 'javascript', 'htmlTagName')
+autocmd FileType html call SyntaxRange#Include('/<style[^>]*>/', '</style>', 'css', 'htmlTagName')
+
+" }}}
+
 " Zencoding: {{{
 let g:user_zen_settings = {
     \  'php' : {
@@ -319,106 +345,12 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " }}}
 
 " Autocomplpop: {{{
-"" omnifunc setting
-setlocal omnifunc=syntaxcomplete#Complete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags noci
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c set omnifunc=ccomplete#Complete
-"autocmd FileType cpp set omnifunc=ccomplete#Complete
-autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
-
-autocmd FileType coffee set ts=2 sw=2 sts=2
-autocmd FileType vim set ts=2 sw=2 sts=2
-
 "" acp options
 let g:acp_enableAtStartup = 1
-let g:acp_mappingDriven = 1
+" let g:acp_mappingDriven = 1
 let g:acp_completeOption = '.,w,b,u,t,i,k'
-" let g:acp_behaviorSnipmateLength = 1
-let g:acp_behaviorKeywordCommand = "\<C-n>"
+" let g:acp_behaviorSnipmateLength = 0
 
-""" javascript behavior for acp
-function AcpMeetsForJavaScript(context)
-    let matches = matchlist(a:context, '\(\k\{1}\)$')
-    if empty(matches)
-        return 0
-    endif
-    return 1
-endfunction
-
-"" html behavior for html
-function AcpMeetsForHtmlOmni(context)
-    if g:acp_behaviorHtmlOmniLength >= 0
-        if a:context =~ '\(<\|<\/\|<[^>]\+ \|<[^>]\+=\"\)\k\{' .g:acp_behaviorHtmlOmniLength . ',}$'
-            return 1
-        elseif a:context =~ '\(\<\k\{1,}\(=\"\)\{0,1}\|\" \)$'
-            let cur = line('.')-1
-            while cur > 0
-                let lstr = getline(cur)
-                if lstr =~ '>[^>]*$'
-                    return 0
-                elseif lstr =~ '<[^<]*$'
-                    return 1
-                endif
-                let cur = cur-1
-            endwhile
-            return 0
-        endif
-    else
-        return 0
-    endif
-endfunction
-
-let behavs = { 'javascript': [], 'html': [], 'coffee': [], 'ls': [] }
-    call add(behavs.javascript, {
-        \   'command'      : "\<C-x>\<C-u>",
-        \   'completefunc' : 'acp#completeSnipmate',
-        \   'meets'        : 'acp#meetsForSnipmate',
-        \   'onPopupClose' : 'acp#onPopupCloseSnipmate',
-        \   'repeat'       : 0,
-    \})
-    call add(behavs.javascript, {
-        \   'command' : g:acp_behaviorKeywordCommand,
-        \   'meets'   : 'acp#meetsForKeyword',
-        \   'repeat'  : 0,
-        \ })
-    call add(behavs.javascript, {
-        \   'command' : "\<C-x>\<C-o>",
-        \   'meets'   : 'AcpMeetsForJavaScript',
-        \   'repeat'  : 0,
-    \})
-    call add(behavs.coffee, {
-        \   'command' : g:acp_behaviorKeywordCommand,
-        \   'meets'   : 'acp#meetsForKeyword',
-        \   'repeat'  : 0,
-        \ })
-    call add(behavs.coffee, {
-        \   'command' : "\<C-x>\<C-o>",
-        \   'meets'   : 'AcpMeetsForJavaScript',
-        \   'repeat'  : 0,
-    \})
-    call add(behavs.ls, {
-        \   'command' : g:acp_behaviorKeywordCommand,
-        \   'meets'   : 'acp#meetsForKeyword',
-        \   'repeat'  : 0,
-        \ })
-    call add(behavs.ls, {
-        \   'command' : "\<C-x>\<C-o>",
-        \   'meets'   : 'AcpMeetsForJavaScript',
-        \   'repeat'  : 0,
-    \})
-    call add(behavs.html, {
-        \   'command' : "\<C-x>\<C-o>",
-        \   'meets'   : 'AcpMeetsForHtmlOmni',
-        \   'repeat'  : 1,
-    \})
-
-let g:acp_behavior = {}
-call extend(g:acp_behavior, behavs, 'keep')
 " }}}
 
 " NERDCommenter: {{{
