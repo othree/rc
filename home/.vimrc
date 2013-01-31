@@ -29,6 +29,7 @@ Bundle 'spiiph/vim-space'
 
 Bundle 'L9'
 Bundle 'othree/vim-autocomplpop'
+Bundle 'vim-scripts/matchit.zip'
 " Bundle 'ervandew/supertab'
 
 Bundle 'kana/vim-operator-user'
@@ -54,8 +55,9 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-ragtag'
 
-" filetype
+" Filetype
 Bundle 'SyntaxRange'
+Bundle 'tpope/vim-haml'
 Bundle 'mattn/zencoding-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
