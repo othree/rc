@@ -18,7 +18,7 @@ Bundle 'jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
 
 " Improve
-Bundle 'YankRing.vim'
+Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'VisIncr'
 Bundle 'Align'
 Bundle 'othree/eregex.vim'
@@ -51,21 +51,27 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-ragtag'
 
 " Filetype
 Bundle 'mattn/zencoding-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
 
+" JavaScript
 Bundle 'othree/javascript-syntax.vim'
 Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'JSON.vim'
 Bundle 'othree/jslint.vim'
 Bundle 'jQuery'
 
+" CoffeeScript
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'othree/coffee-check.vim'
 Bundle 'othree/fecompressor.vim'
+
+" LiveScript
+Bundle 'gkz/vim-ls'
 
 Bundle 'nginx.vim'
 
@@ -142,6 +148,8 @@ au BufRead,BufNewFile /etc/nginx/* set ft=nginx
 au BufRead,BufNewFile *.hbs set ft=handlebars
 au BufRead,BufNewFile *.rb set sw=2 sts=2 st=2
 au BufRead,BufNewFile *.rake set sw=2 sts=2 st=2
+au BufRead,BufNewFile *.ls set sw=2 sts=2 st=2
+au BufNewFile,BufReadPost *.ls setl foldmethod=indent nofoldenable
 
 " highlight line & column
 au WinLeave * set nocursorline
@@ -304,13 +312,19 @@ let g:user_zen_settings = {
     \}
 " }}}
 
+" YankStack: {{{
+let g:yankstack_map_keys = 0
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+" }}}
+
 " Autocomplpop: {{{
 "" omnifunc setting
-"setlocal omnifunc=syntaxcomplete#Complete
+setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
 "autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags noci
 "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 "autocmd FileType c set omnifunc=ccomplete#Complete
@@ -322,7 +336,7 @@ autocmd FileType vim set ts=2 sw=2 sts=2
 
 "" acp options
 let g:acp_enableAtStartup = 1
-"let g:acp_mappingDriven = 1
+let g:acp_mappingDriven = 1
 let g:acp_completeOption = '.,w,b,u,t,i,k'
 " let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorKeywordCommand = "\<C-n>"
@@ -359,7 +373,7 @@ function AcpMeetsForHtmlOmni(context)
     endif
 endfunction
 
-let behavs = { 'javascript': [], 'html': [] }
+let behavs = { 'javascript': [], 'html': [], 'coffee': [], 'ls': [] }
     call add(behavs.javascript, {
         \   'command'      : "\<C-x>\<C-u>",
         \   'completefunc' : 'acp#completeSnipmate',
@@ -373,6 +387,26 @@ let behavs = { 'javascript': [], 'html': [] }
         \   'repeat'  : 0,
         \ })
     call add(behavs.javascript, {
+        \   'command' : "\<C-x>\<C-o>",
+        \   'meets'   : 'AcpMeetsForJavaScript',
+        \   'repeat'  : 0,
+    \})
+    call add(behavs.coffee, {
+        \   'command' : g:acp_behaviorKeywordCommand,
+        \   'meets'   : 'acp#meetsForKeyword',
+        \   'repeat'  : 0,
+        \ })
+    call add(behavs.coffee, {
+        \   'command' : "\<C-x>\<C-o>",
+        \   'meets'   : 'AcpMeetsForJavaScript',
+        \   'repeat'  : 0,
+    \})
+    call add(behavs.ls, {
+        \   'command' : g:acp_behaviorKeywordCommand,
+        \   'meets'   : 'acp#meetsForKeyword',
+        \   'repeat'  : 0,
+        \ })
+    call add(behavs.ls, {
         \   'command' : "\<C-x>\<C-o>",
         \   'meets'   : 'AcpMeetsForJavaScript',
         \   'repeat'  : 0,
