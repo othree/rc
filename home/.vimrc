@@ -26,6 +26,7 @@ Bundle 'othree/eregex.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'spiiph/vim-space'
+Bundle 'othree/SyntaxComplete'
 
 Bundle 'L9'
 Bundle 'othree/vim-autocomplpop'
@@ -354,6 +355,8 @@ let g:acp_enableAtStartup = 1
 let g:acp_completeOption = '.,w,b,u,t,i,k'
 " let g:acp_behaviorSnipmateLength = 0
 
+let g:acp_behaviorUserDefinedMeets = 'acp#meetsForKeyword'
+let g:acp_behaviorUserDefinedFunction = 'syntaxcomplete#Complete'
 " }}}
 
 " NERDCommenter: {{{
