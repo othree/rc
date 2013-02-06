@@ -62,10 +62,11 @@ Bundle 'tpope/vim-haml'
 Bundle 'mattn/zencoding-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
-Bundle 'othree/javascript-libries-syntax.vim'
+Bundle 'othree/javascript-libraries-syntax.vim'
 
 " JavaScript
-Bundle 'othree/javascript-syntax.vim'
+" Bundle 'othree/javascript-syntax.vim'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'JSON.vim'
 Bundle 'othree/jslint.vim'
