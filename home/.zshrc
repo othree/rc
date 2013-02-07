@@ -197,7 +197,7 @@ alias -g ......='../../../../../..'
 alias -g .......='../../../../../../..'
 
 #autojump for osx
-if [ -x /usr/local/bin/brew ]; then
+if [ "`command -v brew`" != "" ]; then
     [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 fi
 #autojump for linux
