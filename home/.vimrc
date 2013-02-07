@@ -111,7 +111,6 @@ language message zh_TW.UTF-8
 
 set nocompatible
 set display+=lastline
-set nocp
 set wrap
 set showtabline=2 " always show tab line
 set ruler
@@ -499,3 +498,4 @@ autocmd VimEnter * :call AfterStart()
 map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
