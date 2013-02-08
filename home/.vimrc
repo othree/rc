@@ -490,6 +490,9 @@ endif
 nmap <tab> V>
 vmap <tab> >gv
 
+" yankstack
+nmap Y y$
+
 endfunction
 autocmd VimEnter * :call AfterStart()
 " }}}
