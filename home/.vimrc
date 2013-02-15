@@ -71,6 +71,7 @@ Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'JSON.vim'
 Bundle 'othree/jslint.vim'
 Bundle 'jQuery'
+Bundle 'teramako/jscomplete-vim'
 
 " CoffeeScript
 Bundle 'kchmck/vim-coffee-script'
@@ -89,6 +90,12 @@ Bundle 'juvenn/mustache.vim'
 Bundle 'nono/vim-handlebars'
 
 Bundle 'plasticboy/vim-markdown'
+
+" ctags
+Bundle 'majutsushi/tagbar'
+
+" supertab
+Bundle 'ervandew/supertab'
 
 " For Fun
 Bundle 'mattn/hahhah-vim'
@@ -172,7 +179,7 @@ set cursorline
 "" omnifunc setting
 setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript set omnifunc=jscomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
 "autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags noci
@@ -183,6 +190,13 @@ autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
 
 autocmd FileType coffee set ts=2 sw=2 sts=2
 autocmd FileType vim set ts=2 sw=2 sts=2
+
+autocmd FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, "<c-p>") |
+    \   call SuperTabSetDefaultCompletionType("<c-x><c-]>") |
+    \ endif
+
 " }}}
 
 " Screen Fix: {{{
@@ -310,6 +324,10 @@ imap <Esc>OS -
 nmap <Leader>r <Plug>(operator-replace)
 xmap <Leader>r <Plug>(operator-replace)
 
+" ctags
+nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
 let NERDMapleader='<Leader>c'
 "}}}
 
@@ -410,6 +428,24 @@ let NERDTreeShowHidden = 1
 let g:fuf_modesDisable = []
 " }}}
 
+" CoffeeTags: {{{
+if executable('coffeetags')
+    let g:tagbar_type_coffee = {
+            \ 'ctagsbin' : 'coffeetags',
+            \ 'ctagsargs' : '',
+            \ 'kinds' : [
+            \ 'f:functions',
+            \ 'o:object',
+            \ ],
+            \ 'sro' : ".",
+            \ 'kind2scope' : {
+            \ 'f' : 'object',
+            \ 'o' : 'object',
+            \ }
+            \ }
+endif
+" }}}
+
 " ctrlp: {{{
 
 let g:ctrlp_map = '<c-p>'
@@ -435,6 +471,10 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
   \ }
 
+" }}}
+
+" jscomplete-vim: {{{
+let g:jscomplete_use = ['dom']
 " }}}
 
 " Command Mapping: {{{
