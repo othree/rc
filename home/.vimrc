@@ -66,7 +66,8 @@ Bundle 'othree/javascript-libraries-syntax.vim'
 
 " JavaScript
 " Bundle 'othree/javascript-syntax.vim'
-Bundle 'jelera/vim-javascript-syntax'
+" Bundle 'jelera/vim-javascript-syntax'
+Bundle 'othree/vim-javascript-syntax'
 Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'JSON.vim'
 Bundle 'othree/jslint.vim'
