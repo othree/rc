@@ -504,9 +504,7 @@ endif
 
 "" eregex
 if exists(":M")
-    nnoremap / :M/
-    nnoremap ? :M?
-    nnoremap ,/ /
+    nnoremap <leader>/ :call eregex#toggle()<CR>
 endif
 
 if exists(":NERDTreeToggle")
