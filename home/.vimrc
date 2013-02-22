@@ -504,12 +504,9 @@ if exists(":Align")
 endif
 
 "" eregex
-nnoremap <leader>/ :call EregexToggle()<CR>
-" if exists(":M")
-    " nnoremap / :M/
-    " nnoremap ? :M?
-    " nnoremap ,/ /
-" endif
+if exists(":M")
+    nnoremap <leader>/ :call eregex#toggle()<CR>
+endif
 
 if exists(":NERDTreeToggle")
     map <F12> :NERDTreeToggle<CR>
