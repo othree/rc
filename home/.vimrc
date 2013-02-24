@@ -37,6 +37,7 @@ Bundle 'kana/vim-operator-user'
 Bundle 'kana/vim-operator-replace'
 
 Bundle 'MarcWeber/vim-addon-mw-utils.git'
+Bundle 'MarcWeber/vim-addon-local-vimrc'
 Bundle 'tomtom/tlib_vim.git'
 Bundle 'honza/snipmate-snippets.git'
 Bundle 'garbas/vim-snipmate.git'
@@ -62,17 +63,16 @@ Bundle 'tpope/vim-haml'
 Bundle 'mattn/zencoding-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/xml.vim'
-Bundle 'othree/javascript-libraries-syntax.vim'
 
 " JavaScript
 " Bundle 'othree/javascript-syntax.vim'
 " Bundle 'jelera/vim-javascript-syntax'
 Bundle 'othree/vim-javascript-syntax'
-Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'JSON.vim'
-Bundle 'othree/jslint.vim'
-Bundle 'jQuery'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'teramako/jscomplete-vim'
+Bundle 'othree/jslint.vim'
 
 " CoffeeScript
 Bundle 'kchmck/vim-coffee-script'
@@ -152,7 +152,6 @@ set statusline=%f\ %y%r%1*%m%*\ %{g:HahHah()}%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%
 
 " Special File Types
 au BufRead,BufNewFile *.less set ft=less
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 au BufRead,BufNewFile *.tpl set ft=html
 au BufRead,BufNewFile *.xsl set ft=html
 au BufRead,BufNewFile *.json set syntax=json 
@@ -536,7 +535,6 @@ nmap Y y$
 endfunction
 autocmd VimEnter * :call AfterStart()
 " }}}
-
 
 map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
