@@ -55,6 +55,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-characterize'
 
 " Filetype
 Bundle 'SyntaxRange'
@@ -136,6 +137,7 @@ set foldmethod=marker
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 set hidden
 set nobomb
+set hlsearch
 
 let mapleader = ","
 
