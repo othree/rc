@@ -42,6 +42,7 @@ Bundle 'tomtom/tlib_vim.git'
 Bundle 'honza/snipmate-snippets.git'
 Bundle 'garbas/vim-snipmate.git'
 " Bundle 'othree/vim-snipmate'
+Bundle 'airblade/vim-gitgutter'
 
 Bundle 'Lokaltog/vim-easymotion'
 
