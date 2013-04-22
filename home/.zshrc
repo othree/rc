@@ -119,6 +119,9 @@ export LS_COLORS
 #export LESS_TERMCAP_ue=$'\E[38;5;231m'
 #export LESS_TERMCAP_us=$'\E[38;5;167m'
 
+DIRSTACKSIZE=99
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>' # exclude '/' for backward-kill-word
+
 #setopt correctall
 setopt append_history
 setopt extended_history
@@ -127,6 +130,8 @@ setopt hist_ignore_all_dups
 setopt no_hist_beep
 setopt hist_save_no_dups
 setopt noflowcontrol                  #no flow control enable keybind for ^Q
+setopt AUTO_PUSHD
+setopt PUSHD_MINUS
 #setopt menu_complete
 
 autoload -U compinit
@@ -135,7 +140,10 @@ compinit
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle ':completion:*' list-colors $LS_COLORS
-#zstyle ':completion:*' special-dirs ..
+zstyle ':completion:*' special-dirs true
+
+# hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*})
+# zstyle ':completion:*:hosts' hosts $hosts
 
 # git flow
 # http://github.com/nvie/git-flow-completion
@@ -153,12 +161,17 @@ bindkey "\e[4~" end-of-line              # End
 bindkey "\e[8~" end-of-line              # End rxvt
 bindkey "\e[5~" history-search-backward  # PageUp
 bindkey "\e[6~" history-search-forward   # PageDown
+bindkey '^F' forward-word
+bindkey '^B' backward-word
 bindkey "^Q" push-line
 bindkey "^G" get-line
 bindkey "^Z" undo
 #bindkey "^Y" vi-undo-change
 bindkey "^Xc" copy-region-as-kill
 bindkey "^Xx" kill-region
+
+bindkey '^[[1;9D' backward-word          # Alt+Left
+bindkey '^[[1;9C' forward-word           # Alt+Right
 
 expand-to-home-or-insert () {
   if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
