@@ -39,8 +39,8 @@ Bundle 'kana/vim-operator-replace'
 Bundle 'MarcWeber/vim-addon-mw-utils.git'
 Bundle 'MarcWeber/vim-addon-local-vimrc'
 Bundle 'tomtom/tlib_vim.git'
-Bundle 'honza/snipmate-snippets.git'
-Bundle 'garbas/vim-snipmate.git'
+Bundle 'honza/vim-snippets'
+Bundle 'garbas/vim-snipmate'
 " Bundle 'othree/vim-snipmate'
 Bundle 'airblade/vim-gitgutter'
 
@@ -113,10 +113,11 @@ filetype plugin on
 filetype indent on
 " colors tir_black
 " colors jellybeans
+colors Tomorrow-Night-Bright
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 set background=dark
-colorscheme solarized
+" colorscheme solarized
 language message zh_TW.UTF-8
 
 set nocompatible
