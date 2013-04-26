@@ -100,6 +100,9 @@ Bundle 'majutsushi/tagbar'
 " supertab
 Bundle 'ervandew/supertab'
 
+" multiple cursor
+Bundle 'terryma/vim-multiple-cursors'
+
 " For Fun
 Bundle 'mattn/hahhah-vim'
 Bundle 'tyru/banban.vim'
