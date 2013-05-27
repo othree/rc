@@ -26,7 +26,8 @@ Bundle 'othree/eregex.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'spiiph/vim-space'
-Bundle 'othree/SyntaxComplete'
+Bundle 'SyntaxComplete'
+Bundle 'AndrewRadev/switch.vim'
 
 Bundle 'L9'
 Bundle 'othree/vim-autocomplpop'
@@ -49,7 +50,7 @@ Bundle 'Lokaltog/vim-easymotion'
 " 
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-" Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/syntastic'
 
 " Tim Pope
 Bundle 'tpope/vim-repeat'
@@ -74,11 +75,11 @@ Bundle 'JSON.vim'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'teramako/jscomplete-vim'
-Bundle 'othree/jslint.vim'
+" Bundle 'othree/jslint.vim'
 
 " CoffeeScript
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'othree/coffee-check.vim'
+" Bundle 'othree/coffee-check.vim'
 Bundle 'othree/fecompressor.vim'
 
 " LiveScript
@@ -203,6 +204,8 @@ autocmd FileType *
     \   call SuperTabChain(&omnifunc, "<c-p>") |
     \   call SuperTabSetDefaultCompletionType("<c-x><c-]>") |
     \ endif
+
+let g:omni_syntax_group_include_javascript = 'javascript\w\+,jquery\w\+,underscore\w\+,prelude\w\+,requirejs\w\+'
 
 " }}}
 
@@ -336,6 +339,9 @@ nnoremap <leader>. :CtrlPTag<cr>
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 let NERDMapleader='<Leader>c'
+
+" switch
+nnoremap - :Switch<cr>
 "}}}
 
 " Indent: {{{
@@ -371,6 +377,12 @@ let g:user_zen_settings = {
 let g:yankstack_map_keys = 0
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
+" }}}
+
+" Syntastic: {{{
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_javascript_jslint_conf = "--nomen --plusplus --forin --regexp"
 " }}}
 
 " Autocomplpop: {{{
@@ -498,6 +510,21 @@ com! -bang Qa :qa
 
 " Macros: {{{
 runtime macros/matchit.vim
+" }}}
+
+" Switch: {{{
+let g:switch_custom_definitions =
+    \ [
+    \   ['and', 'or'],
+    \   ['is', 'isnt'],
+    \   {
+    \     '\<\(\l\)\(\l\+\(\u\l\+\)\+\)\>': '\=toupper(submatch(1)) . submatch(2)',
+    \     '\<\(\u\l\+\)\(\u\l\+\)\+\>': "\\=tolower(substitute(submatch(0), '\\(\\l\\)\\(\\u\\)', '\\1_\\2', 'g'))",
+    \     '\<\(\l\+\)\(_\l\+\)\+\>': '\U\0',
+    \     '\<\(\u\+\)\(_\u\+\)\+\>': "\\=tolower(substitute(submatch(0), '_', '-', 'g'))",
+    \     '\<\(\l\+\)\(-\l\+\)\+\>': "\\=substitute(submatch(0), '-\\(\\l\\)', '\\u\\1', 'g')",
+    \   }
+    \ ]
 " }}}
 
 " After Loading All Plugin: {{{
