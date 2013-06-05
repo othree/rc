@@ -24,7 +24,7 @@ Bundle 'Align'
 Bundle 'othree/eregex.vim'
 " Bundle 'mru.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'sjl/gundo.vim'
+Bundle 'mbbill/undotree'
 Bundle 'spiiph/vim-space'
 Bundle 'SyntaxComplete'
 Bundle 'AndrewRadev/switch.vim'
@@ -261,7 +261,7 @@ nmap <F4>  :set spell!<CR>
 " Leave F5 for ctrlp
 nmap <F6>  :set wrap!<CR>
 nmap <F7>  :QFix<CR>
-nmap <F8>  :GundoToggle<CR>
+nmap <F8>  :UndotreeToggle<CR>
 nmap <F12> :tab ball<CR>
 " F12 > JSLint
 
