@@ -22,12 +22,12 @@ Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'VisIncr'
 Bundle 'Align'
 Bundle 'othree/eregex.vim'
-" Bundle 'mru.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'spiiph/vim-space'
 Bundle 'SyntaxComplete'
 Bundle 'AndrewRadev/switch.vim'
+Bundle 'Townk/vim-autoclose'
 
 Bundle 'L9'
 Bundle 'othree/vim-autocomplpop'
@@ -517,6 +517,8 @@ let g:switch_custom_definitions =
     \ [
     \   ['and', 'or'],
     \   ['is', 'isnt'],
+    \   ['w', 'h'],
+    \   ['width', 'height'],
     \   {
     \     '\<\(\l\)\(\l\+\(\u\l\+\)\+\)\>': '\=toupper(submatch(1)) . submatch(2)',
     \     '\<\(\u\l\+\)\(\u\l\+\)\+\>': "\\=tolower(substitute(submatch(0), '\\(\\l\\)\\(\\u\\)', '\\1_\\2', 'g'))",
