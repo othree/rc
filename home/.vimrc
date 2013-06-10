@@ -27,7 +27,7 @@ Bundle 'sjl/gundo.vim'
 Bundle 'spiiph/vim-space'
 Bundle 'SyntaxComplete'
 Bundle 'AndrewRadev/switch.vim'
-Bundle 'Townk/vim-autoclose'
+Bundle 'Raimondi/delimitMate'
 
 Bundle 'L9'
 Bundle 'othree/vim-autocomplpop'
