@@ -465,6 +465,10 @@ if executable('coffeetags')
 endif
 " }}}
 
+" syntastic: {{{
+let g:syntastic_coffee_coffeelint_args="--csv -f ~/coffeelint-config.json"
+" }}}
+
 " ctrlp: {{{
 
 let g:ctrlp_map = '<c-p>'

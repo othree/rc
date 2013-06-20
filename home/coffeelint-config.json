@@ -1,0 +1,54 @@
+{
+    "no_tabs": {
+      "level": "error",
+      "message": "Line contains tab indentation"
+    },
+    "no_trailing_whitespace": {
+      "level": "ignore",
+      "message": "Line ends with trailing whitespace"
+    },
+    "max_line_length": {
+      "value": 120,
+      "level": "ignore",
+      "message": "Line exceeds maximum allowed length"
+    },
+    "camel_case_classes": {
+      "level": "error",
+      "message": "Class names should be camel cased"
+    },
+    "indentation": {
+      "value": 2,
+      "level": "error",
+      "message": "Line contains inconsistent indentation"
+    },
+    "no_implicit_braces": {
+      "level": "ignore",
+      "message": "Implicit braces are forbidden"
+    },
+    "no_trailing_semicolons": {
+      "level": "error",
+      "message": "Line contains a trailing semicolon"
+    },
+    "no_plusplus": {
+      "level": "ignore",
+      "message": "The increment and decrement operators are forbidden"
+    },
+    "no_throwing_strings": {
+      "level": "error",
+      "message": "Throwing strings is forbidden"
+    },
+    "cyclomatic_complexity": {
+      "value": 10,
+      "level": "ignore",
+      "message": "The cyclomatic complexity is too damn high"
+    },
+    "no_backticks": {
+      "level": "error",
+      "message": "Backticks are forbidden"
+    },
+    "line_endings": {
+      "level": "warn",
+      "value": "unix",
+      "message": "Line contains incorrect line endings"
+    }
+}
