@@ -383,6 +383,7 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_javascript_jslint_conf = "--nomen --plusplus --forin --regexp"
+let g:syntastic_coffee_coffeelint_args = "--csv -f ~/coffeelint-config.json"
 " }}}
 
 " Autocomplpop: {{{
@@ -463,10 +464,6 @@ if executable('coffeetags')
             \ }
             \ }
 endif
-" }}}
-
-" syntastic: {{{
-let g:syntastic_coffee_coffeelint_args="--csv -f ~/coffeelint-config.json"
 " }}}
 
 " ctrlp: {{{
