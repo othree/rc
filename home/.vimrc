@@ -16,6 +16,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tir_black'
 Bundle 'jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'amdt/vim-niji'
 
 " Improve
 Bundle 'maxbrunsfeld/vim-yankstack'
@@ -42,7 +43,6 @@ Bundle 'MarcWeber/vim-addon-local-vimrc'
 Bundle 'tomtom/tlib_vim.git'
 Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate'
-" Bundle 'othree/vim-snipmate'
 Bundle 'airblade/vim-gitgutter'
 
 Bundle 'Lokaltog/vim-easymotion'
@@ -391,7 +391,7 @@ let g:syntastic_coffee_coffeelint_args = "--csv -f ~/coffeelint-config.json"
 let g:acp_enableAtStartup = 1
 " let g:acp_mappingDriven = 1
 let g:acp_completeOption = '.,w,b,u,t,i,k'
-" let g:acp_behaviorSnipmateLength = 0
+let g:acp_behaviorSnipmateLength = 1
 
 let g:acp_behaviorUserDefinedMeets = 'acp#meetsForKeyword'
 let g:acp_behaviorUserDefinedFunction = 'syntaxcomplete#Complete'
@@ -528,6 +528,10 @@ let g:switch_custom_definitions =
     \     '\<\(\l\+\)\(-\l\+\)\+\>': "\\=substitute(submatch(0), '-\\(\\l\\)', '\\u\\1', 'g')",
     \   }
     \ ]
+" }}}
+
+" Niji: {{{
+let g:niji_match_all_filetypes = 1
 " }}}
 
 " After Loading All Plugin: {{{
