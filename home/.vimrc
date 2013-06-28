@@ -16,7 +16,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tir_black'
 Bundle 'jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'amdt/vim-niji'
+" Bundle 'amdt/vim-niji'
 
 " Improve
 Bundle 'maxbrunsfeld/vim-yankstack'
@@ -87,13 +87,17 @@ Bundle 'gkz/vim-ls'
 
 Bundle 'nginx.vim'
 
+" CSS, SCSS
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'ap/vim-css-color'
+Bundle 'cakebaker/scss-syntax.vim'
 
 Bundle 'juvenn/mustache.vim'
 Bundle 'nono/vim-handlebars'
 
 Bundle 'plasticboy/vim-markdown'
+
+Bundle 'vim-perl/vim-perl'
 
 " ctags
 Bundle 'majutsushi/tagbar'
@@ -103,6 +107,8 @@ Bundle 'ervandew/supertab'
 
 " multiple cursor
 Bundle 'terryma/vim-multiple-cursors'
+
+Bundle 'othree/vroom-syntax.vim'
 
 " For Fun
 Bundle 'mattn/hahhah-vim'
@@ -159,6 +165,7 @@ set statusline=%f\ %y%r%1*%m%*\ %{g:HahHah()}%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%
 " set statusline=%=%{g:HahHah()}
 
 " Special File Types
+au BufRead,BufNewFile *.vroom set ft=vroom
 au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile *.tpl set ft=html
 au BufRead,BufNewFile *.xsl set ft=html
@@ -253,6 +260,8 @@ endfunction
 
 " http://vim.wikia.com/wiki/Map_semicolon_to_colon
 " map ; :
+
+map Q <Nop>
 
 "" function keys
 nmap <F2>  :set nonumber!<CR>
@@ -531,7 +540,7 @@ let g:switch_custom_definitions =
 " }}}
 
 " Niji: {{{
-let g:niji_match_all_filetypes = 1
+let g:niji_match_all_filetypes = 0
 " }}}
 
 " After Loading All Plugin: {{{
