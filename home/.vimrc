@@ -18,6 +18,8 @@ Bundle 'jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
 " Bundle 'amdt/vim-niji'
 
+Bundle 'bling/vim-airline'
+
 " Improve
 Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'VisIncr'
@@ -160,8 +162,8 @@ set ambiwidth=double
 set t_Co=256
 
 " Status Line
-set laststatus=2
-set statusline=%f\ %y%r%1*%m%*\ %{g:HahHah()}%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
+" set laststatus=2
+" set statusline=%f\ %y%r%1*%m%*\ %{g:HahHah()}%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
 " set statusline=%=%{g:HahHah()}
 
 " Special File Types
@@ -358,6 +360,20 @@ let g:html_indent_inctags = "html,body,head,tbody,a"
 let g:event_handler_attributes_complete = 0
 let g:microdata_attributes_complete = 0
 let g:SimpleJsIndenter_BriefMode = 1
+" }}}
+
+" Airline: {{{
+
+" let g:airline_left_sep = ''
+let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+let g:airline_right_sep = ''
+" let g:airline_fugitive_prefix = '   '
+" let g:airline_readonly_symbol = ''
+" let g:airline_linecolumn_prefix = ' '
+
+let g:airline_enable_syntastic = 1
+
 " }}}
 
 " SyntaxRange {{{
