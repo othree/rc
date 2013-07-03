@@ -102,7 +102,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'vim-perl/vim-perl'
 
 " ctags
-Bundle 'majutsushi/tagbar'
+" Bundle 'majutsushi/tagbar'
 
 " supertab
 Bundle 'ervandew/supertab'
@@ -113,8 +113,8 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'othree/vroom-syntax.vim'
 
 " For Fun
-Bundle 'mattn/hahhah-vim'
-Bundle 'tyru/banban.vim'
+" Bundle 'mattn/hahhah-vim'
+" Bundle 'tyru/banban.vim'
 
 filetype plugin indent on 
 
@@ -469,10 +469,6 @@ let b:html_omni_flavor = 'html5'
 let NERDTreeShowHidden = 1
 " }}}
 
-" FuzzyFinder: {{{
-let g:fuf_modesDisable = []
-" }}}
-
 " CoffeeTags: {{{
 if executable('coffeetags')
     let g:tagbar_type_coffee = {
@@ -577,14 +573,7 @@ if exists(":NERDTreeToggle")
     map <F12> :NERDTreeToggle<CR>
 endif
 
-"" FuzzyFinder
-if exists(":FufFile")
-    nnoremap <leader>ff  :FufFile<CR>
-    nnoremap <leader>fb  :FufBuffer<CR>
-    nnoremap <leader>fr  :FufMruFile<CR>
-endif
-
-"" speeddating.vim
+"" Speeddating.vim
 if exists(":SpeedDatingFormat")
     SpeedDatingFormat %H:%M
     SpeedDatingFormat %m/%d
