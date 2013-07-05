@@ -125,11 +125,11 @@ filetype plugin on
 filetype indent on
 " colors tir_black
 " colors jellybeans
-colors Tomorrow-Night-Bright
+" colors Tomorrow-Night-Bright
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 set background=dark
-" colorscheme solarized
+colorscheme solarized
 language message zh_TW.UTF-8
 
 set nocompatible
@@ -164,7 +164,7 @@ set t_Co=256
 " Status Line
 " set laststatus=2
 " set statusline=%f\ %y%r%1*%m%*\ %{g:HahHah()}%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
-" set statusline=%=%{g:HahHah()}
+" " set statusline=%=%{g:HahHah()}
 
 " Special File Types
 au BufRead,BufNewFile *.vroom set ft=vroom
@@ -364,15 +364,15 @@ let g:SimpleJsIndenter_BriefMode = 1
 
 " Airline: {{{
 
-" let g:airline_left_sep = ''
 let g:airline_left_sep = ''
-" let g:airline_right_sep = ''
 let g:airline_right_sep = ''
-" let g:airline_fugitive_prefix = '   '
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+let g:airline_fugitive_prefix = '  '
 " let g:airline_readonly_symbol = ''
 " let g:airline_linecolumn_prefix = ' '
 
-let g:airline_enable_syntastic = 1
+" let g:airline_enable_syntastic = 1
 
 " }}}
 
