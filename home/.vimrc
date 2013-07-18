@@ -112,6 +112,9 @@ Bundle 'terryma/vim-multiple-cursors'
 
 Bundle 'othree/vroom-syntax.vim'
 
+" Vim
+Bundle 'othree/vim-syntax-enhanced'
+
 " For Fun
 " Bundle 'mattn/hahhah-vim'
 " Bundle 'tyru/banban.vim'
@@ -154,6 +157,9 @@ set nobomb
 set hlsearch
 
 let mapleader = ","
+
+" Status Line
+set laststatus=2
 
 " Encoding
 set encoding=utf-8
@@ -368,11 +374,13 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 " let g:airline_left_sep = ''
 " let g:airline_right_sep = ''
-let g:airline_fugitive_prefix = '  '
+" let g:airline_fugitive_prefix = '  '
 " let g:airline_readonly_symbol = ''
 " let g:airline_linecolumn_prefix = ' '
 
 " let g:airline_enable_syntastic = 1
+
+let g:airline_theme='solarized'
 
 " }}}
 
