@@ -181,7 +181,7 @@ expand-to-home-or-insert () {
   fi
 }
 zle -N expand-to-home-or-insert
-bindkey "\\"  expand-to-home-or-insert
+# bindkey "\\"  expand-to-home-or-insert
 
 os=`uname`
 
@@ -209,6 +209,13 @@ alias -g .....='../../../../..'
 alias -g ......='../../../../../..'
 alias -g .......='../../../../../../..'
 
+alias ci='git commit'
+alias co='git checkout'
+alias clone='git clone'
+alias merge='git merge'
+alias commit='git commit'
+alias checkout='git checkout'
+
 #autojump for osx
 if [ "`command -v brew`" != "" ]; then
     [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
@@ -217,7 +224,7 @@ fi
 #autojump for linux
 [[ -s /etc/profile.d/autojump.sh ]] && . /etc/profile.d/autojump.sh
 
-[[ -s "~/.zdhrc.local" ]] && source "~/.zdhrc.local"
+[[ -s ~/.zdhrc.local ]] && source ~/.zdhrc.local
 
 function check_compression {
     local unzipped=`curl "$1" --silent --write-out "%{size_download}"  --output /dev/null`
@@ -225,6 +232,9 @@ function check_compression {
     echo "unzipped size: $unzipped, zipped size: $zipped"
 }
 
-[[ -s "/Users/othree/.rvm/scripts/rvm" ]] && source "/Users/othree/.rvm/scripts/rvm"
+if [[ -s ~/.rvm/scripts/rvm ]]; then
+    source ~/.rvm/scripts/rvm
+    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s ~/.oh-my-zsh/plugins/jira/jira.plugin.zsh ]] && source ~/.oh-my-zsh/plugins/jira/jira.plugin.zsh
