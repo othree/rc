@@ -19,6 +19,7 @@ Bundle 'altercation/vim-colors-solarized'
 " Bundle 'amdt/vim-niji'
 
 Bundle 'bling/vim-airline'
+Bundle 'osyo-manga/shabadou.vim'
 
 " Improve
 Bundle 'maxbrunsfeld/vim-yankstack'
@@ -126,13 +127,13 @@ syntax on
 filetype on
 filetype plugin on
 filetype indent on
-" colors tir_black
-" colors jellybeans
-" colors Tomorrow-Night-Bright
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 set background=dark
-colorscheme solarized
+" colorscheme solarized
+" colors tir_black
+colors jellybeans
+" colors Tomorrow-Night-Bright
 language message zh_TW.UTF-8
 
 set nocompatible
@@ -155,6 +156,8 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 set hidden
 set nobomb
 set hlsearch
+
+set guicolors
 
 let mapleader = ","
 
@@ -210,6 +213,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
 "autocmd FileType c set omnifunc=ccomplete#Complete
 "autocmd FileType cpp set omnifunc=ccomplete#Complete
 autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
+autocmd FileType scss set sw=2
 
 autocmd FileType coffee set ts=2 sw=2 sts=2
 autocmd FileType vim set ts=2 sw=2 sts=2
