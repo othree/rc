@@ -33,9 +33,12 @@ Bundle 'SyntaxComplete'
 Bundle 'AndrewRadev/switch.vim'
 Bundle 'Raimondi/delimitMate'
 
-Bundle 'L9'
-Bundle 'othree/vim-autocomplpop'
-Bundle 'vim-scripts/matchit.zip'
+" Complete
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'marijnh/tern_for_vim'
+" Bundle 'L9'
+" Bundle 'othree/vim-autocomplpop'
+" Bundle 'vim-scripts/matchit.zip'
 " Bundle 'ervandew/supertab'
 
 Bundle 'kana/vim-operator-user'
@@ -77,7 +80,7 @@ Bundle 'othree/vim-javascript-syntax'
 Bundle 'JSON.vim'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jiangmiao/simple-javascript-indenter'
-Bundle 'teramako/jscomplete-vim'
+" Bundle 'teramako/jscomplete-vim'
 " Bundle 'othree/jslint.vim'
 
 " CoffeeScript
@@ -205,7 +208,7 @@ set cursorline
 "" omnifunc setting
 setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=jscomplete#CompleteJS
+" autocmd FileType javascript set omnifunc=jscomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
 "autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags noci
@@ -226,6 +229,12 @@ autocmd FileType *
 
 let g:omni_syntax_group_include_javascript = 'javascript\w\+,jquery\w\+,underscore\w\+,prelude\w\+,requirejs\w\+'
 
+" }}}
+
+" YCM: {{{
+let g:ycm_semantic_triggers =  {
+  \   'coffee' : ['.', '["', "['"]
+  \ }
 " }}}
 
 " Screen Fix: {{{
@@ -418,6 +427,7 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " Syntastic: {{{
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_javascript_jslint_conf = "--nomen --plusplus --forin --regexp"
 let g:syntastic_coffee_coffeelint_args = "--csv -f ~/coffeelint-config.json"
@@ -528,7 +538,7 @@ let g:ctrlp_prompt_mappings = {
 " }}}
 
 " jscomplete-vim: {{{
-let g:jscomplete_use = ['dom']
+" let g:jscomplete_use = ['dom']
 " }}}
 
 " Command Mapping: {{{
