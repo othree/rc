@@ -32,10 +32,11 @@ Bundle 'spiiph/vim-space'
 Bundle 'SyntaxComplete'
 Bundle 'AndrewRadev/switch.vim'
 Bundle 'Raimondi/delimitMate'
+Bundle 'justinmk/vim-sneak'
 
 " Complete
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'marijnh/tern_for_vim'
+Bundle 'othree/tern_for_vim'
 " Bundle 'L9'
 " Bundle 'othree/vim-autocomplpop'
 " Bundle 'vim-scripts/matchit.zip'
