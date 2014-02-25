@@ -445,7 +445,8 @@ let g:syntastic_html_checkers = []
 
 " YouCompleteMe: {{{
 let g:ycm_semantic_triggers =  {
-  \   'coffee' : ['.'],
+  \   'coffee' : ['.', '["', "['", 'new '],
+  \   'javascript' : ['.', '["', "['", 'new '],
   \ }
 " }}}
 
