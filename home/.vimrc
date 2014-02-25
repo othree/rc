@@ -40,7 +40,6 @@ Bundle 'othree/tern_for_vim'
 " Bundle 'L9'
 " Bundle 'othree/vim-autocomplpop'
 " Bundle 'vim-scripts/matchit.zip'
-" Bundle 'ervandew/supertab'
 
 Bundle 'kana/vim-operator-user'
 Bundle 'kana/vim-operator-replace'
@@ -83,6 +82,7 @@ Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jiangmiao/simple-javascript-indenter'
 " Bundle 'teramako/jscomplete-vim'
 " Bundle 'othree/jslint.vim'
+Bundle 'bigfish/vim-js-context-coloring'
 
 " CoffeeScript
 Bundle 'kchmck/vim-coffee-script'
@@ -91,6 +91,9 @@ Bundle 'othree/fecompressor.vim'
 
 " LiveScript
 Bundle 'gkz/vim-ls'
+
+" TypeScript
+Bundle 'leafgarland/typescript-vim'
 
 Bundle 'nginx.vim'
 
@@ -120,6 +123,8 @@ Bundle 'othree/vroom-syntax.vim'
 " Vim
 Bundle 'othree/vim-syntax-enhanced'
 
+Bundle 'slim-template/vim-slim'
+
 " For Fun
 " Bundle 'mattn/hahhah-vim'
 " Bundle 'tyru/banban.vim'
@@ -147,9 +152,9 @@ set showtabline=2 " always show tab line
 set ruler
 set nu
 set nuw=5
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set autoindent
 set smartindent
@@ -189,9 +194,9 @@ au BufRead,BufNewFile *.n3  set ft=n3
 au BufRead,BufNewFile /usr/local/etc/nginx/* set ft=nginx 
 au BufRead,BufNewFile /etc/nginx/* set ft=nginx 
 au BufRead,BufNewFile *.hbs set ft=handlebars
-au BufRead,BufNewFile *.rb set sw=2 sts=2 st=2
-au BufRead,BufNewFile *.rake set sw=2 sts=2 st=2
-au BufRead,BufNewFile *.ls set sw=2 sts=2 st=2
+" au BufRead,BufNewFile *.rb set sw=2 sts=2 st=2
+" au BufRead,BufNewFile *.rake set sw=2 sts=2 st=2
+" au BufRead,BufNewFile *.ls set sw=2 sts=2 st=2
 au BufNewFile,BufReadPost *.ls setl foldmethod=indent nofoldenable
 
 " highlight line & column
@@ -236,6 +241,9 @@ let g:omni_syntax_group_include_javascript = 'javascript\w\+,jquery\w\+,undersco
 let g:ycm_semantic_triggers =  {
   \   'coffee' : ['.', '["', "['"]
   \ }
+" }}}
+" JS Libs: {{{
+let g:used_javascript_libs = 'backbone,jquery,lodash,requirejs'
 " }}}
 
 " Screen Fix: {{{
@@ -432,6 +440,13 @@ let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_javascript_jslint_conf = "--nomen --plusplus --forin --regexp"
 let g:syntastic_coffee_coffeelint_args = "--csv -f ~/coffeelint-config.json"
+let g:syntastic_html_checkers = []
+" }}}
+
+" YouCompleteMe: {{{
+let g:ycm_semantic_triggers =  {
+  \   'coffee' : ['.'],
+  \ }
 " }}}
 
 " Autocomplpop: {{{
@@ -478,7 +493,8 @@ function HtmlUnEscape()
 endfunction
 
 function HtmlReIndent()
-    silent %s/\(<\/\w\+\)>\s\?</\1></eg
+    silent %s/\(<\/\w\+\)>\s\?</\1>
+</eg
     normal gg=G
 endfunction
 "map <silent> <c-h> :call HtmlEscape()<CR>
@@ -538,8 +554,9 @@ let g:ctrlp_prompt_mappings = {
 
 " }}}
 
-" jscomplete-vim: {{{
-" let g:jscomplete_use = ['dom']
+" jscontext-coloring: {{{
+let g:js_context_colors_enabled = 0
+let g:js_context_colors = [ "#EEEEEE", "#99FF99", "#ded35d", 172, "#ff9999", 161, 63 ]
 " }}}
 
 " Command Mapping: {{{
@@ -617,4 +634,5 @@ autocmd VimEnter * :call AfterStart()
 map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 
