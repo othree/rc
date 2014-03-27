@@ -17,6 +17,7 @@ Bundle 'tir_black'
 Bundle 'jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
 " Bundle 'amdt/vim-niji'
+Bundle 'othree/vim-osx-colorpicker'
 
 Bundle 'bling/vim-airline'
 Bundle 'osyo-manga/shabadou.vim'
@@ -33,6 +34,7 @@ Bundle 'SyntaxComplete'
 Bundle 'AndrewRadev/switch.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'justinmk/vim-sneak'
+Bundle 'terryma/vim-expand-region'
 
 " Complete
 Bundle 'Valloric/YouCompleteMe'
@@ -103,7 +105,7 @@ Bundle 'ap/vim-css-color'
 Bundle 'cakebaker/scss-syntax.vim'
 
 Bundle 'juvenn/mustache.vim'
-Bundle 'nono/vim-handlebars'
+Bundle 'mustache/vim-mustache-handlebars'
 
 Bundle 'plasticboy/vim-markdown'
 
@@ -185,6 +187,7 @@ set t_Co=256
 " " set statusline=%=%{g:HahHah()}
 
 " Special File Types
+au BufRead,BufNewFile *nginx* set ft=nginx
 au BufRead,BufNewFile *.vroom set ft=vroom
 au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile *.tpl set ft=html
@@ -193,7 +196,6 @@ au BufRead,BufNewFile *.json set syntax=json
 au BufRead,BufNewFile *.n3  set ft=n3
 au BufRead,BufNewFile /usr/local/etc/nginx/* set ft=nginx 
 au BufRead,BufNewFile /etc/nginx/* set ft=nginx 
-au BufRead,BufNewFile *.hbs set ft=handlebars
 " au BufRead,BufNewFile *.rb set sw=2 sts=2 st=2
 " au BufRead,BufNewFile *.rake set sw=2 sts=2 st=2
 " au BufRead,BufNewFile *.ls set sw=2 sts=2 st=2
@@ -381,6 +383,11 @@ let NERDMapleader='<Leader>c'
 
 " switch
 nnoremap - :Switch<cr>
+
+" Expand region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
 "}}}
 
 " Indent: {{{
@@ -439,7 +446,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_javascript_jslint_conf = "--nomen --plusplus --forin --regexp"
-let g:syntastic_coffee_coffeelint_args = "--csv -f ~/coffeelint-config.json"
+" let g:syntastic_coffee_coffeelint_args = "--csv -f ~/coffeelint-config.json"
 let g:syntastic_html_checkers = []
 " }}}
 
@@ -534,10 +541,14 @@ let g:ctrlp_cmd = 'CtrlP'
 
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_use_caching = 0
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  'node_modules$\|\.git$\|\.meteor$\|\.svn$\|dist$\|\.hg$',
+  \ 'file': '\.DS_Store$\|\.jpg$\|\.png$\|\.jpeg$\|\.gif$\|\.svg$'
+  \ }
 
 " let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 let g:ctrlp_user_command = {
@@ -592,9 +603,20 @@ let g:switch_custom_definitions =
     \ ]
 " }}}
 
-" Niji: {{{
-let g:niji_match_all_filetypes = 0
+" OSX Colorpicker: {{{
+let g:colorpicker_app = 'iTerm.app'
 " }}}
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 
 " After Loading All Plugin: {{{
 function AfterStart ()
