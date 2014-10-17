@@ -7,130 +7,131 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Colors
-Bundle 'tir_black'
-Bundle 'jellybeans.vim'
-Bundle 'altercation/vim-colors-solarized'
-" Bundle 'amdt/vim-niji'
-Bundle 'othree/vim-osx-colorpicker'
+Plugin 'tir_black'
+Plugin 'jellybeans.vim'
+Plugin 'altercation/vim-colors-solarized'
+" Plugin 'amdt/vim-niji'
+Plugin 'othree/vim-osx-colorpicker'
 
-Bundle 'bling/vim-airline'
-Bundle 'osyo-manga/shabadou.vim'
+Plugin 'bling/vim-airline'
+Plugin 'osyo-manga/shabadou.vim'
 
 " Improve
-Bundle 'maxbrunsfeld/vim-yankstack'
-Bundle 'VisIncr'
-Bundle 'Align'
-Bundle 'othree/eregex.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mbbill/undotree'
-Bundle 'spiiph/vim-space'
-Bundle 'SyntaxComplete'
-Bundle 'AndrewRadev/switch.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'justinmk/vim-sneak'
-Bundle 'terryma/vim-expand-region'
+Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'VisIncr'
+Plugin 'Align'
+Plugin 'othree/eregex.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mbbill/undotree'
+Plugin 'spiiph/vim-space'
+Plugin 'SyntaxComplete'
+Plugin 'AndrewRadev/switch.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'justinmk/vim-sneak'
+Plugin 'terryma/vim-expand-region'
 
 " Complete
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'othree/tern_for_vim'
-" Bundle 'L9'
-" Bundle 'othree/vim-autocomplpop'
-" Bundle 'vim-scripts/matchit.zip'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'L9'
+Plugin 'othree/vim-autocomplpop'
+" Plugin 'vim-scripts/matchit.zip'
 
-Bundle 'kana/vim-operator-user'
-Bundle 'kana/vim-operator-replace'
+Plugin 'kana/vim-operator-user'
+Plugin 'kana/vim-operator-replace'
 
-Bundle 'MarcWeber/vim-addon-mw-utils.git'
-Bundle 'MarcWeber/vim-addon-local-vimrc'
-Bundle 'tomtom/tlib_vim.git'
-Bundle 'honza/vim-snippets'
-Bundle 'garbas/vim-snipmate'
-Bundle 'airblade/vim-gitgutter'
+Plugin 'MarcWeber/vim-addon-mw-utils.git'
+Plugin 'MarcWeber/vim-addon-local-vimrc'
+Plugin 'tomtom/tlib_vim.git'
+Plugin 'honza/vim-snippets'
+Plugin 'garbas/vim-snipmate'
+Plugin 'airblade/vim-gitgutter'
 
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
 " 
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 
 " Tim Pope
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-characterize'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-characterize'
 
 " Filetype
-Bundle 'SyntaxRange'
-Bundle 'tpope/vim-haml'
-Bundle 'mattn/zencoding-vim'
-Bundle 'othree/html5.vim'
-Bundle 'othree/xml.vim'
+Plugin 'SyntaxRange'
+Plugin 'tpope/vim-haml'
+Plugin 'mattn/emmet-vim'
+Plugin 'othree/html5.vim'
+Plugin 'othree/xml.vim'
 
 " JavaScript
-" Bundle 'othree/javascript-syntax.vim'
-" Bundle 'jelera/vim-javascript-syntax'
-Bundle 'othree/vim-javascript-syntax'
-Bundle 'JSON.vim'
-Bundle 'othree/javascript-libraries-syntax.vim'
-Bundle 'jiangmiao/simple-javascript-indenter'
-" Bundle 'teramako/jscomplete-vim'
-" Bundle 'othree/jslint.vim'
-Bundle 'bigfish/vim-js-context-coloring'
+" Plugin 'othree/javascript-syntax.vim'
+" Plugin 'jelera/vim-javascript-syntax'
+Plugin 'othree/yajs.vim'
+Plugin 'JSON.vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'jiangmiao/simple-javascript-indenter'
+" Plugin 'teramako/jscomplete-vim'
+" Plugin 'othree/jslint.vim'
+Plugin 'bigfish/vim-js-context-coloring'
 
 " CoffeeScript
-Bundle 'kchmck/vim-coffee-script'
-" Bundle 'othree/coffee-check.vim'
-Bundle 'othree/fecompressor.vim'
+Plugin 'kchmck/vim-coffee-script'
+" Plugin 'othree/coffee-check.vim'
+Plugin 'othree/fecompressor.vim'
 
 " LiveScript
-Bundle 'gkz/vim-ls'
+Plugin 'gkz/vim-ls'
 
 " TypeScript
-Bundle 'leafgarland/typescript-vim'
+Plugin 'leafgarland/typescript-vim'
 
-Bundle 'nginx.vim'
+Plugin 'nginx.vim'
 
 " CSS, SCSS
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'ap/vim-css-color'
-Bundle 'cakebaker/scss-syntax.vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'ap/vim-css-color'
+Plugin 'cakebaker/scss-syntax.vim'
 
-Bundle 'juvenn/mustache.vim'
-Bundle 'mustache/vim-mustache-handlebars'
+Plugin 'juvenn/mustache.vim'
+Plugin 'mustache/vim-mustache-handlebars'
 
-Bundle 'plasticboy/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 
-Bundle 'vim-perl/vim-perl'
+Plugin 'vim-perl/vim-perl'
 
 " ctags
-" Bundle 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
 
 " supertab
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 
 " multiple cursor
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
 
-Bundle 'othree/vroom-syntax.vim'
+Plugin 'othree/vroom-syntax.vim'
 
 " Vim
-Bundle 'othree/vim-syntax-enhanced'
+Plugin 'othree/vim-syntax-enhanced'
 
-Bundle 'slim-template/vim-slim'
+Plugin 'slim-template/vim-slim'
 
 " For Fun
 " Bundle 'mattn/hahhah-vim'
 " Bundle 'tyru/banban.vim'
 
+call vundle#end() 
 filetype plugin indent on 
 
 " Basic Settings: {{{
@@ -466,6 +467,7 @@ let g:acp_behaviorSnipmateLength = 1
 
 let g:acp_behaviorUserDefinedMeets = 'acp#meetsForKeyword'
 let g:acp_behaviorUserDefinedFunction = 'syntaxcomplete#Complete'
+
 " }}}
 
 " NERDCommenter: {{{
@@ -543,12 +545,13 @@ let g:ctrlp_show_hidden = 0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_use_caching = 0
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip,
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  'node_modules$\|\.git$\|\.meteor$\|\.svn$\|dist$\|\.hg$',
   \ 'file': '\.DS_Store$\|\.jpg$\|\.png$\|\.jpeg$\|\.gif$\|\.svg$'
   \ }
+" let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 
 " let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 let g:ctrlp_user_command = {
