@@ -39,6 +39,7 @@ Plugin 'terryma/vim-expand-region'
 " Complete
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'othree/tern_for_vim_coffee'
 Plugin 'L9'
 Plugin 'othree/vim-autocomplpop'
 " Plugin 'vim-scripts/matchit.zip'
@@ -84,6 +85,7 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'jiangmiao/simple-javascript-indenter'
 " Plugin 'teramako/jscomplete-vim'
 " Plugin 'othree/jslint.vim'
+Plugin 'othree/jspc.vim'
 Plugin 'bigfish/vim-js-context-coloring'
 
 " CoffeeScript
@@ -246,7 +248,7 @@ let g:ycm_semantic_triggers =  {
   \ }
 " }}}
 " JS Libs: {{{
-let g:used_javascript_libs = 'backbone,jquery,lodash,requirejs'
+" let g:used_javascript_libs = 'backbone,jquery,lodash,requirejs'
 " }}}
 
 " Screen Fix: {{{
@@ -467,6 +469,8 @@ let g:acp_behaviorSnipmateLength = 1
 
 let g:acp_behaviorUserDefinedMeets = 'acp#meetsForKeyword'
 let g:acp_behaviorUserDefinedFunction = 'syntaxcomplete#Complete'
+
+let g:omni_syntax_use_iskeyword = 0
 
 " }}}
 
