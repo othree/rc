@@ -184,6 +184,10 @@ set fileencodings=ucs-bom,utf-8,euc-jp,big5
 set ambiwidth=double
 set t_Co=256
 
+" ctrl + v + [
+let &t_8f="[38;2;%lu;%lu;%lum"
+let &t_8b="[48;2;%lu;%lu;%lum"
+
 " Status Line
 " set laststatus=2
 " set statusline=%f\ %y%r%1*%m%*\ %{g:HahHah()}%=%<\ [%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ x%02B\ %4c\ %4l\ [%P]
