@@ -124,6 +124,9 @@ Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'othree/vroom-syntax.vim'
 
+" WebIDL
+Plugin 'othree/vim-widl'
+
 " Vim
 Plugin 'othree/vim-syntax-enhanced'
 
@@ -171,7 +174,7 @@ set hidden
 set nobomb
 set hlsearch
 
-set guicolors
+" set guicolors
 
 let mapleader = ","
 
@@ -190,6 +193,7 @@ set t_Co=256
 " " set statusline=%=%{g:HahHah()}
 
 " Special File Types
+au BufRead,BufNewFile *.webidl set ft=widl
 au BufRead,BufNewFile *nginx* set ft=nginx
 au BufRead,BufNewFile *.vroom set ft=vroom
 au BufRead,BufNewFile *.less set ft=less
@@ -624,6 +628,22 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+" auto paste mode
+
+if &term =~ "xterm.*"
+  let &t_ti = &t_ti . "\e[?2004h"
+  let &t_te = "\e[?2004l" . &t_te
+  function XTermPasteBegin(ret)
+    set pastetoggle=<Esc>[201~
+    set paste
+    return a:ret
+  endfunction
+  map <expr> <Esc>[200~ XTermPasteBegin("i")
+  imap <expr> <Esc>[200~ XTermPasteBegin("")
+  cmap <Esc>[200~ <nop>
+  cmap <Esc>[201~ <nop>
+endif
 
 " After Loading All Plugin: {{{
 function AfterStart ()
