@@ -463,6 +463,7 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_tsc_args = "-t ES5"
 " let g:syntastic_javascript_jslint_conf = "--nomen --plusplus --forin --regexp"
 " let g:syntastic_coffee_coffeelint_args = "--csv -f ~/coffeelint-config.json"
 let g:syntastic_html_checkers = []
