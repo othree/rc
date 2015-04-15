@@ -89,6 +89,8 @@ Plugin 'jiangmiao/simple-javascript-indenter'
 Plugin 'othree/jspc.vim'
 Plugin 'bigfish/vim-js-context-coloring'
 
+Plugin 'othree/jsdoc-syntax.vim'
+
 " CoffeeScript
 Plugin 'kchmck/vim-coffee-script'
 " Plugin 'othree/coffee-check.vim'
@@ -460,8 +462,8 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " Syntastic: {{{
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_html_checkers = []
-let g:syntastic_javascript_checkers = ['jslint']
-let g:syntastic_javascript_jslint_conf = "--nomen --plusplus --forin --regexp"
+let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_jslint_conf = "--nomen --plusplus --forin --regexp"
 " let g:syntastic_coffee_coffeelint_args = "--csv -f ~/coffeelint-config.json"
 let g:syntastic_html_checkers = []
 " }}}
@@ -625,6 +627,10 @@ let g:switch_custom_definitions =
 
 " OSX Colorpicker: {{{
 let g:colorpicker_app = 'iTerm.app'
+" }}}
+
+" TypeScript: {{{
+let g:typeScript_ignore_typeScriptdoc = 1
 " }}}
 
 " Semantic Highlight: {{{
