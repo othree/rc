@@ -18,6 +18,7 @@ Plugin 'jellybeans.vim'
 Plugin 'altercation/vim-colors-solarized'
 " Plugin 'amdt/vim-niji'
 Plugin 'othree/vim-osx-colorpicker'
+Plugin 'peaksea'
 
 Plugin 'bling/vim-airline'
 Plugin 'osyo-manga/shabadou.vim'
@@ -101,6 +102,8 @@ Plugin 'leafgarland/typescript-vim'
 
 Plugin 'nginx.vim'
 
+Plugin 'othree/semantic-highlight.vim'
+
 " CSS, SCSS
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'ap/vim-css-color'
@@ -129,8 +132,11 @@ Plugin 'othree/vim-widl'
 
 " Vim
 Plugin 'othree/vim-syntax-enhanced'
+Plugin 'vim-scripts/SyntaxAttr.vim'
 
 Plugin 'slim-template/vim-slim'
+
+Plugin 'gerw/vim-HiLinkTrace'
 
 " For Fun
 " Bundle 'mattn/hahhah-vim'
@@ -150,6 +156,7 @@ set background=dark
 " colorscheme solarized
 " colors tir_black
 colors jellybeans
+" colors peaksea
 " colors Tomorrow-Night-Bright
 language message zh_TW.UTF-8
 
@@ -174,7 +181,7 @@ set hidden
 set nobomb
 set hlsearch
 
-" set guicolors
+set guicolors
 
 let mapleader = ","
 
@@ -186,8 +193,6 @@ set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,euc-jp,big5
 set ambiwidth=double
 set t_Co=256
-
-" ctrl + v + [
 let &t_8f="[38;2;%lu;%lu;%lum"
 let &t_8b="[48;2;%lu;%lu;%lum"
 
@@ -426,8 +431,8 @@ let g:airline_theme='solarized'
 
 " SyntaxRange {{{
 
-autocmd FileType html call SyntaxRange#Include('/<script[^>]*>/', '</script>', 'javascript', 'htmlTagName')
-autocmd FileType html call SyntaxRange#Include('/<style[^>]*>/', '</style>', 'css', 'htmlTagName')
+" autocmd FileType html call SyntaxRange#Include('/<script[^>]*>/', '</script>', 'javascript', 'htmlTagName')
+" autocmd FileType html call SyntaxRange#Include('/<style[^>]*>/', '</style>', 'css', 'htmlTagName')
 
 " }}}
 
@@ -620,6 +625,10 @@ let g:switch_custom_definitions =
 
 " OSX Colorpicker: {{{
 let g:colorpicker_app = 'iTerm.app'
+" }}}
+
+" Semantic Highlight: {{{
+let g:semanticEnableFileTypes = ['javascript', 'typescript', 'vim']
 " }}}
 
 " vp doesn't replace paste buffer
