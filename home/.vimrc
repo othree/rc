@@ -88,6 +88,7 @@ Plugin 'jiangmiao/simple-javascript-indenter'
 " Plugin 'othree/jslint.vim'
 Plugin 'othree/jspc.vim'
 Plugin 'bigfish/vim-js-context-coloring'
+Plugin 'mxw/vim-jsx'
 
 Plugin 'othree/jsdoc-syntax.vim'
 
@@ -104,7 +105,7 @@ Plugin 'leafgarland/typescript-vim'
 
 Plugin 'nginx.vim'
 
-Plugin 'othree/semantic-highlight.vim'
+" Plugin 'othree/semantic-highlight.vim'
 
 " CSS, SCSS
 Plugin 'hail2u/vim-css3-syntax'
@@ -139,6 +140,8 @@ Plugin 'vim-scripts/SyntaxAttr.vim'
 Plugin 'slim-template/vim-slim'
 
 Plugin 'gerw/vim-HiLinkTrace'
+
+Plugin 'mhinz/vim-startify'
 
 " For Fun
 " Bundle 'mattn/hahhah-vim'
@@ -634,6 +637,11 @@ let g:colorpicker_app = 'iTerm.app'
 let g:typeScript_ignore_typeScriptdoc = 1
 " }}}
 
+" Startify: {{{
+let g:startify_custom_header =
+  \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+" }}}
+
 " Semantic Highlight: {{{
 let g:semanticEnableFileTypes = ['javascript', 'typescript', 'vim']
 " }}}
@@ -704,5 +712,4 @@ autocmd VimEnter * :call AfterStart()
 map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
 
