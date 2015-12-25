@@ -205,9 +205,9 @@ alias ~="cd ~"
 alias ..="cd .."
 alias -g ...='../..'
 alias -g ....='../../..'
-alias -g .....='../../../../..'
-alias -g ......='../../../../../..'
-alias -g .......='../../../../../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+alias -g .......='../../../../../..'
 
 alias ci='git commit'
 alias co='git checkout'
@@ -238,3 +238,13 @@ if [[ -s ~/.rvm/scripts/rvm ]]; then
 fi
 
 [[ -s ~/.oh-my-zsh/plugins/jira/jira.plugin.zsh ]] && source ~/.oh-my-zsh/plugins/jira/jira.plugin.zsh
+
+export NVM_DIR="/Users/othree/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+source /Users/othree/.iterm2_shell_integration.zsh
+
+export GOPATH=$HOME/.go/
+export PATH=$GOPATH/bin:$PATH
+
+export PATH=~/bin:$PATH

@@ -69,6 +69,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-characterize'
+" Plugin 'tpope/vim-sleuth'
 
 " Filetype
 Plugin 'SyntaxRange'
@@ -76,11 +77,13 @@ Plugin 'tpope/vim-haml'
 Plugin 'mattn/emmet-vim'
 Plugin 'othree/html5.vim'
 Plugin 'othree/xml.vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " JavaScript
 " Plugin 'othree/javascript-syntax.vim'
 " Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/yajs.vim'
+Plugin 'othree/es.next.syntax.vim'
 Plugin 'JSON.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'jiangmiao/simple-javascript-indenter'
@@ -93,7 +96,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'othree/jsdoc-syntax.vim'
 
 " CoffeeScript
-Plugin 'kchmck/vim-coffee-script'
+" Plugin 'kchmck/vim-coffee-script'
 " Plugin 'othree/coffee-check.vim'
 Plugin 'othree/fecompressor.vim'
 
@@ -111,6 +114,8 @@ Plugin 'nginx.vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'ap/vim-css-color'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'csscomb/vim-csscomb'
+Plugin 'othree/csscomplete.vim'
 
 Plugin 'juvenn/mustache.vim'
 Plugin 'mustache/vim-mustache-handlebars'
@@ -249,6 +254,8 @@ autocmd FileType scss set sw=2
 
 autocmd FileType coffee set ts=2 sw=2 sts=2
 autocmd FileType vim set ts=2 sw=2 sts=2
+
+autocmd FileType go set noet
 
 autocmd FileType *
     \ if &omnifunc != '' |
@@ -673,6 +680,8 @@ if &term =~ "xterm.*"
   cmap <Esc>[201~ <nop>
 endif
 
+let g:tern_show_argument_hints = 'on_move'
+
 " After Loading All Plugin: {{{
 function AfterStart ()
 
@@ -713,3 +722,4 @@ map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+let g:tern_show_signature_in_pum=1
