@@ -216,15 +216,11 @@ alias merge='git merge'
 alias commit='git commit'
 alias checkout='git checkout'
 
-#autojump for osx
-if [ "`command -v brew`" != "" ]; then
-    [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-    [[ -s `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
-fi
-#autojump for linux
-[[ -s /etc/profile.d/autojump.sh ]] && . /etc/profile.d/autojump.sh
-
-[[ -s ~/.zdhrc.local ]] && source ~/.zdhrc.local
+#alias for cnpm
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/cnpm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.cnpmrc"
 
 function check_compression {
     local unzipped=`curl "$1" --silent --write-out "%{size_download}"  --output /dev/null`
@@ -237,12 +233,10 @@ if [[ -s ~/.rvm/scripts/rvm ]]; then
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 fi
 
-[[ -s ~/.oh-my-zsh/plugins/jira/jira.plugin.zsh ]] && source ~/.oh-my-zsh/plugins/jira/jira.plugin.zsh
-
 export NVM_DIR="/Users/othree/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-source /Users/othree/.iterm2_shell_integration.zsh
+[[ -s ~/.iterm2_shell_integration.zsh ]] && source ~/.iterm2_shell_integration.zsh
 
 export GOPATH=$HOME/.go/
 export PATH=$GOPATH/bin:$PATH
