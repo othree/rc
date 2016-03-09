@@ -20,7 +20,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'othree/vim-osx-colorpicker'
 Plugin 'peaksea'
 
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'osyo-manga/shabadou.vim'
 
 " Improve
@@ -106,7 +107,7 @@ Plugin 'gkz/vim-ls'
 " TypeScript
 Plugin 'leafgarland/typescript-vim'
 
-Plugin 'nginx.vim'
+Plugin 'othree/nginx-contrib-vim'
 
 " Plugin 'othree/semantic-highlight.vim'
 
@@ -213,15 +214,15 @@ let &t_8b="[48;2;%lu;%lu;%lum"
 
 " Special File Types
 au BufRead,BufNewFile *.webidl set ft=widl
-au BufRead,BufNewFile *nginx* set ft=nginx
+" au BufRead,BufNewFile *nginx* set ft=nginx
 au BufRead,BufNewFile *.vroom set ft=vroom
 au BufRead,BufNewFile *.less set ft=less
 au BufRead,BufNewFile *.tpl set ft=html
 au BufRead,BufNewFile *.xsl set ft=html
 au BufRead,BufNewFile *.json set syntax=json 
 au BufRead,BufNewFile *.n3  set ft=n3
-au BufRead,BufNewFile /usr/local/etc/nginx/* set ft=nginx 
-au BufRead,BufNewFile /etc/nginx/* set ft=nginx 
+" au BufRead,BufNewFile /usr/local/etc/nginx/* set ft=nginx 
+" au BufRead,BufNewFile /etc/nginx/* set ft=nginx 
 " au BufRead,BufNewFile *.rb set sw=2 sts=2 st=2
 " au BufRead,BufNewFile *.rake set sw=2 sts=2 st=2
 " au BufRead,BufNewFile *.ls set sw=2 sts=2 st=2
@@ -249,7 +250,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
 "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 "autocmd FileType c set omnifunc=ccomplete#Complete
 "autocmd FileType cpp set omnifunc=ccomplete#Complete
-autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
+autocmd FileType python set complete+=k~/.vim/syntax/python.vim
 autocmd FileType scss set sw=2
 
 autocmd FileType coffee set ts=2 sw=2 sts=2
