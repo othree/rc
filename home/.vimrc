@@ -1,5 +1,7 @@
 " .vimrc by othree ( othree AT gmail DOT com )
 
+set viminfo='100,n$HOME/.vim/files/info/viminfo
+
 " Vundle
 " git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
@@ -13,9 +15,9 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 " Colors
-Plugin 'tir_black'
+" Plugin 'tir_black'
 Plugin 'jellybeans.vim'
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 " Plugin 'amdt/vim-niji'
 Plugin 'othree/vim-osx-colorpicker'
 Plugin 'peaksea'
@@ -23,6 +25,8 @@ Plugin 'peaksea'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'osyo-manga/shabadou.vim'
+
+Plugin 'matrix.vim--Yang'
 
 " Improve
 Plugin 'maxbrunsfeld/vim-yankstack'
@@ -61,7 +65,10 @@ Plugin 'Lokaltog/vim-easymotion'
 " 
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+Plugin 'othree/syntastic'
+
+Plugin 'sbdchd/neoformat'
 
 " Tim Pope
 Plugin 'tpope/vim-repeat'
@@ -91,13 +98,13 @@ Plugin 'jiangmiao/simple-javascript-indenter'
 " Plugin 'teramako/jscomplete-vim'
 " Plugin 'othree/jslint.vim'
 Plugin 'othree/jspc.vim'
-Plugin 'bigfish/vim-js-context-coloring'
+" Plugin 'bigfish/vim-js-context-coloring'
 Plugin 'mxw/vim-jsx'
 
 Plugin 'othree/jsdoc-syntax.vim'
 
 " CoffeeScript
-" Plugin 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
 " Plugin 'othree/coffee-check.vim'
 Plugin 'othree/fecompressor.vim'
 
@@ -105,16 +112,19 @@ Plugin 'othree/fecompressor.vim'
 Plugin 'gkz/vim-ls'
 
 " TypeScript
-Plugin 'leafgarland/typescript-vim'
+" Plugin 'leafgarland/typescript-vim'
 
 Plugin 'othree/nginx-contrib-vim'
+" Plugin 'othree/nginx-contrib-vim-patch'
 
 " Plugin 'othree/semantic-highlight.vim'
 
 " CSS, SCSS
 Plugin 'hail2u/vim-css3-syntax'
+" Plugin 'othree/svg-properties-syntax.vim'
 Plugin 'ap/vim-css-color'
-Plugin 'cakebaker/scss-syntax.vim'
+" Plugin 'gko/vim-coloresque'
+" Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'csscomb/vim-csscomb'
 Plugin 'othree/csscomplete.vim'
 
@@ -127,6 +137,9 @@ Plugin 'vim-perl/vim-perl'
 
 " ctags
 " Plugin 'majutsushi/tagbar'
+
+" python
+Plugin 'tell-k/vim-autopep8'
 
 " supertab
 Plugin 'ervandew/supertab'
@@ -148,6 +161,10 @@ Plugin 'slim-template/vim-slim'
 Plugin 'gerw/vim-HiLinkTrace'
 
 Plugin 'mhinz/vim-startify'
+
+Plugin 'vim-scripts/XML-Folding'
+
+Plugin 'posva/vim-vue'
 
 " For Fun
 " Bundle 'mattn/hahhah-vim'
@@ -192,8 +209,6 @@ set hidden
 set nobomb
 set hlsearch
 
-set guicolors
-
 let mapleader = ","
 
 " Status Line
@@ -227,6 +242,10 @@ au BufRead,BufNewFile *.n3  set ft=n3
 " au BufRead,BufNewFile *.rake set sw=2 sts=2 st=2
 " au BufRead,BufNewFile *.ls set sw=2 sts=2 st=2
 au BufNewFile,BufReadPost *.ls setl foldmethod=indent nofoldenable
+au BufRead,BufNewFile *.mjs set ft=javascript
+au BufRead,BufNewFile *.ts set ft=javascript
+au BufRead,BufNewFile *.tsx set ft=javascript.jsx
+au BufEnter /private/tmp/crontab.* setl backupcopy=yes
 
 " highlight line & column
 au WinLeave * set nocursorline
@@ -274,7 +293,7 @@ let g:ycm_semantic_triggers =  {
   \ }
 " }}}
 " JS Libs: {{{
-" let g:used_javascript_libs = 'backbone,jquery,lodash,requirejs'
+let g:used_javascript_libs = 'react'
 " }}}
 
 " Screen Fix: {{{
@@ -449,6 +468,13 @@ let g:airline_theme='solarized'
 
 " }}}
 
+" Filename Complete {{{
+
+autocmd InsertEnter * let save_cwd = getcwd() | execute 'lcd %:p:h'
+autocmd InsertLeave * execute 'lcd' fnameescape(save_cwd)
+
+" }}}
+
 " Zencoding: {{{
 let g:user_zen_settings = {
     \  'php' : {
@@ -473,11 +499,26 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " Syntastic: {{{
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_html_checkers = []
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_typescript_tsc_args = "-t ES5"
+let g:syntastic_javascript_checkers=['standard']
+let g:syntastic_javascript_standard_generic = 1
+let g:syntastic_javascript_standard_exec = 'semistandard'
+let g:syntastic_typescript_checkers=['javascript/standard']
+" let g:syntastic_typescript_standard_generic = 1
+" let g:syntastic_typescript_standard_exec = 'oairbnb-standard'
+" let g:syntastic_javascript_standard_exec = 'semistandard'
 " let g:syntastic_javascript_jslint_conf = "--nomen --plusplus --forin --regexp"
 " let g:syntastic_coffee_coffeelint_args = "--csv -f ~/coffeelint-config.json"
 let g:syntastic_html_checkers = []
+
+" let g:syntastic_debug = 32
+" let g:syntastic_debug_file = "~/syntastic.log"
+
+" }}}
+
+" ale: {{{
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
 " }}}
 
 " YouCompleteMe: {{{
@@ -627,6 +668,9 @@ let g:switch_custom_definitions =
     \   ['is', 'isnt'],
     \   ['w', 'h'],
     \   ['width', 'height'],
+    \   ['on', 'off'],
+    \   ['attr', 'removeAttr'],
+    \   ['addClass', 'removeClass'],
     \   {
     \     '\<\(\l\)\(\l\+\(\u\l\+\)\+\)\>': '\=toupper(submatch(1)) . submatch(2)',
     \     '\<\(\u\l\+\)\(\u\l\+\)\+\>': "\\=tolower(substitute(submatch(0), '\\(\\l\\)\\(\\u\\)', '\\1_\\2', 'g'))",
@@ -717,6 +761,8 @@ nmap Y y$
 
 endfunction
 autocmd VimEnter * :call AfterStart()
+if has('nvim')
+endif
 " }}}
 
 map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
