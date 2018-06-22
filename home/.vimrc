@@ -66,7 +66,8 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'scrooloose/syntastic'
-Plugin 'othree/syntastic'
+" Plugin 'othree/syntastic'
+Plugin 'w0rp/ale'
 
 Plugin 'sbdchd/neoformat'
 
@@ -114,6 +115,8 @@ Plugin 'gkz/vim-ls'
 " TypeScript
 " Plugin 'leafgarland/typescript-vim'
 
+Plugin 'alunny/pegjs-vim'
+
 Plugin 'othree/nginx-contrib-vim'
 " Plugin 'othree/nginx-contrib-vim-patch'
 
@@ -122,7 +125,7 @@ Plugin 'othree/nginx-contrib-vim'
 " CSS, SCSS
 Plugin 'hail2u/vim-css3-syntax'
 " Plugin 'othree/svg-properties-syntax.vim'
-Plugin 'ap/vim-css-color'
+" Plugin 'ap/vim-css-color'
 " Plugin 'gko/vim-coloresque'
 " Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'csscomb/vim-csscomb'
@@ -265,6 +268,11 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 " autocmd FileType javascript set omnifunc=jscomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags noci
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
+augroup VimCSS3Syntax
+  autocmd!
+
+  autocmd FileType css setlocal iskeyword+=-
+augroup END
 "autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags noci
 "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 "autocmd FileType c set omnifunc=ccomplete#Complete
@@ -515,10 +523,11 @@ let g:syntastic_html_checkers = []
 
 " }}}
 
-" ale: {{{
+" ALE: {{{
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
+  \   'javascript': ['eslint'],
+  \   'typescript': ['eslint'],
+  \}
 " }}}
 
 " YouCompleteMe: {{{
@@ -770,3 +779,9 @@ map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 let g:tern_show_signature_in_pum=1
+
+" echo the supplied arg and return it unchanged
+function! Echo(arg)
+    echomsg 'arg: ' . a:arg
+    return a:arg
+  endfunction
