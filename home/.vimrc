@@ -344,7 +344,7 @@ endfunction
 map Q <Nop>
 
 "" function keys
-nmap <F2>  :set nonumber! orelativenumber!<CR>
+nmap <F2>  :set nonumber! norelativenumber!<CR>
 nmap <F3>  :set nopaste!<CR>
 nmap <F4>  :set spell!<CR>
 " Leave F5 for ctrlp
