@@ -211,6 +211,7 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 set hidden
 set nobomb
 set hlsearch
+set number relativenumber
 
 let mapleader = ","
 
@@ -353,7 +354,7 @@ endfunction
 map Q <Nop>
 
 "" function keys
-nmap <F2>  :set nonumber!<CR>
+nmap <F2>  :set nonumber! orelativenumber!<CR>
 nmap <F3>  :set nopaste!<CR>
 nmap <F4>  :set spell!<CR>
 " Leave F5 for ctrlp
