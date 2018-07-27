@@ -15,12 +15,8 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 " Colors
-" Plugin 'tir_black'
-Plugin 'jellybeans.vim'
-" Plugin 'altercation/vim-colors-solarized'
-" Plugin 'amdt/vim-niji'
+Plugin 'jacoborus/tender.vim'
 Plugin 'othree/vim-osx-colorpicker'
-Plugin 'peaksea'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -181,14 +177,8 @@ syntax on
 filetype on
 filetype plugin on
 filetype indent on
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
 set background=dark
-" colorscheme solarized
-" colors tir_black
-colors jellybeans
-" colors peaksea
-" colors Tomorrow-Night-Bright
+colorscheme tender
 language message zh_TW.UTF-8
 
 set nocompatible
@@ -467,7 +457,8 @@ let g:airline_right_sep = ''
 
 " let g:airline_enable_syntastic = 1
 
-let g:airline_theme='solarized'
+let g:airline_theme = 'tender'
+
 
 " }}}
 
